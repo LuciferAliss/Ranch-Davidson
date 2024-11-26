@@ -1,0 +1,238 @@
+[gd_scene load_steps=11 format=3 uid="uid://cgmqv5ojnubhg"]
+
+[ext_resource type="Script" path="res://scene/UI/registration/Registration.cs" id="1_oxofh"]
+[ext_resource type="Theme" uid="uid://61jda8o1hc0c" path="res://resources/img/Theme/RanchDavidson.tres" id="2_s2fj1"]
+[ext_resource type="Texture2D" uid="uid://cad2rkgjomf7d" path="res://resources/img/UI/authorization/normal.png" id="3_pvhlk"]
+[ext_resource type="Texture2D" uid="uid://dgu0ry1lp0ut7" path="res://resources/img/UI/authorization/pressed.png" id="4_m3ifn"]
+[ext_resource type="Texture2D" uid="uid://bef4svdrble10" path="res://resources/img/UI/authorization/hover.png" id="5_f6dg7"]
+[ext_resource type="FontFile" uid="uid://b76b2wdu47so" path="res://resources/img/Theme/Monocraft.otf" id="6_1ajn2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r7cq2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhjf2"]
+bg_color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rck3p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oupjg"]
+
+[node name="registration" type="CanvasLayer"]
+script = ExtResource("1_oxofh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_s2fj1")
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.168627, 0.168627, 0.168627, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Registration" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 65
+text = "Регистрация
+"
+horizontal_alignment = 1
+
+[node name="Control6" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(11.96, 24.045)
+layout_mode = 2
+
+[node name="mail" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Электронная почта"
+
+[node name="Control4" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(11.96, 6.31)
+layout_mode = 2
+
+[node name="mailEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(850, 65)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 38
+max_length = 32
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(11.96, 6.31)
+layout_mode = 2
+
+[node name="Login" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Логин"
+
+[node name="Control8" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(11.96, 6.31)
+layout_mode = 2
+
+[node name="LoginEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(850, 65)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 40
+max_length = 24
+
+[node name="Control7" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(11.96, 6.31)
+layout_mode = 2
+
+[node name="Psw2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Пароль"
+
+[node name="Control9" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(11.96, 6.31)
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PswEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(850, 65)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+max_length = 24
+secret = true
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(11.96, 31.265)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_s2fj1")
+
+[node name="Control11" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(11.96, 6.31)
+layout_mode = 2
+
+[node name="RepPsw" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Повторить пароль"
+
+[node name="Control3" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(11.96, 3.73)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RepPswEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(850, 65)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+max_length = 24
+secret = true
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(11.96, 31.265)
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_s2fj1")
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 31.265)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(850, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 31.265)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(450, 80)
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.16
+texture_normal = ExtResource("3_pvhlk")
+texture_pressed = ExtResource("4_m3ifn")
+texture_hover = ExtResource("5_f6dg7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.5
+offset_right = 20.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Созадть"
+
+[node name="Control5" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25.455)
+layout_mode = 2
+
+[node name="error" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.584314, 0, 0, 0)
+theme_override_font_sizes/font_size = 20
+text = "Пожалуйста, проверьте свой пароль и имя аккаунта и
+попробуйте снова."
+horizontal_alignment = 1
+
+[node name="Control10" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25.455)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("6_1ajn2")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r7cq2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vhjf2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rck3p")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oupjg")
+text = "Есть аккаунта"
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer4/CheckBox" to="." method="ShowPsw"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="ShowRepPsw"]

@@ -1,0 +1,29 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://61jda8o1hc0c"]
+
+[ext_resource type="Texture2D" uid="uid://pstfouab04fy" path="res://resources/img/UI/authorization/closeEye.png" id="1_567gu"]
+[ext_resource type="Texture2D" uid="uid://behvlyoue73vd" path="res://resources/img/UI/authorization/openEye.png" id="2_f2klq"]
+[ext_resource type="FontFile" uid="uid://b76b2wdu47so" path="res://resources/img/Theme/Monocraft.otf" id="3_vi2wy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rdth"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_peamd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0i7l7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_birey"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+CheckBox/icons/checked = ExtResource("1_567gu")
+CheckBox/icons/unchecked = ExtResource("2_f2klq")
+CheckBox/styles/focus = SubResource("StyleBoxFlat_6rdth")
+CheckBox/styles/hover = SubResource("StyleBoxFlat_peamd")
+Label/fonts/font = ExtResource("3_vi2wy")
+LineEdit/fonts/font = ExtResource("3_vi2wy")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_0i7l7")
+TextEdit/fonts/font = ExtResource("3_vi2wy")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_birey")
