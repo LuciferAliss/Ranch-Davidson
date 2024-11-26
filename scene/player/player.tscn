@@ -1,5 +1,6 @@
-[gd_scene load_steps=44 format=3 uid="uid://ve1tt812qmni"]
+[gd_scene load_steps=45 format=3 uid="uid://ve1tt812qmni"]
 
+[ext_resource type="Script" path="res://scene/player/Player.cs" id="1_1w410"]
 [ext_resource type="Texture2D" uid="uid://3lm0npub8l8e" path="res://resources/img/characters/MCanimate.png" id="1_sort2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wf8xc"]
@@ -339,6 +340,8 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_1w410")
+maxSpeed = 150.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
