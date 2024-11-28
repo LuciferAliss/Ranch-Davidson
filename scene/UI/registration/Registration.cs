@@ -7,8 +7,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Threading;
-
 public partial class Registration : CanvasLayer
 {
 	private LineEdit mailEdit;
@@ -140,10 +138,6 @@ public partial class Registration : CanvasLayer
 	{
 		try
 		{
-			if (CheckingEmail == true)
-			{
-				return true;
-			}
 			codeEmail = Random.Shared.Next(100000, 1000000).ToString();
 			SmtpClient smtpClient = new SmtpClient("smtp.mail.ru")
 			{
@@ -171,6 +165,20 @@ public partial class Registration : CanvasLayer
 		}
 	}
 
+	public bool IsDomainValid(string email)
+{
+    try
+    {
+        var domain = email.Split('@')[1];
+        var hostEntry = Dns.GetHostEntry(domain);
+        return hostEntry.AddressList.Length > 0;
+    }
+    catch
+    {
+        return false;
+    }
+}
+
 	private bool CheckPasswords()
 	{
 		return repPswEdit.Text == pswEdit.Text;
@@ -183,20 +191,19 @@ public partial class Registration : CanvasLayer
 			return;
 		}
 
-		GD.Print(ConvertImageToBlob("res://resources//img//UI//authorization//pfp.png"));
 		var currentUser = new User
 		{
 			id = ToSHA512(loginEdit.Text + pswEdit.Text),
 			login = loginEdit.Text,
 			password = ToSHA512(pswEdit.Text),
-			email = mailEdit.Text,
+			email = mailEdit.Text + optionButton.Text,
 			pfp = ConvertImageToBlob("res://resources//img//UI//authorization//pfp.png")
 		};
 		
 		context.Users.Add(currentUser);
 		context.SaveChanges();
 
-		 await Task.Delay(5000);
+		await Task.Delay(5000);
 
 		ChangeSceneToAuthorization();
 	}
@@ -223,7 +230,7 @@ public partial class Registration : CanvasLayer
 			ShowError("Эта почта уже занята");		
 			return false;
 		}
-		else if (!SendConfirmationMessages(mailEdit.Text + optionButton.Text))
+		else if (!IsDomainValid(mailEdit.Text + optionButton.Text))
 		{
 			ShowError("Неверный адрес электронной почты");		
 			return false;
@@ -236,6 +243,9 @@ public partial class Registration : CanvasLayer
 			timer.Stop();
 			return true;
 		}
+
+		SendConfirmationMessages(mailEdit.Text + optionButton.Text);
+		
 		timer = new System.Timers.Timer(120000);
 		timer.Elapsed += (sender, e) =>
 		{
@@ -268,26 +278,15 @@ public partial class Registration : CanvasLayer
 
 	private static byte[] ConvertImageToBlob(string filePath)
     {
-        string extension = filePath.GetExtension().ToLower();
-        Image image = new Image();
-		image.Load(filePath);
+		var file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
 
-        switch (extension)
-        {
-            case "png":
-                return image.SavePngToBuffer();
+		int fileSize = (int)file.GetLength();
+		
+		byte[] data = file.GetBuffer(fileSize);
+		
+		file.Close();
 
-            case "jpg":
-            case "jpeg":
-                return image.SaveJpgToBuffer(90);
-
-            case "webp":
-                return image.SaveWebpToBuffer(false);
-
-            default:
-                GD.PrintErr($"Формат {extension} не поддерживается.");
-                return null;
-        }
+        return data;
     }
 
 	private void ShowError(string errorText)
@@ -354,6 +353,12 @@ public partial class Registration : CanvasLayer
 
 	private void ChangeSceneToAuthorization()
 	{
-		GetTree().ChangeSceneToFile("res://scene//UI//authorization//Authorization.tscn");
+		var newScene = (PackedScene)GD.Load("res://scene//UI//authorization//authorization.tscn");
+		var currentScene = GetTree().CurrentScene;
+		var nextSceneInstance = newScene.Instantiate();
+
+        GetTree().Root.AddChild(nextSceneInstance);
+		GetTree().CurrentScene = nextSceneInstance;
+        currentScene.QueueFree();
 	}
 }
