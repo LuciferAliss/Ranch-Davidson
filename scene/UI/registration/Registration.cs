@@ -3,8 +3,6 @@ using System;
 using System.Text.RegularExpressions;
 using System.Net;
 using System.Net.Mail;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 public partial class Registration : CanvasLayer
@@ -21,7 +19,8 @@ public partial class Registration : CanvasLayer
 	private Label messageLabel;
 	private bool CheckingEmail = false;
 	private string codeEmail = "";
-	private System.Timers.Timer timer;
+	private Timer timerEmail;
+	private Label timeEmailLable;
 
 	public override void _Ready()
 	{
@@ -30,7 +29,9 @@ public partial class Registration : CanvasLayer
 		pswEdit = GetNode<LineEdit>("MarginContainer/VBoxContainer/HBoxContainer4/PswEdit");
 		repPswEdit = GetNode<LineEdit>("MarginContainer/VBoxContainer/HBoxContainer/RepPswEdit");
 		optionButton = GetNode<OptionButton>("MarginContainer/VBoxContainer/HBoxContainer3/OptionButton");
-		codeInput = GetNode<LineEdit>("MarginContainer/Panel/VBoxContainer/LineEdit");
+		codeInput = GetNode<LineEdit>("MarginContainer/Panel/VBoxContainer/HBoxContainer/LineEdit");
+		timerEmail = GetNode<Timer>("Timer");
+		timeEmailLable = GetNode<Label>("MarginContainer/Panel/VBoxContainer/HBoxContainer/Time");
 		GetNode<TextureButton>("MarginContainer/Panel/VBoxContainer/TextureButton").Pressed += CheckCode;
 		mailEdit.TextChanged += MailFilter;
 		loginEdit.TextChanged += LoginFilter;
@@ -39,13 +40,43 @@ public partial class Registration : CanvasLayer
 
 		optionButton.Select(0);
 		var error = GetNode<Label>("MarginContainer/VBoxContainer/error");
-		error.Modulate = new Color(0.588f, 0, 0, 0);
+		error.Modulate = new Color(0.7f, 0, 0, 0);
 		var errorCode = GetNode<Label>("MarginContainer/Panel/VBoxContainer/error");
-		errorCode.Modulate = new Color(0.588f, 0, 0, 0);
+		errorCode.Modulate = new Color(0.7f, 0, 0, 0);
     }
 
 	public override void _Process(double delta)
 	{
+		if (timerEmail.IsStopped())
+		{
+			return;
+		}
+
+		timeEmailLable.Text = FormatTimer(timerEmail.TimeLeft);
+	}
+
+	private void CloseConfirmationEmail()
+	{
+		GetNode<Panel>("MarginContainer/Panel").Visible = false;
+	}
+
+	private void TimeConfirmation()
+	{
+		codeEmail = "";
+		GetNode<Panel>("MarginContainer/Panel").Visible = false;
+		timeEmailLable.Text = "";
+		mailEdit.Text = "";
+		loginEdit.Text = "";
+		pswEdit.Text = "";
+		repPswEdit.Text = "";
+		ShowError("Время для подтверждения электронной почты истекло");
+	}
+
+	public string FormatTimer(double seconds)
+	{
+		int minutes = (int)Math.Floor(seconds / 60);
+		int remainingSeconds = (int)Math.Floor(seconds % 60);
+		return $"{minutes:D2}:{remainingSeconds:D2}";
 	}
 
 	void ShowPsw(bool show)
@@ -134,6 +165,21 @@ public partial class Registration : CanvasLayer
 		Edit.CaretColumn = cursorPosition;
 	}
 
+	private void CodeFilter(string newText)
+	{
+		var Edit = GetNode<LineEdit>("MarginContainer/Panel/VBoxContainer/HBoxContainer/LineEdit");
+		Regex NumberRegex = new Regex(@"[^0-9]");
+		int cursorPosition = Edit.CaretColumn;
+        string filteredText = NumberRegex.Replace(newText, "");
+
+		if (filteredText != newText)
+        {
+            Edit.Text = filteredText;
+        }
+
+		Edit.CaretColumn = cursorPosition;
+	}
+
 	private bool SendConfirmationMessages(string toEmail)
 	{
 		try
@@ -166,18 +212,18 @@ public partial class Registration : CanvasLayer
 	}
 
 	public bool IsDomainValid(string email)
-{
-    try
-    {
-        var domain = email.Split('@')[1];
-        var hostEntry = Dns.GetHostEntry(domain);
-        return hostEntry.AddressList.Length > 0;
-    }
-    catch
-    {
-        return false;
-    }
-}
+	{
+		try
+		{
+			var domain = email.Split('@')[1];
+			var hostEntry = Dns.GetHostEntry(domain);
+			return hostEntry.AddressList.Length > 0;
+		}
+		catch
+		{
+			return false;
+		}
+	}
 
 	private bool CheckPasswords()
 	{
@@ -193,9 +239,9 @@ public partial class Registration : CanvasLayer
 
 		var currentUser = new User
 		{
-			id = ToSHA512(loginEdit.Text + pswEdit.Text),
+			id = SHA512Hash.ToSHA512(loginEdit.Text + pswEdit.Text),
 			login = loginEdit.Text,
-			password = ToSHA512(pswEdit.Text),
+			password = SHA512Hash.ToSHA512(pswEdit.Text),
 			email = mailEdit.Text + optionButton.Text,
 			pfp = ConvertImageToBlob("res://resources//img//UI//authorization//pfp.png")
 		};
@@ -208,18 +254,28 @@ public partial class Registration : CanvasLayer
 		ChangeSceneToAuthorization();
 	}
 
-	public bool CheckFidelity()
+    private string SHA512HashToSHA512(string text)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool CheckFidelity()
 	{
 		if (mailEdit.Text == "" || loginEdit.Text == "" || pswEdit.Text == "" || repPswEdit.Text == "")
 		{
 			ShowError("Пожалуйста, заполните все поля");		
 			return false;
 		}
-		else if (!CheckPasswords())
+		else if (loginEdit.Text.Length < 3)
 		{
-			ShowError("Пароли не совпадают");		
+			ShowError("Логин слишком короткий. Минимум 3 символов");		
 			return false;
 		}
+		else if (pswEdit.Text.Length < 8)
+		{
+			ShowError("Пароль слишком короткий. Минимум 8 символов");		
+			return false;
+		}	
 		else if (context.Users.Any(u => u.login == loginEdit.Text))
 		{
 			ShowError("Этот логин уже занята");		
@@ -228,6 +284,16 @@ public partial class Registration : CanvasLayer
 		else if (context.Users.Any(e => e.email == mailEdit.Text + optionButton.Text))
 		{
 			ShowError("Эта почта уже занята");		
+			return false;
+		}
+		else if (!EvaluatePasswordStrength(pswEdit.Text))
+		{
+			ShowError("Слабый пароль. Добавьте разные регистры, цифры и спецсимволы");		
+			return false;
+		}
+		else if (!CheckPasswords())
+		{
+			ShowError("Пароли не совпадают");		
 			return false;
 		}
 		else if (!IsDomainValid(mailEdit.Text + optionButton.Text))
@@ -240,39 +306,32 @@ public partial class Registration : CanvasLayer
 
 		if (CheckingEmail)
 		{
-			timer.Stop();
 			return true;
 		}
-
+		
+		timerEmail.Start();
+		
 		SendConfirmationMessages(mailEdit.Text + optionButton.Text);
-		
-		timer = new System.Timers.Timer(120000);
-		timer.Elapsed += (sender, e) =>
-		{
-			timer.Stop();
-			GD.Print("Таймер завершён");
-		};
-		timer.AutoReset = false;
-		timer.Start();
-		
 		
 		return false;
 	}
 
-	private static string ToSHA512(string inputMessage)
+	public bool EvaluatePasswordStrength(string password)
 	{
-		string outputMessage = "";
-		using (SHA512 sha512 = SHA512.Create())
+		int score = 0;
+
+		if (password.Any(char.IsLower)) score++;
+		if (password.Any(char.IsUpper)) score++;
+		if (password.Any(char.IsDigit)) score++; 
+		if (password.Any(ch => !char.IsLetterOrDigit(ch))) score++; 
+
+		if (score == 4)
 		{
-			byte[] toBytes = Encoding.ASCII.GetBytes(inputMessage);
-			byte[] hash = sha512.ComputeHash(toBytes);
-
-			foreach (byte b in hash)
-			{
-				outputMessage += b.ToString("x2");
-			}
-
-			return outputMessage;
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 
@@ -299,11 +358,11 @@ public partial class Registration : CanvasLayer
 
 		var error = GetNode<Label>("MarginContainer/VBoxContainer/error");
 		error.Text = errorText;
-		error.Modulate = new Color(0.588f, 0, 0, 0);
+		error.Modulate = new Color(0.7f, 0, 0, 0);
 
 		currentTween1 = GetTree().CreateTween();
-		currentTween1.TweenProperty(error, "modulate", new Color(0.588f, 0, 0, 1), 1.0f);
-		currentTween1.TweenProperty(error, "modulate", new Color(0.588f, 0, 0, 0f), 10.0f);
+		currentTween1.TweenProperty(error, "modulate", new Color(0.7f, 0, 0, 1), 1.0f);
+		currentTween1.TweenProperty(error, "modulate", new Color(0.7f, 0, 0, 0f), 10.0f);
 	}  
 
 	private void ShowErrorCode(string errorText)
@@ -316,11 +375,11 @@ public partial class Registration : CanvasLayer
 
 		var error = GetNode<Label>("MarginContainer/Panel/VBoxContainer/error");
 		error.Text = errorText;
-		error.Modulate = new Color(0.588f, 0, 0, 0);
+		error.Modulate = new Color(0.7f, 0, 0, 0);
 
 		currentTween2 = GetTree().CreateTween();
-		currentTween2.TweenProperty(error, "modulate", new Color(0.588f, 0, 0, 1), 1.0f);
-		currentTween2.TweenProperty(error, "modulate", new Color(0.588f, 0, 0, 0f), 10.0f);
+		currentTween2.TweenProperty(error, "modulate", new Color(0.7f, 0, 0, 1), 1.0f);
+		currentTween2.TweenProperty(error, "modulate", new Color(0.7f, 0, 0, 0f), 10.0f);
 	}  
 
 	private void ShowInfRegist(string Text)

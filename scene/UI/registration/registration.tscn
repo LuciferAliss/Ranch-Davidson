@@ -236,8 +236,6 @@ custom_minimum_size = Vector2(850, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
-text = "Пожалуйста, проверьте свой пароль и имя аккаунта и
-попробуйте снова."
 horizontal_alignment = 1
 
 [node name="Control10" type="Control" parent="MarginContainer/VBoxContainer"]
@@ -262,6 +260,7 @@ custom_minimum_size = Vector2(800, 500)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("2_s2fj1")
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel"]
 custom_minimum_size = Vector2(1000, 1000)
@@ -302,10 +301,22 @@ text = "Введите код подтверждения:"
 custom_minimum_size = Vector2(0, 34.465)
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(300, 65)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
 layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(615, 65)
+layout_mode = 2
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 38
+max_length = 6
+
+[node name="Time" type="Label" parent="MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 65
 
 [node name="Control2" type="Control" parent="MarginContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40.26)
@@ -336,7 +347,7 @@ offset_bottom = 8.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
-text = "Потвердать"
+text = "Потвердить"
 
 [node name="Control3" type="Control" parent="MarginContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 40.26)
@@ -349,6 +360,29 @@ size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Код введен не верно"
 
+[node name="Control4" type="Control" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40.26)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("6_1ajn2")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r7cq2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vhjf2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rck3p")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oupjg")
+text = "Вернуться назад"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
 [connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer4/CheckBox" to="." method="ShowPsw"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="ShowRepPsw"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/TextureButton" to="." method="CreateAccount"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="ChangeSceneToAuthorization"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/Button3" to="." method="CloseConfirmationEmail"]
+[connection signal="timeout" from="Timer" to="." method="TimeConfirmation"]

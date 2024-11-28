@@ -157,10 +157,7 @@ layout_mode = 2
 [node name="error" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.584314, 0, 0, 0)
 theme_override_font_sizes/font_size = 20
-text = "Пожалуйста, проверьте свой пароль и имя аккаунта и
-попробуйте снова."
 horizontal_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -194,3 +191,4 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_oupjg")
 text = "Нет аккаунта"
 
 [connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="ShowPsw"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/Button2" to="." method="ChangeSceneToRegistration"]
