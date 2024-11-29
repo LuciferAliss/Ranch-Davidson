@@ -12,7 +12,6 @@ public partial class Registration : CanvasLayer
 	private LineEdit pswEdit;
 	private LineEdit repPswEdit;
 	private OptionButton optionButton;
-	private GameContext context = new GameContext();
 	private Tween currentTween1;
 	private Tween currentTween2;
 	private LineEdit codeInput;
@@ -232,88 +231,89 @@ public partial class Registration : CanvasLayer
 
 	private async void CreateAccount()
 	{ 
-		if (!CheckFidelity())
+		using (var context = new GameContext())
 		{
-			return;
+			if (!CheckFidelity())
+			{
+				return;
+			}
+
+			var currentUser = new User
+			{
+				id = SHA512Hash.ToSHA512(loginEdit.Text + pswEdit.Text),
+				login = loginEdit.Text,
+				password = SHA512Hash.ToSHA512(pswEdit.Text),
+				email = mailEdit.Text + optionButton.Text,
+				pfp = ConvertImageToBlob("res://resources//img//UI//authorization//pfp.png")
+			};
+			
+			context.Users.Add(currentUser);
+			context.SaveChanges();
+
+			await Task.Delay(5000);
+
+			ChangeSceneToAuthorization();
 		}
-
-		var currentUser = new User
-		{
-			id = SHA512Hash.ToSHA512(loginEdit.Text + pswEdit.Text),
-			login = loginEdit.Text,
-			password = SHA512Hash.ToSHA512(pswEdit.Text),
-			email = mailEdit.Text + optionButton.Text,
-			pfp = ConvertImageToBlob("res://resources//img//UI//authorization//pfp.png")
-		};
-		
-		context.Users.Add(currentUser);
-		context.SaveChanges();
-
-		await Task.Delay(5000);
-
-		ChangeSceneToAuthorization();
 	}
-
-    private string SHA512HashToSHA512(string text)
-    {
-        throw new NotImplementedException();
-    }
 
     public bool CheckFidelity()
 	{
-		if (mailEdit.Text == "" || loginEdit.Text == "" || pswEdit.Text == "" || repPswEdit.Text == "")
+		using (var context = new GameContext())
 		{
-			ShowError("Пожалуйста, заполните все поля");		
-			return false;
-		}
-		else if (loginEdit.Text.Length < 3)
-		{
-			ShowError("Логин слишком короткий. Минимум 3 символов");		
-			return false;
-		}
-		else if (pswEdit.Text.Length < 8)
-		{
-			ShowError("Пароль слишком короткий. Минимум 8 символов");		
-			return false;
-		}	
-		else if (context.Users.Any(u => u.login == loginEdit.Text))
-		{
-			ShowError("Этот логин уже занята");		
-			return false;
-		}
-		else if (context.Users.Any(e => e.email == mailEdit.Text + optionButton.Text))
-		{
-			ShowError("Эта почта уже занята");		
-			return false;
-		}
-		else if (!EvaluatePasswordStrength(pswEdit.Text))
-		{
-			ShowError("Слабый пароль. Добавьте разные регистры, цифры и спецсимволы");		
-			return false;
-		}
-		else if (!CheckPasswords())
-		{
-			ShowError("Пароли не совпадают");		
-			return false;
-		}
-		else if (!IsDomainValid(mailEdit.Text + optionButton.Text))
-		{
-			ShowError("Неверный адрес электронной почты");		
-			return false;
-		}
+			if (mailEdit.Text == "" || loginEdit.Text == "" || pswEdit.Text == "" || repPswEdit.Text == "")
+			{
+				ShowError("Пожалуйста, заполните все поля");		
+				return false;
+			}
+			else if (loginEdit.Text.Length < 3)
+			{
+				ShowError("Логин слишком короткий. Минимум 3 символов");		
+				return false;
+			}
+			else if (pswEdit.Text.Length < 8)
+			{
+				ShowError("Пароль слишком короткий. Минимум 8 символов");		
+				return false;
+			}	
+			else if (context.Users.Any(u => u.login == loginEdit.Text))
+			{
+				ShowError("Этот логин уже занята");		
+				return false;
+			}
+			else if (context.Users.Any(e => e.email == mailEdit.Text + optionButton.Text))
+			{
+				ShowError("Эта почта уже занята");		
+				return false;
+			}
+			else if (!EvaluatePasswordStrength(pswEdit.Text))
+			{
+				ShowError("Слабый пароль. Добавьте разные регистры, цифры и спецсимволы");		
+				return false;
+			}
+			else if (!CheckPasswords())
+			{
+				ShowError("Пароли не совпадают");		
+				return false;
+			}
+			else if (!IsDomainValid(mailEdit.Text + optionButton.Text))
+			{
+				ShowError("Неверный адрес электронной почты");		
+				return false;
+			}
 
-		GetNode<Panel>("MarginContainer/Panel").Visible = true;
+			GetNode<Panel>("MarginContainer/Panel").Visible = true;
 
-		if (CheckingEmail)
-		{
-			return true;
+			if (CheckingEmail)
+			{
+				return true;
+			}
+			
+			timerEmail.Start();
+			
+			SendConfirmationMessages(mailEdit.Text + optionButton.Text);
+			
+			return false;
 		}
-		
-		timerEmail.Start();
-		
-		SendConfirmationMessages(mailEdit.Text + optionButton.Text);
-		
-		return false;
 	}
 
 	public bool EvaluatePasswordStrength(string password)
