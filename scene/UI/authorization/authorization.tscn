@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://oou08nh4fbc0"]
+[gd_scene load_steps=17 format=3 uid="uid://oou08nh4fbc0"]
 
 [ext_resource type="Theme" uid="uid://61jda8o1hc0c" path="res://resources/img/Theme/RanchDavidson.tres" id="1_t44ax"]
 [ext_resource type="Script" path="res://scene/UI/authorization/Authorization.cs" id="1_t55cr"]
@@ -20,6 +20,15 @@ bg_color = Color(0.211765, 0.211765, 0.211765, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhjf2"]
 bg_color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7wyf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d10v3"]
+bg_color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_al2wr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_duft2"]
 
 [node name="authorization" type="CanvasLayer"]
 script = ExtResource("1_t55cr")
@@ -189,6 +198,160 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_vhjf2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_rck3p")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_oupjg")
 text = "Нет аккаунта"
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_t44ax")
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Panel"]
+custom_minimum_size = Vector2(1000, 1000)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.168627, 0.168627, 0.168627, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -346.5
+offset_top = -128.0
+offset_right = 346.5
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Введите логин"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(615, 65)
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+max_length = 6
+
+[node name="Control2" type="Control" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40.26)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Введите адрес электронной почты"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+
+[node name="mailEdit" type="LineEdit" parent="MarginContainer/Panel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(650, 65)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 38
+max_length = 25
+
+[node name="Control8" type="Control" parent="MarginContainer/Panel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(12, 6.31)
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/Panel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(179.845, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+item_count = 4
+popup/item_0/text = "@gmail.com"
+popup/item_1/text = "@yandex.ru"
+popup/item_1/id = 1
+popup/item_2/text = "@yandex.ua"
+popup/item_2/id = 2
+popup/item_3/text = "@mail.ru"
+popup/item_3/id = 3
+
+[node name="Control6" type="Control" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40.26)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(450, 75)
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.16
+texture_normal = ExtResource("3_jgbv7")
+texture_pressed = ExtResource("3_5pm2y")
+texture_hover = ExtResource("4_my6x5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.5
+offset_right = 20.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Потвердить"
+
+[node name="Control3" type="Control" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40.26)
+layout_mode = 2
+
+[node name="error" type="Label" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Код введен не верно"
+
+[node name="Control4" type="Control" parent="MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40.26)
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("6_dkqr5")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w7wyf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d10v3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_al2wr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_duft2")
+text = "Вернуться назад"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 65
 
 [connection signal="toggled" from="MarginContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="ShowPsw"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer3/Button2" to="." method="ChangeSceneToRegistration"]

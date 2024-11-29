@@ -58,7 +58,7 @@ public partial class Authorization : CanvasLayer
 	private void PswFilter(string newText)
 	{
 		var Edit = GetNode<LineEdit>("MarginContainer/VBoxContainer/HBoxContainer4/PswEdit");
-		Regex NumberRegex = new Regex(@"[^a-zA-Z0-9!@#\$_-]");
+		Regex NumberRegex = new Regex(@"[^a-zA-Z0-9!@#\$_%&*-]");
 		int cursorPosition = Edit.CaretColumn;
         string filteredText = NumberRegex.Replace(newText, "");
 
@@ -72,7 +72,7 @@ public partial class Authorization : CanvasLayer
 
 	private void ChangeSceneToRegistration()
 	{
-		var newScene = (PackedScene)GD.Load("res://scene//UI//registration//Registration.tscn");
+		var newScene = (PackedScene)GD.Load("res://scene//UI//registration//registration.tscn");
 		var currentScene = GetTree().CurrentScene;
 		var nextSceneInstance = newScene.Instantiate();
 

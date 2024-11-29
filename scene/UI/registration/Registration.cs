@@ -153,7 +153,7 @@ public partial class Registration : CanvasLayer
 	private void RepPswFilter(string newText)
 	{
 		var Edit = GetNode<LineEdit>("MarginContainer/VBoxContainer/HBoxContainer/RepPswEdit");
-		Regex NumberRegex = new Regex(@"[^a-zA-Z0-9!@#\$_-]");
+		Regex NumberRegex = new Regex(@"[^a-zA-Z0-9!@#\$_%&*-]");
 		int cursorPosition = Edit.CaretColumn;
         string filteredText = NumberRegex.Replace(newText, "");
 
