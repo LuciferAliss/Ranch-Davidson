@@ -4,7 +4,7 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	[Export]
-	float maxSpeed = 200;
+	float maxSpeed = 100;
 	private AnimatedSprite2D animatedSp;
 	private AnimationPlayer animationPl;
 	private StateAnimationPlayer stateAnimation;
@@ -20,31 +20,6 @@ public partial class Player : CharacterBody2D
 	public override void _Process(double delta)
 	{
 		move();
-
-		if (IsOnFloor())
-		{
-			
-		}
-	}
-
-	void _on_area_2d_body_entered(Node2D TileMap)
-	{
-		if(TileMap.Name == "TileMapLayer2")
-		{
-			GD.Print("ewf");
-			ZIndex = 2;
-		}
-	}
-
-	void _on_area_2d_body_exited(Node2D TileMap)
-	{
-		{
-		if(TileMap.Name == "TileMapLayer2")
-		{
-			GD.Print("ewf");
-			ZIndex = 0;
-		}
-	}
 	}
 
 	private Vector2 Movement_vector()

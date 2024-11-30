@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://ve1tt812qmni"]
+[gd_scene load_steps=56 format=3 uid="uid://ve1tt812qmni"]
 
 [ext_resource type="Script" path="res://scene/player/Player.cs" id="1_1w410"]
 [ext_resource type="Texture2D" uid="uid://dnmbl0nv416b" path="res://resources/img/characters/MCanimate.png" id="1_sort2"]
@@ -628,14 +628,9 @@ _data = {
 "WalkUp": SubResource("Animation_fds1w")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ew4vt"]
-radius = 8.0
-height = 32.0
-
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_1w410")
-maxSpeed = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -16)
@@ -656,15 +651,3 @@ shape = SubResource("CircleShape2D_xhaq7")
 libraries = {
 "": SubResource("AnimationLibrary_n3k2u")
 }
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -21)
-scale = Vector2(1.295, 1.13)
-shape = SubResource("CapsuleShape2D_ew4vt")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
