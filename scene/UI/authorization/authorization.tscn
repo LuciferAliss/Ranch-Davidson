@@ -657,6 +657,5 @@ one_shot = true
 [connection signal="pressed" from="MarginContainer/FormconfirmationEmail/VBoxContainer/Button3" to="." method="OpenPasswordRecoveryForm"]
 [connection signal="toggled" from="MarginContainer/FormChangePsw/VBoxContainer/HBoxContainer4/CheckBox" to="." method="ShowPsw1"]
 [connection signal="toggled" from="MarginContainer/FormChangePsw/VBoxContainer/HBoxContainer2/CheckBox" to="." method="ShowPsw2"]
-[connection signal="pressed" from="MarginContainer/FormChangePsw/VBoxContainer/TextureButton" to="." method="ChangePsw"]
 [connection signal="pressed" from="MarginContainer/FormChangePsw/VBoxContainer/Button3" to="." method="HidePanels"]
 [connection signal="timeout" from="Timer" to="." method="TimeConfirmation"]

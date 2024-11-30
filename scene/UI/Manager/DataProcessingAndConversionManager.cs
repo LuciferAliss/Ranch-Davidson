@@ -1,8 +1,22 @@
+using Godot;
 using System.Security.Cryptography;
 using System.Text;
 
-class SHA512Hash
+class DataProcessingAndConversionManager
 {
+    public static byte[] ConvertImageToBlob(string filePath)
+    {
+		var file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
+
+		int fileSize = (int)file.GetLength();
+		
+		byte[] data = file.GetBuffer(fileSize);
+		
+		file.Close();
+
+        return data;
+    }
+
     public static string ToSHA512(string inputMessage)
 	{
 		string outputMessage = "";

@@ -1,8 +1,6 @@
 using Godot;
 using System;
 using System.Text.RegularExpressions;
-using System.Net;
-using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Linq;
 public partial class Registration : CanvasLayer
@@ -12,14 +10,12 @@ public partial class Registration : CanvasLayer
 	private LineEdit pswEdit;
 	private LineEdit repPswEdit;
 	private OptionButton optionButton;
-	private Tween currentTween1;
-	private Tween currentTween2;
+	private Tween tween;
 	private LineEdit codeInput;
-	private Label messageLabel;
 	private bool CheckingEmail = false;
 	private string codeEmail = "";
 	private Timer timerEmail;
-	private Label timeEmailLable;
+	private Label timeEmailLabel;
 
 	public override void _Ready()
 	{
@@ -30,7 +26,7 @@ public partial class Registration : CanvasLayer
 		optionButton = GetNode<OptionButton>("MarginContainer/VBoxContainer/HBoxContainer3/OptionButton");
 		codeInput = GetNode<LineEdit>("MarginContainer/Panel/VBoxContainer/HBoxContainer/LineEdit");
 		timerEmail = GetNode<Timer>("Timer");
-		timeEmailLable = GetNode<Label>("MarginContainer/Panel/VBoxContainer/HBoxContainer/Time");
+		timeEmailLabel = GetNode<Label>("MarginContainer/Panel/VBoxContainer/HBoxContainer/Time");
 		GetNode<TextureButton>("MarginContainer/Panel/VBoxContainer/TextureButton").Pressed += CheckCode;
 		mailEdit.TextChanged += MailFilter;
 		loginEdit.TextChanged += LoginFilter;
@@ -51,7 +47,7 @@ public partial class Registration : CanvasLayer
 			return;
 		}
 
-		timeEmailLable.Text = FormatTimer(timerEmail.TimeLeft);
+		timeEmailLabel.Text = TimeManager.FormatTimer(timerEmail.TimeLeft);
 	}
 
 	private void CloseConfirmationEmail()
@@ -63,170 +59,60 @@ public partial class Registration : CanvasLayer
 	{
 		codeEmail = "";
 		GetNode<Panel>("MarginContainer/Panel").Visible = false;
-		timeEmailLable.Text = "";
+		timeEmailLabel.Text = "";
 		mailEdit.Text = "";
 		loginEdit.Text = "";
 		pswEdit.Text = "";
 		repPswEdit.Text = "";
-		ShowError("Время для подтверждения электронной почты истекло");
-	}
-
-	public string FormatTimer(double seconds)
-	{
-		int minutes = (int)Math.Floor(seconds / 60);
-		int remainingSeconds = (int)Math.Floor(seconds % 60);
-		return $"{minutes:D2}:{remainingSeconds:D2}";
+		var errorLabel = GetNode<Label>("MarginContainer/VBoxContainer/error");
+		ShowMessageManager.ShowMessage("Время для подтверждения электронной почты истекло", tween, errorLabel, GetTree(), new Color(0.7f, 0, 0, 0), 1.0f, 10.0f);
 	}
 
 	void ShowPsw(bool show)
 	{
 		var PswEdit = GetNode<LineEdit>("MarginContainer/VBoxContainer/HBoxContainer4/PswEdit");
-		if (show)
-		{
-			PswEdit.Secret = false;
-		}
-		else
-		{
-			PswEdit.Secret = true;
-		}
+		TextManager.ShowPsw(show, PswEdit);
 	}
 
 	void ShowRepPsw(bool show)
 	{
 		var PswEdit = GetNode<LineEdit>("MarginContainer/VBoxContainer/HBoxContainer/RepPswEdit");
-		if (show)
-		{
-			PswEdit.Secret = false;
-		}
-		else
-		{
-			PswEdit.Secret = true;
-		}
+		TextManager.ShowPsw(show, PswEdit);
 	}
 
 	private void MailFilter(string newText)
 	{
 		var Edit = GetNode<LineEdit>("MarginContainer/VBoxContainer/HBoxContainer3/mailEdit");
-		Regex NumberRegex = new Regex(@"[^a-z-0-9._]");
-		int cursorPosition = Edit.CaretColumn;
-        string filteredText = NumberRegex.Replace(newText, "");
-
-		if (filteredText != newText)
-        {
-            Edit.Text = filteredText;
-        }
-
-		Edit.CaretColumn = cursorPosition;
+		Regex regex = new Regex(@"[^a-z-0-9._]");
+		TextManager.TextFilter(newText, regex, Edit);
 	}
 
 	private void LoginFilter(string newText)
 	{
 		var Edit = GetNode<LineEdit>("MarginContainer/VBoxContainer/LoginEdit");
-		Regex NumberRegex = new Regex(@"[^a-zA-Z0-9_-]");
-		int cursorPosition = Edit.CaretColumn;
-        string filteredText = NumberRegex.Replace(newText, "");
-
-		if (filteredText != newText)
-        {
-            Edit.Text = filteredText;
-        }
-
-		Edit.CaretColumn = cursorPosition;
+		Regex regex = new Regex(@"[^a-zA-Z0-9_-]");
+		TextManager.TextFilter(newText, regex, Edit);
 	}
 
 	private void PswFilter(string newText)
 	{
 		var Edit = GetNode<LineEdit>("MarginContainer/VBoxContainer/HBoxContainer4/PswEdit");
-		Regex NumberRegex = new Regex(@"[^a-zA-Z0-9!@#\$_-]");
-		int cursorPosition = Edit.CaretColumn;
-        string filteredText = NumberRegex.Replace(newText, "");
-
-		if (filteredText != newText)
-        {
-            Edit.Text = filteredText;
-        }
-
-		Edit.CaretColumn = cursorPosition;
+		Regex regex = new Regex(@"[^a-zA-Z0-9!@#\$_-]");
+		TextManager.TextFilter(newText, regex, Edit);
 	}
 
 	private void RepPswFilter(string newText)
 	{
 		var Edit = GetNode<LineEdit>("MarginContainer/VBoxContainer/HBoxContainer/RepPswEdit");
-		Regex NumberRegex = new Regex(@"[^a-zA-Z0-9!@#\$_%&*-]");
-		int cursorPosition = Edit.CaretColumn;
-        string filteredText = NumberRegex.Replace(newText, "");
-
-		if (filteredText != newText)
-        {
-            Edit.Text = filteredText;
-        }
-
-		Edit.CaretColumn = cursorPosition;
+		Regex regex = new Regex(@"[^a-zA-Z0-9!@#\$_%&*-]");
+		TextManager.TextFilter(newText, regex, Edit);
 	}
 
 	private void CodeFilter(string newText)
 	{
 		var Edit = GetNode<LineEdit>("MarginContainer/Panel/VBoxContainer/HBoxContainer/LineEdit");
-		Regex NumberRegex = new Regex(@"[^0-9]");
-		int cursorPosition = Edit.CaretColumn;
-        string filteredText = NumberRegex.Replace(newText, "");
-
-		if (filteredText != newText)
-        {
-            Edit.Text = filteredText;
-        }
-
-		Edit.CaretColumn = cursorPosition;
-	}
-
-	private bool SendConfirmationMessages(string toEmail)
-	{
-		try
-		{
-			codeEmail = Random.Shared.Next(100000, 1000000).ToString();
-			SmtpClient smtpClient = new SmtpClient("smtp.mail.ru")
-			{
-				Port = 587,
-				Credentials = new NetworkCredential("alissentertainment@mail.ru", "ate5yzgzyP4bMB7KfJ0K"),
-				EnableSsl = true,
-			};
-
-			MailMessage mail = new MailMessage
-			{
-				From = new MailAddress("alissentertainment@mail.ru", "Admin"),
-				Subject = "Потвержденние регистрации",
-				Body = codeEmail,
-				IsBodyHtml = false 
-			};
-
-			mail.To.Add(toEmail);
-			smtpClient.Send(mail);
-			
-			return true;
-		}
-		catch (Exception)
-		{
-			return false;
-		}
-	}
-
-	public bool IsDomainValid(string email)
-	{
-		try
-		{
-			var domain = email.Split('@')[1];
-			var hostEntry = Dns.GetHostEntry(domain);
-			return hostEntry.AddressList.Length > 0;
-		}
-		catch
-		{
-			return false;
-		}
-	}
-
-	private bool CheckPasswords()
-	{
-		return repPswEdit.Text == pswEdit.Text;
+		Regex regex = new Regex(@"[^0-9]");
+		TextManager.TextFilter(newText, regex, Edit);
 	}
 
 	private async void CreateAccount()
@@ -240,11 +126,11 @@ public partial class Registration : CanvasLayer
 
 			var currentUser = new User
 			{
-				id = SHA512Hash.ToSHA512(loginEdit.Text + pswEdit.Text),
+				id = DataProcessingAndConversionManager.ToSHA512(loginEdit.Text + pswEdit.Text),
 				login = loginEdit.Text,
-				password = SHA512Hash.ToSHA512(pswEdit.Text),
+				password = DataProcessingAndConversionManager.ToSHA512(pswEdit.Text),
 				email = mailEdit.Text + optionButton.Text,
-				pfp = ConvertImageToBlob("res://resources//img//UI//authorization//pfp.png")
+				pfp = DataProcessingAndConversionManager.ConvertImageToBlob("res://resources//img//UI//authorization//pfp.png")
 			};
 			
 			context.Users.Add(currentUser);
@@ -252,7 +138,7 @@ public partial class Registration : CanvasLayer
 
 			await Task.Delay(5000);
 
-			ChangeSceneToAuthorization();
+			ManagerScene.ChangeScene(GetTree(), "res://scene//UI//authorization//authorization.tscn");
 		}
 	}
 
@@ -260,44 +146,46 @@ public partial class Registration : CanvasLayer
 	{
 		using (var context = new GameContext())
 		{
+			var errorLabel = GetNode<Label>("MarginContainer/VBoxContainer/error");
+
 			if (mailEdit.Text == "" || loginEdit.Text == "" || pswEdit.Text == "" || repPswEdit.Text == "")
 			{
-				ShowError("Пожалуйста, заполните все поля");		
+				ShowMessageManager.ShowMessage("Пожалуйста, заполните все поля", tween, errorLabel, GetTree(), new Color(0.7f, 0, 0, 0), 1.0f, 10.0f);
 				return false;
 			}
 			else if (loginEdit.Text.Length < 3)
 			{
-				ShowError("Логин слишком короткий. Минимум 3 символов");		
+				ShowMessageManager.ShowMessage("Логин слишком короткий. Минимум 3 символов", tween, errorLabel, GetTree(), new Color(0.7f, 0, 0, 0), 1.0f, 10.0f);
 				return false;
 			}
 			else if (pswEdit.Text.Length < 8)
 			{
-				ShowError("Пароль слишком короткий. Минимум 8 символов");		
+				ShowMessageManager.ShowMessage("Пароль слишком короткий. Минимум 8 символов", tween, errorLabel, GetTree(), new Color(0.7f, 0, 0, 0), 1.0f, 10.0f);
 				return false;
 			}	
 			else if (context.Users.Any(u => u.login == loginEdit.Text))
 			{
-				ShowError("Этот логин уже занята");		
+				ShowMessageManager.ShowMessage("Этот логин уже занята", tween, errorLabel, GetTree(), new Color(0.7f, 0, 0, 0), 1.0f, 10.0f);
 				return false;
 			}
 			else if (context.Users.Any(e => e.email == mailEdit.Text + optionButton.Text))
 			{
-				ShowError("Эта почта уже занята");		
+				ShowMessageManager.ShowMessage("Эта почта уже занята", tween, errorLabel, GetTree(), new Color(0.7f, 0, 0, 0), 1.0f, 10.0f);
 				return false;
 			}
-			else if (!EvaluatePasswordStrength(pswEdit.Text))
+			else if (!TextManager.EvaluatePasswordStrength(pswEdit.Text))
 			{
-				ShowError("Слабый пароль. Добавьте разные регистры, цифры и спецсимволы");		
+				ShowMessageManager.ShowMessage("Слабый пароль. Добавьте разные регистры, цифры и спецсимволы", tween, errorLabel, GetTree(), new Color(0.7f, 0, 0, 0), 1.0f, 10.0f);
 				return false;
 			}
-			else if (!CheckPasswords())
+			else if (!(repPswEdit.Text == pswEdit.Text))
 			{
-				ShowError("Пароли не совпадают");		
+				ShowMessageManager.ShowMessage("Пароли не совпадают", tween, errorLabel, GetTree(), new Color(0.7f, 0, 0, 0), 1.0f, 10.0f);
 				return false;
 			}
-			else if (!IsDomainValid(mailEdit.Text + optionButton.Text))
+			else if (!EmailManager.IsDomainValid(mailEdit.Text + optionButton.Text))
 			{
-				ShowError("Неверный адрес электронной почты");		
+				ShowMessageManager.ShowMessage("Неверный адрес электронной почты", tween, errorLabel, GetTree(), new Color(0.7f, 0, 0, 0), 1.0f, 10.0f);
 				return false;
 			}
 
@@ -309,115 +197,34 @@ public partial class Registration : CanvasLayer
 			}
 			
 			timerEmail.Start();
-			
-			SendConfirmationMessages(mailEdit.Text + optionButton.Text);
+
+			codeEmail = Random.Shared.Next(100000, 1000000).ToString();
+			EmailManager.SendConfirmationMessages(mailEdit.Text + optionButton.Text, "Потвержденние регистрации", codeEmail);
 			
 			return false;
 		}
 	}
-
-	public bool EvaluatePasswordStrength(string password)
-	{
-		int score = 0;
-
-		if (password.Any(char.IsLower)) score++;
-		if (password.Any(char.IsUpper)) score++;
-		if (password.Any(char.IsDigit)) score++; 
-		if (password.Any(ch => !char.IsLetterOrDigit(ch))) score++; 
-
-		if (score == 4)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	private static byte[] ConvertImageToBlob(string filePath)
-    {
-		var file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
-
-		int fileSize = (int)file.GetLength();
-		
-		byte[] data = file.GetBuffer(fileSize);
-		
-		file.Close();
-
-        return data;
-    }
-
-	private void ShowError(string errorText)
-	{
-		if (currentTween1 != null && IsInstanceValid(currentTween1))
-		{
-			currentTween1.Kill();
-			currentTween1 = null;
-		}
-
-		var error = GetNode<Label>("MarginContainer/VBoxContainer/error");
-		error.Text = errorText;
-		error.Modulate = new Color(0.7f, 0, 0, 0);
-
-		currentTween1 = GetTree().CreateTween();
-		currentTween1.TweenProperty(error, "modulate", new Color(0.7f, 0, 0, 1), 1.0f);
-		currentTween1.TweenProperty(error, "modulate", new Color(0.7f, 0, 0, 0f), 10.0f);
-	}  
-
-	private void ShowErrorCode(string errorText)
-	{
-		if (currentTween2 != null && IsInstanceValid(currentTween2))
-		{
-			currentTween2.Kill();
-			currentTween2 = null;
-		}
-
-		var error = GetNode<Label>("MarginContainer/Panel/VBoxContainer/error");
-		error.Text = errorText;
-		error.Modulate = new Color(0.7f, 0, 0, 0);
-
-		currentTween2 = GetTree().CreateTween();
-		currentTween2.TweenProperty(error, "modulate", new Color(0.7f, 0, 0, 1), 1.0f);
-		currentTween2.TweenProperty(error, "modulate", new Color(0.7f, 0, 0, 0f), 10.0f);
-	}  
-
-	private void ShowInfRegist(string Text)
-	{
-		var error = GetNode<Label>("MarginContainer/Panel/VBoxContainer/error");
-		error.Text = Text;
-		error.Modulate = new Color(0, 1, 0, 0);
-
-		currentTween2 = GetTree().CreateTween();
-		currentTween2.TweenProperty(error, "modulate", new Color(0, 1, 0, 1), 1.0f);
-		currentTween2.TweenProperty(error, "modulate", new Color(0, 1, 0, 0f), 3.0f);
-	}  
 
 	private void CheckCode()
     {
         string code = codeInput.Text;
-
-        if (code == codeEmail)
+		var LabelMessage = GetNode<Label>("MarginContainer/Panel/VBoxContainer/error");
+        
+		if (code == codeEmail)
         {
-			ShowInfRegist("Аккаунт был создан");
+			ShowMessageManager.ShowMessage("Аккаунт был создан", tween, LabelMessage, GetTree(), new Color(0, 1, 0, 0), 1.0f, 3.0f);
 			GetNode<TextureButton>("MarginContainer/Panel/VBoxContainer/TextureButton").Pressed -= CheckCode;
 			CheckingEmail = true;
 			CreateAccount();
 		}
         else
         {
-            ShowErrorCode("Неверный код. Попробуйте снова");
+            ShowMessageManager.ShowMessage("Неверный код. Попробуйте снова", tween, LabelMessage, GetTree(), new Color(0.7f, 0, 0, 0), 1.0f, 10.0f);
         }
     }
 
 	private void ChangeSceneToAuthorization()
 	{
-		var newScene = (PackedScene)GD.Load("res://scene//UI//authorization//authorization.tscn");
-		var currentScene = GetTree().CurrentScene;
-		var nextSceneInstance = newScene.Instantiate();
-
-        GetTree().Root.AddChild(nextSceneInstance);
-		GetTree().CurrentScene = nextSceneInstance;
-        currentScene.QueueFree();
+		ManagerScene.ChangeScene(GetTree(), "res://scene//UI//authorization//authorization.tscn");	
 	}
 }
