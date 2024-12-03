@@ -58,8 +58,9 @@ move_down={
 
 [layer_names]
 
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Trees"
+2d_physics/layer_1="WorldCollision"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Trees"
 
 [rendering]
 
