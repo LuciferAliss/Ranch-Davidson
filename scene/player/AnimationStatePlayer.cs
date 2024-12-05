@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 public abstract class StateAnimationPlayer
 {
 	protected Player player;
@@ -12,6 +9,7 @@ public abstract class StateAnimationPlayer
 
 	public abstract void Move();
     public abstract void Idle();
+    public abstract void Watering();
 }
 
 class DownState : StateAnimationPlayer
@@ -25,6 +23,11 @@ class DownState : StateAnimationPlayer
     public override void Idle()
     {
         player.ChangeAnimation("IdleDown");
+    }
+
+    public override void Watering()
+    {
+        player.ChangeAnimation("WateringDown");
     }
 }
 
@@ -40,6 +43,11 @@ class UpState : StateAnimationPlayer
     {
         player.ChangeAnimation("IdleUp");
     }
+
+    public override void Watering()
+    {
+        player.ChangeAnimation("WateringUp");
+    }
 }
 
 class SideState : StateAnimationPlayer
@@ -53,6 +61,11 @@ class SideState : StateAnimationPlayer
     public override void Idle()
     {
         player.ChangeAnimation("IdleSide");
+    }
+
+    public override void Watering()
+    {
+        player.ChangeAnimation("WateringSide");
     }
 }
 
@@ -68,6 +81,11 @@ class DiagonallyDownState : StateAnimationPlayer
     {
         player.ChangeAnimation("IdleDiagonallyDown");
     }
+
+    public override void Watering()
+    {
+        player.ChangeAnimation("WateringDiagonallyDown");
+    }
 }
 
 class DiagonallyUpState : StateAnimationPlayer
@@ -81,5 +99,10 @@ class DiagonallyUpState : StateAnimationPlayer
     public override void Idle()
     {
         player.ChangeAnimation("IdleDiagonallyUp");
+    }
+
+    public override void Watering()
+    {
+        player.ChangeAnimation("WateringDiagonallyUp");
     }
 }

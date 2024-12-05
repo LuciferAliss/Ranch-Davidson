@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ve1tt812qmni"]
+[gd_scene load_steps=71 format=3 uid="uid://ve1tt812qmni"]
 
 [ext_resource type="Script" path="res://scene/player/Player.cs" id="1_1w410"]
 [ext_resource type="Texture2D" uid="uid://dnmbl0nv416b" path="res://resources/img/characters/MCanimate.png" id="1_sort2"]
@@ -162,6 +162,46 @@ region = Rect2(140, 140, 35, 35)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gt56a"]
 atlas = ExtResource("1_sort2")
 region = Rect2(175, 140, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhbl2"]
+atlas = ExtResource("1_sort2")
+region = Rect2(0, 420, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho2f3"]
+atlas = ExtResource("1_sort2")
+region = Rect2(35, 420, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig8xx"]
+atlas = ExtResource("1_sort2")
+region = Rect2(0, 525, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iw87"]
+atlas = ExtResource("1_sort2")
+region = Rect2(35, 525, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnf8l"]
+atlas = ExtResource("1_sort2")
+region = Rect2(0, 385, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gpb3"]
+atlas = ExtResource("1_sort2")
+region = Rect2(35, 385, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vebxn"]
+atlas = ExtResource("1_sort2")
+region = Rect2(0, 455, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs4xj"]
+atlas = ExtResource("1_sort2")
+region = Rect2(35, 455, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvy72"]
+atlas = ExtResource("1_sort2")
+region = Rect2(0, 490, 35, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0vst"]
+atlas = ExtResource("1_sort2")
+region = Rect2(35, 490, 35, 35)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xgeqf"]
 animations = [{
@@ -334,13 +374,68 @@ animations = [{
 "loop": true,
 "name": &"WalkUp",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhbl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho2f3")
+}],
+"loop": false,
+"name": &"WateringDiagonallyDown",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig8xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6iw87")
+}],
+"loop": false,
+"name": &"WateringDiagonallyUp",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnf8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gpb3")
+}],
+"loop": false,
+"name": &"WateringDown",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vebxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs4xj")
+}],
+"loop": false,
+"name": &"WateringSide",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvy72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0vst")
+}],
+"loop": false,
+"name": &"WateringUp",
+"speed": 2.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xhaq7"]
 radius = 8.0
 
 [sub_resource type="Animation" id="Animation_y55fq"]
-loop_mode = 1
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -614,6 +709,141 @@ tracks/1/keys = {
 "values": ["WalkUp"]
 }
 
+[sub_resource type="Animation" id="Animation_hyrpt"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["WateringDiagonallyDown"]
+}
+
+[sub_resource type="Animation" id="Animation_yf11e"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["WateringDiagonallyUp"]
+}
+
+[sub_resource type="Animation" id="Animation_s671x"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["WateringDown"]
+}
+
+[sub_resource type="Animation" id="Animation_wk77y"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["WateringSide"]
+}
+
+[sub_resource type="Animation" id="Animation_ntgx2"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["WateringUp"]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n3k2u"]
 _data = {
 "IdleDiagonallyDown": SubResource("Animation_y55fq"),
@@ -625,7 +855,12 @@ _data = {
 "WalkDiagonallyUp": SubResource("Animation_bc3ud"),
 "WalkDown": SubResource("Animation_nnkub"),
 "WalkSide": SubResource("Animation_qh4md"),
-"WalkUp": SubResource("Animation_fds1w")
+"WalkUp": SubResource("Animation_fds1w"),
+"WateringDiagonallyDown": SubResource("Animation_hyrpt"),
+"WateringDiagonallyUp": SubResource("Animation_yf11e"),
+"WateringDown": SubResource("Animation_s671x"),
+"WateringSide": SubResource("Animation_wk77y"),
+"WateringUp": SubResource("Animation_ntgx2")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -641,7 +876,7 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_xgeqf")
-animation = &"IdleDown"
+animation = &"WateringDiagonallyDown"
 autoplay = "IdleDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -8,18 +8,30 @@ public partial class Player : CharacterBody2D
 	private AnimatedSprite2D animatedSp;
 	private AnimationPlayer animationPl;
 	private StateAnimationPlayer stateAnimation;
+	private StateActionPlayer stateAction;
+	bool useAction = false;
+	public string curentTools = HandTools.WateringCan.ToString();
 
 	public override void _Ready()
 	{
 		animatedSp = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animationPl = GetNode<AnimationPlayer>("AnimationPlayer");
 		
-		stateAnimation = new DownState(this); 
+		stateAnimation = new DownState(this);
+
+		animationPl.AnimationFinished += FinishedAnimation;
 	}
 
 	public override void _Process(double delta)
 	{
-		move();
+		if (Input.IsActionJustPressed("Action"))
+		{
+			Action();
+		}
+		else if (!useAction)
+		{
+			Move();
+		}
 	}
 
 	private Vector2 Movement_vector()
@@ -29,7 +41,7 @@ public partial class Player : CharacterBody2D
 		return new Vector2(movement_x, movement_y);
 	}
 
-	private void move()
+	private void Move()
 	{
 		Vector2 direction = Movement_vector().Normalized();
 		Vector2 velocity = maxSpeed * direction;
@@ -45,24 +57,24 @@ public partial class Player : CharacterBody2D
 
 		if (direction.X != 0 && direction.Y > 0)
 		{
-			stateAnimation = new DiagonallyDownState(this); 
+			ChangeStateAnimation(new DiagonallyDownState(this)); 
 		}
 		else if (direction.X != 0 && direction.Y < 0)
 		{
-			stateAnimation = new DiagonallyUpState(this); 
+			ChangeStateAnimation(new DiagonallyUpState(this)); 
 		}
 		else if (direction.X != 0 && direction.Y == 0)
 		{
-			stateAnimation = new SideState(this); 
+			ChangeStateAnimation(new SideState(this)); 
 		}
 		else if (direction.X == 0 && direction.Y > 0)
 		{
-			stateAnimation = new DownState(this); 
+			ChangeStateAnimation(new DownState(this)); 
 			animatedSp.FlipH = false;
 		}
 		else if (direction.X == 0 && direction.Y < 0)
 		{
-			stateAnimation = new UpState(this); 
+			ChangeStateAnimation(new UpState(this)); 
 			animatedSp.FlipH = false;
 		}
 
@@ -79,8 +91,38 @@ public partial class Player : CharacterBody2D
 		MoveAndSlide();
 	}
 
+	private void Action()
+	{
+
+		if (curentTools == "None")
+		{
+			return;
+		}
+		else if (curentTools == "WateringCan")
+		{
+			ChangeStateAction(new StateWatering(this));
+			stateAnimation.Watering();
+			useAction = true;
+		}
+	}
+
 	public void ChangeAnimation(string nameAnimation)
 	{
 		animationPl.Play(nameAnimation);
+	}
+
+	public void ChangeStateAnimation(StateAnimationPlayer state)
+	{
+		stateAnimation = state;
+	}
+
+	public void ChangeStateAction(StateActionPlayer state)
+	{
+		stateAction = state;
+	}
+
+	public void FinishedAnimation(StringName NameAnime)
+	{
+		useAction = false;
 	}
 }

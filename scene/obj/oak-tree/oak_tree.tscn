@@ -15,15 +15,15 @@ radius = 24.0
 height = 64.0
 
 [node name="oak-tree" type="Sprite2D"]
-position = Vector2(0, -8)
 texture = SubResource("AtlasTexture_s1flq")
+offset = Vector2(0, -24)
 script = ExtResource("2_albrp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 33.5)
+position = Vector2(0, 8.5)
 scale = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_k7cgb")
 
@@ -31,7 +31,7 @@ shape = SubResource("RectangleShape2D_k7cgb")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -12)
+position = Vector2(0, -36)
 shape = SubResource("CapsuleShape2D_pstta")
 
 [connection signal="body_entered" from="Area2D" to="." method="OnInvisibility"]
