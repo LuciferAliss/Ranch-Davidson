@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://dk0ewxfhsj3b0"]
+[gd_scene load_steps=23 format=3 uid="uid://dk0ewxfhsj3b0"]
 
 [ext_resource type="Texture2D" uid="uid://6o72sbay6xfd" path="res://resources/img/UI/HUD/BasicUI.png" id="1_6v7tg"]
+[ext_resource type="Script" path="res://scene/UI/HUD/ToolsPanel.cs" id="2_fihg8"]
 [ext_resource type="Texture2D" uid="uid://d0plisptk82oy" path="res://resources/img/UI/HUD/Obj.png" id="2_w1wlq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpnp1"]
@@ -85,10 +86,10 @@ texture_margin_bottom = 6.0
 [sub_resource type="Theme" id="Theme_okjxl"]
 DarkWoodPanel/base_type = &"PanelContainer"
 DarkWoodPanel/styles/panel = SubResource("StyleBoxTexture_tdoou")
-MarginContainer/constants/margin_bottom = 10
-MarginContainer/constants/margin_left = 10
-MarginContainer/constants/margin_right = 10
-MarginContainer/constants/margin_top = 10
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
 ToolButton/base_type = &"Button"
 ToolButton/styles/disabled = SubResource("StyleBoxTexture_jkxou")
 ToolButton/styles/focus = SubResource("StyleBoxTexture_h3ayl")
@@ -105,31 +106,73 @@ atlas = ExtResource("2_w1wlq")
 region = Rect2(0, 0, 16, 16)
 
 [node name="ToolsPanel" type="PanelContainer"]
-offset_right = 90.0
-offset_bottom = 60.0
+offset_right = 70.0
+offset_bottom = 40.0
 theme = SubResource("Theme_okjxl")
 theme_type_variation = &"DarkWoodPanel"
+script = ExtResource("2_fihg8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="ToolAxe" type="Button" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(26, 26)
+custom_minimum_size = Vector2(104, 104)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon = SubResource("AtlasTexture_4kklk")
 icon_alignment = 1
+expand_icon = true
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
 
 [node name="ToolWateringCan" type="Button" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(26, 26)
+custom_minimum_size = Vector2(104, 104)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
 icon = SubResource("AtlasTexture_0uv5y")
 icon_alignment = 1
+expand_icon = true
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+
+[node name="ToolWateringCan2" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+disabled = true
+icon = SubResource("AtlasTexture_0uv5y")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control3" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+
+[node name="ToolWateringCan3" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+disabled = true
+icon = SubResource("AtlasTexture_0uv5y")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control4" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+
+[node name="ToolWateringCan4" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+disabled = true
+icon = SubResource("AtlasTexture_0uv5y")
+icon_alignment = 1
+expand_icon = true

@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://d1d2qdx4irjpv" path="res://resources/img/Theme/HUD.tres" id="1_ldbii"]
 [ext_resource type="PackedScene" uid="uid://dk0ewxfhsj3b0" path="res://scene/UI/HUD/ToolsPanel.tscn" id="2_50kve"]
 
-[node name="GameScreen" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer"]
 follow_viewport_scale = 915.285
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

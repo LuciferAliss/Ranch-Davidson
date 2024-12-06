@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://fbp488h4oora"]
+[gd_scene load_steps=6 format=4 uid="uid://fbp488h4oora"]
 
 [ext_resource type="TileSet" uid="uid://clcmsccjr8hw3" path="res://resources/img/tileset/GameTileSetl.tres" id="1_1pabs"]
 [ext_resource type="Texture2D" uid="uid://bj343avegxtrm" path="res://resources/img/tileset/x-mark-16.png" id="2_jnnnx"]
 [ext_resource type="PackedScene" uid="uid://ve1tt812qmni" path="res://scene/player/player.tscn" id="2_ln8sc"]
-[ext_resource type="PackedScene" uid="uid://dtdx6bjqqihp8" path="res://scene/UI/HUD/game_screen.tscn" id="4_egt50"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5n5v8"]
 texture = ExtResource("2_jnnnx")
@@ -47,5 +46,3 @@ tile_set = SubResource("TileSet_1tibn")
 [node name="Player" parent="." instance=ExtResource("2_ln8sc")]
 y_sort_enabled = true
 position = Vector2(176, 280)
-
-[node name="GameScreen" parent="." instance=ExtResource("4_egt50")]

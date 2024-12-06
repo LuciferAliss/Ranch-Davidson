@@ -1,7 +1,8 @@
-[gd_scene load_steps=91 format=3 uid="uid://ve1tt812qmni"]
+[gd_scene load_steps=92 format=3 uid="uid://ve1tt812qmni"]
 
 [ext_resource type="Script" path="res://scene/player/Player.cs" id="1_1w410"]
 [ext_resource type="Texture2D" uid="uid://dnmbl0nv416b" path="res://resources/img/characters/MCanimate.png" id="1_sort2"]
+[ext_resource type="PackedScene" uid="uid://dtdx6bjqqihp8" path="res://scene/UI/HUD/HUD.tscn" id="3_86tqm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yb2t3"]
 atlas = ExtResource("1_sort2")
@@ -1153,3 +1154,7 @@ shape = SubResource("CircleShape2D_xhaq7")
 libraries = {
 "": SubResource("AnimationLibrary_n3k2u")
 }
+
+[node name="HUD" parent="." instance=ExtResource("3_86tqm")]
+
+[editable path="HUD"]

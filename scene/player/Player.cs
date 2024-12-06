@@ -9,28 +9,45 @@ public partial class Player : CharacterBody2D
 	private AnimationPlayer animationPl;
 	private StateAnimationPlayer stateAnimation;
 	private StateActionPlayer stateAction;
-	bool useAction = false;
-	public string currentTools = HandTools.Axe.ToString();
+	private bool useAction = false;
+	public string curentTools { get; private set; } = ItemsName.ToolNames[0].ToString();
+	ToolsPanel hud;
 
 	public override void _Ready()
 	{
 		animatedSp = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animationPl = GetNode<AnimationPlayer>("AnimationPlayer");
-		
+		hud = GetNode<ToolsPanel>("HUD/MarginContainer/ToolsPanel");
 		stateAnimation = new DownState(this);
 
 		animationPl.AnimationFinished += FinishedAnimation;
+		hud.SetPlayer(this);
 	}
 
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("Action"))
-		{
-			Action();
-		}
-		else if (!useAction)
+		if (!useAction)
 		{
 			Move();
+		}
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton mouseEvent)
+		{
+			if (mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
+			{
+				var mousePosition = GetViewport().GetMousePosition();
+				if (hud.GetGlobalRect().HasPoint(mousePosition))
+				{
+					return;
+				}
+				else if (!useAction)
+				{
+					Action();
+				}
+			}
 		}
 	}
 
@@ -94,26 +111,26 @@ public partial class Player : CharacterBody2D
 	private void Action()
 	{
 
-		if (currentTools == "None")
+		if (curentTools == "None")
 		{
 			return;
 		}
-		else if (currentTools == "WateringCan")
+		else if (curentTools == "WateringCan")
 		{
 			ChangeStateAction(new StateWatering(this));
 			stateAnimation.Watering();
-			stateAction.Action();
 			useAction = true;
+			stateAction.Action();
 		}
-		else if (currentTools == "Axe")
+		else if (curentTools == "Axe")
 		{
 			ChangeStateAction(new StateCutting(this));
 			stateAnimation.Cutting();
-			stateAction.Action();
 			useAction = true;
+			stateAction.Action();
 		}
 	}
-
+	
 	public void ChangeAnimation(string nameAnimation)
 	{
 		animationPl.Play(nameAnimation);
@@ -132,5 +149,10 @@ public partial class Player : CharacterBody2D
 	public void FinishedAnimation(StringName NameAnime)
 	{
 		useAction = false;
+	}
+
+	public void ChangeTools(string tools)
+	{
+		curentTools = tools;
 	}
 }
