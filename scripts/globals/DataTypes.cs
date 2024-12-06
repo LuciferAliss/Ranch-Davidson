@@ -1,5 +1,6 @@
 enum HandTools
 {
     None,
-    WateringCan
+    WateringCan,
+    Axe
 }

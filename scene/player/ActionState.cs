@@ -21,3 +21,13 @@ public class StateWatering : StateActionPlayer
         GD.Print("Полил");
     }
 }
+
+public class StateCutting : StateActionPlayer
+{
+    public StateCutting(Player player) : base(player) {}
+
+    public override void Action()
+    {
+        GD.Print("Рубил");
+    }
+}

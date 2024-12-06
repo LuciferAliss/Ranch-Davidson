@@ -10,6 +10,7 @@ public abstract class StateAnimationPlayer
 	public abstract void Move();
     public abstract void Idle();
     public abstract void Watering();
+    public abstract void Cutting();
 }
 
 class DownState : StateAnimationPlayer
@@ -29,10 +30,14 @@ class DownState : StateAnimationPlayer
     {
         player.ChangeAnimation("WateringDown");
     }
+
+    public override void Cutting()
+    {
+        player.ChangeAnimation("CuttingDown");
+    }
 }
 
-class UpState : StateAnimationPlayer
-{
+class UpState : StateAnimationPlayer{
 	public UpState(Player player) : base(player) { }
     public override void Move()
     {
@@ -47,6 +52,11 @@ class UpState : StateAnimationPlayer
     public override void Watering()
     {
         player.ChangeAnimation("WateringUp");
+    }
+
+    public override void Cutting()
+    {
+        player.ChangeAnimation("CuttingUp");
     }
 }
 
@@ -67,6 +77,11 @@ class SideState : StateAnimationPlayer
     {
         player.ChangeAnimation("WateringSide");
     }
+
+    public override void Cutting()
+    {
+        player.ChangeAnimation("CuttingSide");
+    }
 }
 
 class DiagonallyDownState : StateAnimationPlayer
@@ -86,6 +101,11 @@ class DiagonallyDownState : StateAnimationPlayer
     {
         player.ChangeAnimation("WateringDiagonallyDown");
     }
+
+    public override void Cutting()
+    {
+        player.ChangeAnimation("CuttingDiagonallyDown");
+    }
 }
 
 class DiagonallyUpState : StateAnimationPlayer
@@ -104,5 +124,10 @@ class DiagonallyUpState : StateAnimationPlayer
     public override void Watering()
     {
         player.ChangeAnimation("WateringDiagonallyUp");
+    }
+
+    public override void Cutting()
+    {
+        player.ChangeAnimation("CuttingDiagonallyUp");
     }
 }

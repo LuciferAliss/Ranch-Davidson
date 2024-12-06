@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 	private StateAnimationPlayer stateAnimation;
 	private StateActionPlayer stateAction;
 	bool useAction = false;
-	public string curentTools = HandTools.WateringCan.ToString();
+	public string currentTools = HandTools.Axe.ToString();
 
 	public override void _Ready()
 	{
@@ -94,14 +94,22 @@ public partial class Player : CharacterBody2D
 	private void Action()
 	{
 
-		if (curentTools == "None")
+		if (currentTools == "None")
 		{
 			return;
 		}
-		else if (curentTools == "WateringCan")
+		else if (currentTools == "WateringCan")
 		{
 			ChangeStateAction(new StateWatering(this));
 			stateAnimation.Watering();
+			stateAction.Action();
+			useAction = true;
+		}
+		else if (currentTools == "Axe")
+		{
+			ChangeStateAction(new StateCutting(this));
+			stateAnimation.Cutting();
+			stateAction.Action();
 			useAction = true;
 		}
 	}
