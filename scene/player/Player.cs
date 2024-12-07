@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 	private StateAnimationPlayer stateAnimation;
 	private StateActionPlayer stateAction;
 	private bool useAction = false;
-	public string curentTools { get; private set; } = ItemsName.ToolNames[0].ToString();
+	public string currentTools { get; private set; } = ItemsName.ToolNames[0].ToString();
 	ToolsPanel hud;
 
 	public override void _Ready()
@@ -51,7 +51,7 @@ public partial class Player : CharacterBody2D
 		}
 	}
 
-	private Vector2 Movement_vector()
+	private Vector2 MovementVector()
 	{
 		float movement_x = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
 		float movement_y = Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
@@ -60,7 +60,7 @@ public partial class Player : CharacterBody2D
 
 	private void Move()
 	{
-		Vector2 direction = Movement_vector().Normalized();
+		Vector2 direction = MovementVector().Normalized();
 		Vector2 velocity = maxSpeed * direction;
 
 		if(direction.X < 0)
@@ -111,18 +111,18 @@ public partial class Player : CharacterBody2D
 	private void Action()
 	{
 
-		if (curentTools == "None")
+		if (currentTools == "None")
 		{
 			return;
 		}
-		else if (curentTools == "WateringCan")
+		else if (currentTools == "WateringCan")
 		{
 			ChangeStateAction(new StateWatering(this));
 			stateAnimation.Watering();
 			useAction = true;
 			stateAction.Action();
 		}
-		else if (curentTools == "Axe")
+		else if (currentTools == "Axe")
 		{
 			ChangeStateAction(new StateCutting(this));
 			stateAnimation.Cutting();
@@ -153,6 +153,6 @@ public partial class Player : CharacterBody2D
 
 	public void ChangeTools(string tools)
 	{
-		curentTools = tools;
+		currentTools = tools;
 	}
 }
