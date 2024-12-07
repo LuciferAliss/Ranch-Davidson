@@ -8,6 +8,7 @@ public static class ItemsName
     {
         [0] = "None",
         [1] = "WateringCan",
-        [2] = "Axe"
+        [2] = "Axe",
+        [3] = "Hoe"
     };
 }

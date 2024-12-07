@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2x61l551l2an"
-path="res://.godot/imported/MCanimate.png-6de9e8c69d7a7e15a5040f22beb00743.ctex"
+uid="uid://ya7j6a323qrj"
+path="res://.godot/imported/Ночь.png-899bf7dcb4198be9d448b0e4586864ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/img/characters/MCanimate.png"
-dest_files=["res://.godot/imported/MCanimate.png-6de9e8c69d7a7e15a5040f22beb00743.ctex"]
+source_file="res://resources/img/UI/MainMenu/Ночь.png"
+dest_files=["res://.godot/imported/Ночь.png-899bf7dcb4198be9d448b0e4586864ae.ctex"]
 
 [params]
 

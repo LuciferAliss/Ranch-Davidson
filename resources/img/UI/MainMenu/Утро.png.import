@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2x61l551l2an"
-path="res://.godot/imported/MCanimate.png-6de9e8c69d7a7e15a5040f22beb00743.ctex"
+uid="uid://de8uk8k5ql585"
+path="res://.godot/imported/Утро.png-bfc39164f1c4823568a9216c261cedce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/img/characters/MCanimate.png"
-dest_files=["res://.godot/imported/MCanimate.png-6de9e8c69d7a7e15a5040f22beb00743.ctex"]
+source_file="res://resources/img/UI/MainMenu/Утро.png"
+dest_files=["res://.godot/imported/Утро.png-bfc39164f1c4823568a9216c261cedce.ctex"]
 
 [params]
 

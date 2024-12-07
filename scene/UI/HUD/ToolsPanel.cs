@@ -21,6 +21,7 @@ public partial class ToolsPanel : PanelContainer
 
         Tool1.Pressed += ChangeTool1;
         Tool2.Pressed += ChangeTool2;
+        Tool3.Pressed += ChangeTool3;
     }
 
     public void SetPlayer(Player player)
@@ -34,12 +35,16 @@ public partial class ToolsPanel : PanelContainer
 
     private void ChangeTool1()
     {
-        GD.Print(ItemsName.ToolNames[2].GetType());
         player.ChangeTools(ItemsName.ToolNames[2]);
     }
 
     private void ChangeTool2()
     {
         player.ChangeTools(ItemsName.ToolNames[1]);
+    }
+
+    private void ChangeTool3()
+    {
+        player.ChangeTools(ItemsName.ToolNames[3]);
     }
 }

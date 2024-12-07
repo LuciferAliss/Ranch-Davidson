@@ -31,3 +31,13 @@ public class StateCutting : StateActionPlayer
         GD.Print("Рубил");
     }
 }
+
+public class StateTilling : StateActionPlayer
+{
+    public StateTilling(Player player) : base(player) {}
+
+    public override void Action()
+    {
+        GD.Print("Культивировал");
+    }
+}

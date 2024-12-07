@@ -134,6 +134,8 @@ public partial class Authorization : CanvasLayer
 				ShowMessageManager.ShowMessage("Вы удачно вошли", tween, labelMassage, GetTree(),  new Color(0, 1, 0, 0), 1.0f, 3.0f);
 
 				await Task.Delay(5000);
+
+				ManagerScene.ChangeScene(GetTree(), "res://scene//level//level.tscn");
 			}
 			else
 			{

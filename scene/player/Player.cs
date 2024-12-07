@@ -129,6 +129,13 @@ public partial class Player : CharacterBody2D
 			useAction = true;
 			stateAction.Action();
 		}
+		else if (currentTools == "Hoe")
+		{
+			ChangeStateAction(new StateTilling(this));
+			stateAnimation.Tilling();
+			useAction = true;
+			stateAction.Action();
+		}
 	}
 	
 	public void ChangeAnimation(string nameAnimation)

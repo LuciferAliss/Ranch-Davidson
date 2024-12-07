@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2x61l551l2an"
-path="res://.godot/imported/MCanimate.png-6de9e8c69d7a7e15a5040f22beb00743.ctex"
+uid="uid://hkwecexor2sf"
+path="res://.godot/imported/День.png-0622c25b7dda571875fd74be32989cdf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/img/characters/MCanimate.png"
-dest_files=["res://.godot/imported/MCanimate.png-6de9e8c69d7a7e15a5040f22beb00743.ctex"]
+source_file="res://resources/img/UI/MainMenu/День.png"
+dest_files=["res://.godot/imported/День.png-0622c25b7dda571875fd74be32989cdf.ctex"]
 
 [params]
 

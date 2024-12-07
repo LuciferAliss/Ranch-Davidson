@@ -11,6 +11,7 @@ public abstract class StateAnimationPlayer
     public abstract void Idle();
     public abstract void Watering();
     public abstract void Cutting();
+    public abstract void Tilling();
 }
 
 class DownState : StateAnimationPlayer
@@ -35,6 +36,11 @@ class DownState : StateAnimationPlayer
     {
         player.ChangeAnimation("CuttingDown");
     }
+
+    public override void Tilling()
+    {
+        player.ChangeAnimation("TillingDown");
+    }
 }
 
 class UpState : StateAnimationPlayer{
@@ -57,6 +63,11 @@ class UpState : StateAnimationPlayer{
     public override void Cutting()
     {
         player.ChangeAnimation("CuttingUp");
+    }
+
+    public override void Tilling()
+    {
+        player.ChangeAnimation("TillingUp");
     }
 }
 
@@ -82,6 +93,11 @@ class SideState : StateAnimationPlayer
     {
         player.ChangeAnimation("CuttingSide");
     }
+
+    public override void Tilling()
+    {
+        player.ChangeAnimation("TillingSide");
+    }
 }
 
 class DiagonallyDownState : StateAnimationPlayer
@@ -106,6 +122,11 @@ class DiagonallyDownState : StateAnimationPlayer
     {
         player.ChangeAnimation("CuttingDiagonallyDown");
     }
+
+    public override void Tilling()
+    {
+        player.ChangeAnimation("TillingDiagonallyDown");
+    }
 }
 
 class DiagonallyUpState : StateAnimationPlayer
@@ -129,5 +150,10 @@ class DiagonallyUpState : StateAnimationPlayer
     public override void Cutting()
     {
         player.ChangeAnimation("CuttingDiagonallyUp");
+    }
+
+    public override void Tilling()
+    {
+        player.ChangeAnimation("TillingDiagonallyUp");
     }
 }

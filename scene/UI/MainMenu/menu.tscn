@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://da5kfelcdm8dd"]
+
+[ext_resource type="FontFile" uid="uid://b76b2wdu47so" path="res://resources/img/Theme/Monocraft.otf" id="1_t0rxn"]
+[ext_resource type="Texture2D" uid="uid://6o72sbay6xfd" path="res://resources/img/UI/HUD/BasicUI.png" id="2_33cj6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4o5kb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7jur3"]
+load_path = "res://.godot/imported/BasicUI.png-f6e2e8503c0f55650f4245df98f93e47.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdjcx"]
+atlas = SubResource("CompressedTexture2D_7jur3")
+region = Rect2(259, 180, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_spkii"]
+texture = SubResource("AtlasTexture_wdjcx")
+region_rect = Rect2(0, 0, 90, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5l3x"]
+atlas = ExtResource("2_33cj6")
+region = Rect2(163, 178, 90, 27)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v86hj"]
+texture = SubResource("AtlasTexture_f5l3x")
+region_rect = Rect2(0, 0, 90, 27)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vs8d5"]
+load_path = "res://.godot/imported/BasicUI.png-f6e2e8503c0f55650f4245df98f93e47.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo6sf"]
+atlas = SubResource("CompressedTexture2D_vs8d5")
+region = Rect2(259, 180, 90, 25)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a13yk"]
+texture = SubResource("AtlasTexture_uo6sf")
+region_rect = Rect2(0, 0, 90, 27)
+
+[sub_resource type="Theme" id="Theme_w4jpv"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 37
+Button/fonts/font = ExtResource("1_t0rxn")
+Button/styles/disabled = null
+Button/styles/focus = SubResource("StyleBoxFlat_4o5kb")
+Button/styles/hover = SubResource("StyleBoxTexture_spkii")
+Button/styles/normal = SubResource("StyleBoxTexture_v86hj")
+Button/styles/pressed = SubResource("StyleBoxTexture_a13yk")
+MenuEdges/base_type = &"MarginContainer"
+MenuEdges/constants/margin_bottom = 150
+MenuEdges/constants/margin_left = 50
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 500.0
+offset_bottom = 516.0
+theme = SubResource("Theme_w4jpv")
+theme_type_variation = &"MenuEdges"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Новая игра"
+
+[node name="LoadGame" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+text = "Загрузить"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+text = "Настройки"
+
+[node name="Statistics" type="Button" parent="MarginContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Статистика"
+
+[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+text = "Выход"
