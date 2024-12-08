@@ -1,21 +1,202 @@
-[gd_scene format=3 uid="uid://c7xp77urqn5a3"]
+[gd_scene load_steps=5 format=3 uid="uid://c7xp77urqn5a3"]
 
-[node name="settings" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Theme" uid="uid://dsq62fggbf3c1" path="res://resources/img/Theme/menu.tres" id="1_4kphl"]
+[ext_resource type="Texture2D" uid="uid://6o72sbay6xfd" path="res://resources/img/UI/HUD/BasicUI.png" id="2_kra5t"]
+[ext_resource type="Script" path="res://scene/UI/MainMenu/Settings.cs" id="2_nkxm7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qsg0"]
+atlas = ExtResource("2_kra5t")
+region = Rect2(375, 104, 18, 17)
+
+[node name="settings" type="PanelContainer"]
+theme = ExtResource("1_4kphl")
+theme_type_variation = &"SettingPanel"
+script = ExtResource("2_nkxm7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_type_variation = &"SettingEdges"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(562.195, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="GraphicsLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Графика:"
+
+[node name="Control7" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="PermissionContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/PermissionContainer"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+
+[node name="PermissionLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/PermissionContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Разрешение:"
+
+[node name="ButtonChengPermission" type="OptionButton" parent="MarginContainer/HBoxContainer/VBoxContainer/PermissionContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_type_variation = &"SettingOptionButton"
+selected = 0
+item_count = 3
+popup/item_0/text = " 1920x1080"
+popup/item_1/text = " 1600x900"
+popup/item_1/id = 1
+popup/item_2/text = " 1280x720"
+popup/item_2/id = 2
+
+[node name="ScreenModeContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+
+[node name="ScreenModeLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Полноэкраннывй режим:"
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer"]
+custom_minimum_size = Vector2(65.115, 0)
+layout_mode = 2
+
+[node name="BorderButtonChengScreenMode" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("AtlasTexture_5qsg0")
+
+[node name="ButtonChengScreenMode" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer/BorderButtonChengScreenMode"]
+clip_contents = true
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.01
+offset_top = -10.5
+offset_right = 11.99
+offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_type_variation = &"SettingCheckBox"
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="BrightnessContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 46)
 layout_mode = 2
-color = Color(0, 0, 0, 0.427451)
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/BrightnessContainer"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+
+[node name="BrightnessLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/BrightnessContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Яркость:"
+
+[node name="SliderChengBrightness" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/BrightnessContainer"]
+custom_minimum_size = Vector2(123.46, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_type_variation = &"SettingHSlider"
+min_value = 0.1
+max_value = 2.1
+step = 0.1
+value = 1.1
+
+[node name="Control8" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="SoundLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Звук:"
+
+[node name="Control9" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="MusicContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/MusicContainer"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MusicContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Музыка:"
+
+[node name="SliderChengeMusic" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/MusicContainer"]
+custom_minimum_size = Vector2(123.46, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_type_variation = &"SettingHSlider"
+
+[node name="EffectsContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/EffectsContainer"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+
+[node name="EffectsLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/EffectsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Эффекты:"
+
+[node name="SliderChengeEffects" type="HSlider" parent="MarginContainer/HBoxContainer/VBoxContainer/EffectsContainer"]
+custom_minimum_size = Vector2(123.46, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_type_variation = &"SettingHSlider"
+
+[node name="Control4" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+theme_type_variation = &"ExitButton"
+
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/VBoxContainer/PermissionContainer/ButtonChengPermission" to="." method="PermissionSelected"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer/BorderButtonChengScreenMode/ButtonChengScreenMode" to="." method="ChangeScreenMode"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/BrightnessContainer/SliderChengBrightness" to="." method="ChangeGlobalBrightness"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ExitButton" to="." method="CloseSetting"]

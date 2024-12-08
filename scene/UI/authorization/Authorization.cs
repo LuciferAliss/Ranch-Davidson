@@ -133,6 +133,9 @@ public partial class Authorization : CanvasLayer
 				GetNode<TextureButton>("MarginContainer/VBoxContainer/HBoxContainer2/TextureButton").Pressed -= LoginToAccount;
 				ShowMessageManager.ShowMessage("Вы удачно вошли", tween, labelMassage, GetTree(),  new Color(0, 1, 0, 0), 1.0f, 3.0f);
 
+				User user = context.Users.FirstOrDefault(u => u.login ==  loginEdit.Text);
+				UserData.Instance.SetUser(user);
+
 				await Task.Delay(5000);
 
 				ManagerScene.ChangeScene(GetTree(), "res://scene//level//level.tscn");

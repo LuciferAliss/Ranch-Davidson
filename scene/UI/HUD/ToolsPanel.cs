@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Net.Http.Headers;
 
 public partial class ToolsPanel : PanelContainer
 {
@@ -36,15 +34,18 @@ public partial class ToolsPanel : PanelContainer
     private void ChangeTool1()
     {
         player.ChangeTools(ItemsName.ToolNames[2]);
+        player.hitComponent.tool = ItemsName.ToolNames[2];
     }
 
     private void ChangeTool2()
     {
         player.ChangeTools(ItemsName.ToolNames[1]);
+        player.hitComponent.tool = ItemsName.ToolNames[1];
     }
 
     private void ChangeTool3()
     {
         player.ChangeTools(ItemsName.ToolNames[3]);
+        player.hitComponent.tool = ItemsName.ToolNames[3];
     }
 }

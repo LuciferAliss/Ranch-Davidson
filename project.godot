@@ -11,19 +11,23 @@ config_version=5
 [application]
 
 config/name="Ranch Davidson"
-run/main_scene="res://scene/level/level.tscn"
+run/main_scene="res://scene/UI/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalBrightness="*res://scene/global/GlobalBrightness.tscn"
+GlobalAudio="*res://scene/global/GlobalAudio.tscn"
+UserData="*res://scripts/globals/UserData.cs"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
 window/size/resizable=false
-window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
-window/stretch/scale_mode="integer"
+mouse_cursor/custom_image="res://resources/img/UI/HUD/MouseIcon 1.png"
 
 [dotnet]
 
@@ -76,6 +80,9 @@ Interaction={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="WorldCollision"
+2d_physics/layer_4="Tool"
+2d_physics/layer_5="Object"
+2d_physics/layer_6="Collectable"
 2d_physics/stretch/scale_mode="integer"
 2d_physics/stretch/aspect="keep_height"
 2d_physics/stretch/mode="viewport"

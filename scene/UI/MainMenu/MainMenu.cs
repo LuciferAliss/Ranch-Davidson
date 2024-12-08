@@ -1,17 +1,37 @@
 using Godot;
 using System;
+using System.Linq;
 
-public partial class MainMenu : CanvasLayer
+public partial class MainMenu : Control
 {
+    public Settings settings { get; private set; }
+    public Menu menu { get; private set; }
+
     public override void _Ready()
     {
-        DateTime nowTime = DateTime.Now;
-        Sprite2D BackGround = GetNode<Sprite2D>("BackGround");
-        Texture2D texture;
-        
-        GD.Print(nowTime.Hour + " : "+ nowTime.Minute);
+        using (var context = new GameContext())
+		{
+			User user = context.Users.FirstOrDefault(u => u.login == "LuciferAliss");
+			UserData.Instance.SetUser(user);
+		}
 
-        if (nowTime.Hour > 6 && nowTime.Minute > 0 && nowTime.Hour < 13)
+        settings = GetNode<Settings>("MarginContainer/settings");
+        menu = GetNode<Menu>("MarginContainer/menu");
+
+        menu.SetMenu(this);
+        settings.SetSettings(this);
+
+        LoadBGMainMenu();
+        LoadSetting();
+    }
+
+    private void LoadBGMainMenu()
+    {
+        DateTime nowTime = DateTime.Now;
+        TextureRect BackGround = GetNode<TextureRect>("BackGround");
+        Texture2D texture;
+
+        if (nowTime.Hour > 5 && nowTime.Minute > 0 && nowTime.Hour < 13)
         {
             texture = GD.Load<Texture2D>("res://resources/img/UI/MainMenu/Утро.png");
         }
@@ -27,7 +47,28 @@ public partial class MainMenu : CanvasLayer
         {
             texture = GD.Load<Texture2D>("res://resources/img/UI/MainMenu/Ночь.png");
         }
-        //17 : 38
+
         BackGround.Texture = texture;
+    }
+
+    private void LoadSetting()
+    {
+        using (var context = new SettingContext())
+		{
+            var setting = context.Settings.FirstOrDefault(u => u.id == UserData.Instance.user.id);
+
+            if(!setting.screenMode)
+            {
+			    DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+            }
+            else 
+            {
+                DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+            }
+
+            DisplayServer.WindowSetSize(new Vector2I(setting.permission.Split("x")[0].ToInt(), setting.permission.Split("x")[1].ToInt()));
+            
+            GlobalBrightness.Instance.ChangeBrightness(setting.Brightness);
+		}
     }
 }

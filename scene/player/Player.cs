@@ -1,24 +1,31 @@
 using Godot;
-using System;
 
 public partial class Player : CharacterBody2D
 {
 	[Export]
 	float maxSpeed = 100;
-	private AnimatedSprite2D animatedSp;
-	private AnimationPlayer animationPl;
+	public AnimatedSprite2D animatedSp { get; private set; }
+	public AnimationPlayer animationPl { get; private set; }
 	private StateAnimationPlayer stateAnimation;
 	private StateActionPlayer stateAction;
 	private bool useAction = false;
 	public string currentTools { get; private set; } = ItemsName.ToolNames[0].ToString();
-	ToolsPanel hud;
+	private ToolsPanel hud;
+	public HitComponent hitComponent { get; private set; }
+	public CollisionShape2D HitBox { get; private set; }
 
 	public override void _Ready()
 	{
 		animatedSp = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animationPl = GetNode<AnimationPlayer>("AnimationPlayer");
 		hud = GetNode<ToolsPanel>("HUD/MarginContainer/ToolsPanel");
+		HitBox = GetNode<CollisionShape2D>("HitComponent/CollisionShape2D");
+		hitComponent = GetNode<HitComponent>("HitComponent");
+
+		HitBox.Disabled = true;
+		HitBox.Position = new Vector2(0, 0);
 		stateAnimation = new DownState(this);
+		hitComponent.SetHitComponent(this);
 
 		animationPl.AnimationFinished += FinishedAnimation;
 		hud.SetPlayer(this);
@@ -63,36 +70,21 @@ public partial class Player : CharacterBody2D
 		Vector2 direction = MovementVector().Normalized();
 		Vector2 velocity = maxSpeed * direction;
 
-		if(direction.X < 0)
+		if (direction.X > 0 && direction.Y == 0)
 		{
-			animatedSp.FlipH = true;
-		} 
-		else if (direction.X > 0)
-		{
-			animatedSp.FlipH = false;
+			ChangeStateAnimation(new RightState(this)); 
 		}
-
-		if (direction.X != 0 && direction.Y > 0)
+		else if (direction.X < 0 && direction.Y == 0)
 		{
-			ChangeStateAnimation(new DiagonallyDownState(this)); 
-		}
-		else if (direction.X != 0 && direction.Y < 0)
-		{
-			ChangeStateAnimation(new DiagonallyUpState(this)); 
-		}
-		else if (direction.X != 0 && direction.Y == 0)
-		{
-			ChangeStateAnimation(new SideState(this)); 
+			ChangeStateAnimation(new LeftState(this)); 
 		}
 		else if (direction.X == 0 && direction.Y > 0)
 		{
 			ChangeStateAnimation(new DownState(this)); 
-			animatedSp.FlipH = false;
 		}
 		else if (direction.X == 0 && direction.Y < 0)
 		{
 			ChangeStateAnimation(new UpState(this)); 
-			animatedSp.FlipH = false;
 		}
 
 		if (direction.X == 0 && direction.Y == 0)
@@ -115,6 +107,7 @@ public partial class Player : CharacterBody2D
 		{
 			return;
 		}
+
 		else if (currentTools == "WateringCan")
 		{
 			ChangeStateAction(new StateWatering(this));
@@ -136,11 +129,8 @@ public partial class Player : CharacterBody2D
 			useAction = true;
 			stateAction.Action();
 		}
-	}
-	
-	public void ChangeAnimation(string nameAnimation)
-	{
-		animationPl.Play(nameAnimation);
+
+		HitBox.Disabled = false;
 	}
 
 	public void ChangeStateAnimation(StateAnimationPlayer state)
@@ -156,6 +146,7 @@ public partial class Player : CharacterBody2D
 	public void FinishedAnimation(StringName NameAnime)
 	{
 		useAction = false;
+		HitBox.Disabled = true;
 	}
 
 	public void ChangeTools(string tools)

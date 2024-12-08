@@ -1,3 +1,5 @@
+using Godot;
+
 public abstract class StateAnimationPlayer
 {
 	protected Player player;
@@ -19,141 +21,123 @@ class DownState : StateAnimationPlayer
 	public DownState(Player player) : base(player) { }
     public override void Move()
     {
-        player.ChangeAnimation("WalkDown");
+        player.animationPl.Play("WalkDown");
+        player.animatedSp.FlipH = false;
+        player.HitBox.Position = new Vector2(0, 0);
 	}
 
     public override void Idle()
     {
-        player.ChangeAnimation("IdleDown");
+        player.animationPl.Play("IdleDown");
     }
 
     public override void Watering()
     {
-        player.ChangeAnimation("WateringDown");
+        player.animationPl.Play("WateringDown");
     }
 
     public override void Cutting()
     {
-        player.ChangeAnimation("CuttingDown");
+        player.animationPl.Play("CuttingDown");
     }
 
     public override void Tilling()
     {
-        player.ChangeAnimation("TillingDown");
+        player.animationPl.Play("TillingDown");
     }
 }
 
-class UpState : StateAnimationPlayer{
+class UpState : StateAnimationPlayer
+{
 	public UpState(Player player) : base(player) { }
     public override void Move()
     {
-        player.ChangeAnimation("WalkUp");
+        player.animationPl.Play("WalkUp");
+        player.animatedSp.FlipH = false;
+        player.HitBox.Position = new Vector2(0, -19);
 	}
 
     public override void Idle()
     {
-        player.ChangeAnimation("IdleUp");
+        player.animationPl.Play("IdleUp");
     }
 
     public override void Watering()
     {
-        player.ChangeAnimation("WateringUp");
+        player.animationPl.Play("WateringUp");
     }
 
     public override void Cutting()
     {
-        player.ChangeAnimation("CuttingUp");
+        player.animationPl.Play("CuttingUp");
     }
 
     public override void Tilling()
     {
-        player.ChangeAnimation("TillingUp");
+        player.animationPl.Play("TillingUp");
     }
 }
 
-class SideState : StateAnimationPlayer
+class RightState : StateAnimationPlayer
 {
-	public SideState(Player player) : base(player) { }
+	public RightState(Player player) : base(player) { }
     public override void Move()
     {
-        player.ChangeAnimation("WalkSide");
+        player.animationPl.Play("WalkSide");
+        player.animatedSp.FlipH = false;
+        player.HitBox.Position = new Vector2(11, -14);
 	}
 
     public override void Idle()
     {
-        player.ChangeAnimation("IdleSide");
+        player.animationPl.Play("IdleSide");
+        player.animatedSp.FlipH = false;
     }
 
     public override void Watering()
     {
-        player.ChangeAnimation("WateringSide");
+        player.animationPl.Play("WateringSide");
     }
 
     public override void Cutting()
     {
-        player.ChangeAnimation("CuttingSide");
+        player.animationPl.Play("CuttingSide");
     }
 
     public override void Tilling()
     {
-        player.ChangeAnimation("TillingSide");
+        player.animationPl.Play("TillingSide");
     }
 }
 
-class DiagonallyDownState : StateAnimationPlayer
+class LeftState : StateAnimationPlayer
 {
-	public DiagonallyDownState(Player player) : base(player) { }
+    public LeftState(Player player) : base(player) { }
     public override void Move()
     {
-        player.ChangeAnimation("WalkDiagonallyDown");
+        player.animationPl.Play("WalkSide");
+        player.animatedSp.FlipH = true ;
+        player.HitBox.Position = new Vector2(-11, -14);
 	}
 
     public override void Idle()
     {
-        player.ChangeAnimation("IdleDiagonallyDown");
+        player.animationPl.Play("IdleSide");
+        player.animatedSp.FlipH = true ;
     }
 
     public override void Watering()
     {
-        player.ChangeAnimation("WateringDiagonallyDown");
+        player.animationPl.Play("WateringSide");
     }
 
     public override void Cutting()
     {
-        player.ChangeAnimation("CuttingDiagonallyDown");
+        player.animationPl.Play("CuttingSide");
     }
 
     public override void Tilling()
     {
-        player.ChangeAnimation("TillingDiagonallyDown");
-    }
-}
-
-class DiagonallyUpState : StateAnimationPlayer
-{
-	public DiagonallyUpState(Player player) : base(player) { }
-    public override void Move()
-    {
-        player.ChangeAnimation("WalkDiagonallyUp");
-	}
-
-    public override void Idle()
-    {
-        player.ChangeAnimation("IdleDiagonallyUp");
-    }
-
-    public override void Watering()
-    {
-        player.ChangeAnimation("WateringDiagonallyUp");
-    }
-
-    public override void Cutting()
-    {
-        player.ChangeAnimation("CuttingDiagonallyUp");
-    }
-
-    public override void Tilling()
-    {
-        player.ChangeAnimation("TillingDiagonallyUp");
+        player.animationPl.Play("TillingSide");
     }
 }

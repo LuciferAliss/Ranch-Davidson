@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8seipwxqigx7"]
+
+[ext_resource type="Script" path="res://scene/global/GlobalBrightness.cs" id="1_ovp74"]
+
+[sub_resource type="Environment" id="Environment_03ulm"]
+background_mode = 3
+adjustment_enabled = true
+
+[node name="GlobalBrightness" type="Node"]
+script = ExtResource("1_ovp74")
+
+[node name="Brightness" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_03ulm")

@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=11 format=3 uid="uid://clcmsccjr8hw3"]
 
-[ext_resource type="PackedScene" uid="uid://dcsj33frkcebu" path="res://scene/obj/oak-tree/oak_tree.tscn" id="2_s7d0o"]
+[ext_resource type="PackedScene" uid="uid://dcsj33frkcebu" path="res://scene/obj/tree/oak_tree.tscn" id="2_s7d0o"]
 [ext_resource type="Texture2D" uid="uid://bj343avegxtrm" path="res://resources/img/tileset/x-mark-16.png" id="3_opj7f"]
 [ext_resource type="Texture2D" uid="uid://qnbxqttadnov" path="res://resources/img/tileset/Water-sheet.png" id="4_r81d1"]
 [ext_resource type="Texture2D" uid="uid://du667ks3russ0" path="res://resources/img/tileset/Grass.png" id="5_2lisp"]

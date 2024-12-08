@@ -132,13 +132,29 @@ public partial class Registration : CanvasLayer
 				email = mailEdit.Text + optionButton.Text,
 				pfp = DataProcessingAndConversionManager.ConvertImageToBlob("res://resources//img//UI//authorization//pfp.png")
 			};
-			
+
+			using (var contextSetting = new SettingContext())
+			{
+				var settingCurrent = new SettingModel
+				{
+					id = DataProcessingAndConversionManager.ToSHA512(loginEdit.Text + pswEdit.Text),
+					permission = "1280x720",
+					screenMode = true,
+					Brightness = 1.1f,
+					music = 0,
+					effects = 0
+				};
+
+				contextSetting.Settings.Add(settingCurrent);
+				contextSetting.SaveChanges();
+			}
+
 			context.Users.Add(currentUser);
 			context.SaveChanges();
 
 			await Task.Delay(5000);
 
-			ManagerScene.ChangeScene(GetTree(), "res://scene//UI//authorization//authorization.tscn");
+			ManagerScene.ChangeScene(GetTree(), "res://scene//UI//MainMenu//MainMenu.tscn");
 		}
 	}
 

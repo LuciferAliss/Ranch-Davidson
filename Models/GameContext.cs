@@ -14,3 +14,18 @@ public class GameContext : DbContext
         optionsBuilder.UseSqlite("Data Source=resources/db/db.db");
     }
 }
+
+public class SettingContext : DbContext
+{
+    public DbSet<SettingModel> Settings { get; set; }
+
+    public SettingContext()
+    {
+        Database.EnsureCreated();
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlite("Data Source=resources/db/db.db");
+    }
+}
