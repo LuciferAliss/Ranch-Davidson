@@ -36,7 +36,7 @@ tile_set = ExtResource("1_1pabs")
 
 [node name="Object" type="TileMapLayer" parent="GameTileMap"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAOAA4AAQAAAAAAAQAJAA4AAQAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAIABEAAQAAAAAAAQAMABEAAQAAAAAAAQAJABUAAQAAAAAAAQANABUAAQAAAAAAAQA=")
 tile_set = ExtResource("1_1pabs")
 
 [node name="WorldCollision" type="TileMapLayer" parent="GameTileMap"]
@@ -44,5 +44,5 @@ tile_map_data = PackedByteArray("AAD+/wkAAAAAAAAAAAD+/woAAAAAAAAAAAD+/wsAAAAAAAA
 tile_set = SubResource("TileSet_1tibn")
 
 [node name="Player" parent="." instance=ExtResource("2_ln8sc")]
-y_sort_enabled = true
+y_sort_enabled = false
 position = Vector2(176, 280)
