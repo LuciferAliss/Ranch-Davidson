@@ -22,7 +22,7 @@ theme_type_variation = &"SettingEdges"
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(562.195, 0)
+custom_minimum_size = Vector2(656, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -77,10 +77,10 @@ layout_mode = 2
 [node name="ScreenModeLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "Полноэкраннывй режим:"
+text = "Полноэкранный режим:"
 
 [node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer"]
-custom_minimum_size = Vector2(65.115, 0)
+custom_minimum_size = Vector2(176.82, 0)
 layout_mode = 2
 
 [node name="BorderButtonChengScreenMode" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer"]

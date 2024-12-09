@@ -126,15 +126,15 @@ texture = SubResource("AtlasTexture_32k7f")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b51yl"]
 atlas = ExtResource("2_6hp0k")
-region = Rect2(201, 57, 30, 30)
+region = Rect2(912, 0, 119, 120)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u0lmj"]
 texture = SubResource("AtlasTexture_b51yl")
-texture_margin_left = 7.0
-texture_margin_top = 7.0
-texture_margin_right = 7.0
-texture_margin_bottom = 7.0
-region_rect = Rect2(0, 0, 30, 30)
+texture_margin_left = 28.0
+texture_margin_top = 28.0
+texture_margin_right = 27.0
+texture_margin_bottom = 28.0
+region_rect = Rect2(0, 0, 119, 120)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynx8c"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

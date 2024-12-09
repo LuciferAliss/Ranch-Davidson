@@ -24,7 +24,7 @@ radius = 24.0
 height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ltw"]
-size = Vector2(20, 26)
+size = Vector2(16, 31.75)
 
 [node name="oak-tree" type="Sprite2D"]
 material = SubResource("ShaderMaterial_od17m")
@@ -51,7 +51,8 @@ shape = SubResource("CapsuleShape2D_pstta")
 tool = "Axe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
-position = Vector2(1, -12)
+position = Vector2(2, -10.16)
+scale = Vector2(0.64, 0.64)
 shape = SubResource("RectangleShape2D_r3ltw")
 debug_color = Color(0.868217, 0.31226, 0.433944, 0.42)
 
