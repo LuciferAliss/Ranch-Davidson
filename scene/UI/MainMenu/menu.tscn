@@ -48,7 +48,7 @@ size_flags_vertical = 3
 theme_type_variation = &"ButtonMainMenu"
 text = "Статистика"
 
-[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="ExitFromGame" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"ButtonMainMenu"

@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://cldt8fj7qdwas"]
+
+[ext_resource type="Theme" uid="uid://dsq62fggbf3c1" path="res://resources/img/Theme/menu.tres" id="1_y84h1"]
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/PauseMenu/PauseMenu.cs" id="2_1xhc0"]
+
+[node name="PauseMenu" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_y84h1")
+theme_type_variation = &"PanelPauseMenu"
+script = ExtResource("2_1xhc0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_type_variation = &"SettingEdges"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 516)
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"ButtonMainMenu"
+text = "Продолжить"
+
+[node name="SaveButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"ButtonMainMenu"
+text = "Сохранить"
+
+[node name="SettingButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"ButtonMainMenu"
+text = "Настройки"
+
+[node name="ExitInMainMenuButton" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"ButtonMainMenu"
+text = "Главное меню"
+
+[node name="ExitFromGame" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"ButtonMainMenu"
+text = "Выйти"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ContinueButton" to="." method="ContinueGame"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/SettingButton" to="." method="OpenSetting"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ExitInMainMenuButton" to="." method="ExitInMainMenu"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ExitFromGame" to="." method="ExitGame"]

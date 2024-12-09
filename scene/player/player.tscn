@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scene/player/Player.cs" id="1_1w410"]
 [ext_resource type="Texture2D" uid="uid://c2x61l551l2an" path="res://resources/img/characters/MCanimate.png" id="1_sort2"]
-[ext_resource type="PackedScene" uid="uid://dtdx6bjqqihp8" path="res://scene/UI/HUD/HUD.tscn" id="3_86tqm"]
+[ext_resource type="PackedScene" uid="uid://dtdx6bjqqihp8" path="res://scene/UI/UIPlayer/UIPlayer.tscn" id="3_86tqm"]
 [ext_resource type="PackedScene" uid="uid://v2a36nlmprye" path="res://scene/component/HitComponent.tscn" id="4_va24u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1msnf"]
@@ -506,21 +506,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xhaq7"]
 radius = 8.0
 
-[sub_resource type="Animation" id="Animation_5avf0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitComponent/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_evca6"]
 length = 0.6
 tracks/0/type = "value"
@@ -690,6 +675,48 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["IdleUp"]
+}
+
+[sub_resource type="Animation" id="Animation_5avf0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitComponent/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hsma0"]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["TillingDown"]
 }
 
 [sub_resource type="Animation" id="Animation_j1gg5"]
@@ -908,33 +935,6 @@ tracks/1/keys = {
 "values": ["WateringUp"]
 }
 
-[sub_resource type="Animation" id="Animation_hsma0"]
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["TillingDown"]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n3k2u"]
 _data = {
 "CuttingDown": SubResource("Animation_evca6"),
@@ -984,7 +984,10 @@ libraries = {
 "": SubResource("AnimationLibrary_n3k2u")
 }
 
-[node name="HUD" parent="." instance=ExtResource("3_86tqm")]
+[node name="UIPlayer" parent="." instance=ExtResource("3_86tqm")]
+
+[node name="settings" parent="UIPlayer/MarginContainer" index="2"]
+visible = false
 
 [node name="HitComponent" parent="." instance=ExtResource("4_va24u")]
 tool = "Axe"
@@ -996,4 +999,4 @@ shape = SubResource("CircleShape2D_vtt02")
 disabled = true
 debug_color = Color(0.900582, 0.175533, 0.637961, 0.42)
 
-[editable path="HUD"]
+[editable path="UIPlayer"]

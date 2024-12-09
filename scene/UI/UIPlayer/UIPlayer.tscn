@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtdx6bjqqihp8"]
+
+[ext_resource type="Theme" uid="uid://d1d2qdx4irjpv" path="res://resources/img/Theme/HUD.tres" id="1_ipshc"]
+[ext_resource type="PackedScene" uid="uid://dk0ewxfhsj3b0" path="res://scene/UI/UIPlayer/ToolsPanel.tscn" id="2_gsqqg"]
+[ext_resource type="PackedScene" uid="uid://cldt8fj7qdwas" path="res://scene/UI/UIPlayer/PauseMenu/PauseMenu.tscn" id="2_mb3sm"]
+[ext_resource type="PackedScene" uid="uid://c7xp77urqn5a3" path="res://scene/UI/MainMenu/settings.tscn" id="4_5o3al"]
+
+[node name="UIPlayer" type="CanvasLayer"]
+follow_viewport_scale = 915.285
+
+[node name="Beckground" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.396078)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ipshc")
+
+[node name="PanelContainer" parent="MarginContainer" instance=ExtResource("2_mb3sm")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ToolsPanel" parent="MarginContainer" instance=ExtResource("2_gsqqg")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="settings" parent="MarginContainer" instance=ExtResource("4_5o3al")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

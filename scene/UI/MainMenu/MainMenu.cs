@@ -30,16 +30,17 @@ public partial class MainMenu : Control
         DateTime nowTime = DateTime.Now;
         TextureRect BackGround = GetNode<TextureRect>("BackGround");
         Texture2D texture;
+        GD.Print(nowTime);
 
-        if (nowTime.Hour > 5 && nowTime.Minute > 0 && nowTime.Hour < 13)
+        if (nowTime.Hour > 5 && nowTime.Hour < 13)
         {
             texture = GD.Load<Texture2D>("res://resources/img/UI/MainMenu/Утро.png");
         }
-        else if (nowTime.Hour > 12 && nowTime.Minute > 0 && nowTime.Hour < 17)
+        else if (nowTime.Hour > 12 && nowTime.Hour < 17)
         {
             texture = GD.Load<Texture2D>("res://resources/img/UI/MainMenu/День.png");
         }
-        else if (nowTime.Hour > 16  && nowTime.Minute > 0 && nowTime.Hour < 23)
+        else if (nowTime.Hour > 16 && nowTime.Hour < 23)
         {
             texture = GD.Load<Texture2D>("res://resources/img/UI/MainMenu/Вечер.png");
         }
@@ -69,6 +70,11 @@ public partial class MainMenu : Control
             DisplayServer.WindowSetSize(new Vector2I(setting.permission.Split("x")[0].ToInt(), setting.permission.Split("x")[1].ToInt()));
             
             GlobalBrightness.Instance.ChangeBrightness(setting.Brightness);
+
+            Vector2I screenSize = DisplayServer.ScreenGetSize();
+            Vector2I windowSize = DisplayServer.WindowGetSize();
+            Vector2I position = (screenSize - windowSize) / 2;
+            DisplayServer.WindowSetPosition(position);
 		}
     }
 }

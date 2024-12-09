@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Godot;
 
 public partial class Player : CharacterBody2D
@@ -13,14 +14,22 @@ public partial class Player : CharacterBody2D
 	private ToolsPanel hud;
 	public HitComponent hitComponent { get; private set; }
 	public CollisionShape2D HitBox { get; private set; }
+	private PauseMenu pauseMenu;
+	private ColorRect background;
+	public Settings settings;
+	private bool Pause = false;
 
 	public override void _Ready()
 	{
+		GD.Print("Я люблю альтушек");
 		animatedSp = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animationPl = GetNode<AnimationPlayer>("AnimationPlayer");
-		hud = GetNode<ToolsPanel>("HUD/MarginContainer/ToolsPanel");
+		hud = GetNode<ToolsPanel>("UIPlayer/MarginContainer/ToolsPanel");
 		HitBox = GetNode<CollisionShape2D>("HitComponent/CollisionShape2D");
 		hitComponent = GetNode<HitComponent>("HitComponent");
+		pauseMenu = GetNode<PauseMenu>("UIPlayer/MarginContainer/PanelContainer");
+		background = GetNode<ColorRect>("UIPlayer/Beckground");
+		settings = GetNode<Settings>("UIPlayer/MarginContainer/settings");
 
 		HitBox.Disabled = true;
 		HitBox.Position = new Vector2(0, 0);
@@ -28,12 +37,18 @@ public partial class Player : CharacterBody2D
 		hitComponent.SetHitComponent(this);
 
 		animationPl.AnimationFinished += FinishedAnimation;
+		
 		hud.SetPlayer(this);
+		pauseMenu.SetPlayer(this);
 	}
 
 	public override void _Process(double delta)
 	{
-		if (!useAction)
+		if (Input.IsActionJustPressed("pause"))
+		{
+			ManagerPauseMenu();
+		}
+		else if (!useAction)
 		{
 			Move();
 		}
@@ -152,5 +167,26 @@ public partial class Player : CharacterBody2D
 	public void ChangeTools(string tools)
 	{
 		currentTools = tools;
+	}
+
+	public void ManagerPauseMenu()
+	{
+		if (Pause)
+		{
+			pauseMenu.Hide();
+			background.Hide();
+			settings.Hide();
+			hud.Show();
+			Engine.TimeScale = 1;
+		}
+		else 
+		{
+			pauseMenu.Show();
+			background.Show();
+			hud.Hide();
+			Engine.TimeScale = 0;
+		}
+
+		Pause = !Pause;
 	}
 }

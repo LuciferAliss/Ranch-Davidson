@@ -28,7 +28,10 @@ public partial class Settings : PanelContainer
 	private void CloseSetting()
 	{
 		this.Visible = false;
-		mainMenu.menu.Visible = true;
+		if (mainMenu != null)
+		{
+			mainMenu.menu.Visible = true;
+		}
 	}
 
 	public void LoadSetting()
@@ -50,6 +53,11 @@ public partial class Settings : PanelContainer
 			buttonChengScreenMode.ButtonPressed = setting.screenMode;
 
 			sliderChengBrightness.Value = setting.Brightness;
+
+			Vector2I screenSize = DisplayServer.ScreenGetSize();
+			Vector2I windowSize = DisplayServer.WindowGetSize();
+			Vector2I position = (screenSize - windowSize) / 2;
+			DisplayServer.WindowSetPosition(position);
 		}
     }
 
@@ -66,6 +74,11 @@ public partial class Settings : PanelContainer
 		if(!Value)
 		{
 			DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+			
+			Vector2I screenSize = DisplayServer.ScreenGetSize();
+			Vector2I windowSize = DisplayServer.WindowGetSize();
+			Vector2I position = (screenSize - windowSize) / 2;
+			DisplayServer.WindowSetPosition(position);
 		}
 		else 
 		{

@@ -10,7 +10,7 @@
 resource_local_to_scene = true
 shader = ExtResource("1_gwikf")
 shader_parameter/shake_intensity = 0.0
-shader_parameter/shake_speed = 20.0
+shader_parameter/shake_speed = 25.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1flq"]
 atlas = ExtResource("1_5b22u")
