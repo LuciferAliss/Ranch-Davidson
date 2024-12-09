@@ -86,6 +86,7 @@ Interaction={
 2d_physics/stretch/scale_mode="integer"
 2d_physics/stretch/aspect="keep_height"
 2d_physics/stretch/mode="viewport"
+2d_physics/main_scene="res://scene/UI/MainMenu/MainMenu.tscn"
 
 [rendering]
 

@@ -23,7 +23,7 @@ public partial class OakTree : Sprite2D
 
 	void OnInvisibility(Node2D body)
 	{
-		Color color = new Color(1, 1, 1, 0.7f);
+		Color color = new Color(1, 1, 1, 0.4f);
 		this.Modulate = color;
 	}
 
