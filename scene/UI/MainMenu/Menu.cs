@@ -30,4 +30,9 @@ public partial class Menu : PanelContainer
 	{
 		ManagerScene.ChangeScene(mainMenu.GetTree(), "res://scene//level//level.tscn");
 	}
+
+	private void ExitFromGame()
+	{
+		GetTree().Quit();
+	}
 }

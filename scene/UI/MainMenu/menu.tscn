@@ -56,3 +56,4 @@ text = "Выход"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NewGame" to="." method="NewGame"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="OpenSetting"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitFromGame" to="." method="ExitFromGame"]
