@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://dk0ewxfhsj3b0"]
 
 [ext_resource type="Texture2D" uid="uid://6o72sbay6xfd" path="res://resources/img/UI/HUD/BasicUI.png" id="1_6v7tg"]
-[ext_resource type="Script" path="res://scene/UI/UIPlayer/ToolsPanel.cs" id="2_fihg8"]
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/ToolsPanel/ToolsPanel.cs" id="2_fihg8"]
 [ext_resource type="Texture2D" uid="uid://d0plisptk82oy" path="res://resources/img/UI/HUD/Obj.png" id="2_w1wlq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpnp1"]

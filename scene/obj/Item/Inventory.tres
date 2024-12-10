@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://dp800qc7208kt"]
+
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/Inventory/Inventory.cs" id="2_rub52"]
+
+[resource]
+script = ExtResource("2_rub52")
+items = Array[Object]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

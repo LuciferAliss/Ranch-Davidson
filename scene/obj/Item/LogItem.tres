@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://b4olq3r8kama0"]
+
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/Inventory/InventoryItem.cs" id="1_u8xkw"]
+[ext_resource type="Texture2D" uid="uid://gh40hg0siqwo" path="res://resources/img/objWorld/Item/item.png" id="2_exlwc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pircw"]
+atlas = ExtResource("2_exlwc")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_u8xkw")
+name = "Log"
+texture = SubResource("AtlasTexture_pircw")

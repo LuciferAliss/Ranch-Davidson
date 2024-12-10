@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtdx6bjqqihp8"]
+[gd_scene load_steps=7 format=3 uid="uid://dtdx6bjqqihp8"]
 
 [ext_resource type="Theme" uid="uid://d1d2qdx4irjpv" path="res://resources/img/Theme/HUD.tres" id="1_ipshc"]
-[ext_resource type="PackedScene" uid="uid://dk0ewxfhsj3b0" path="res://scene/UI/UIPlayer/ToolsPanel.tscn" id="2_gsqqg"]
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/UIManager.cs" id="1_xque6"]
+[ext_resource type="PackedScene" uid="uid://dk0ewxfhsj3b0" path="res://scene/UI/UIPlayer/ToolsPanel/ToolsPanel.tscn" id="2_gsqqg"]
 [ext_resource type="PackedScene" uid="uid://cldt8fj7qdwas" path="res://scene/UI/UIPlayer/PauseMenu/PauseMenu.tscn" id="2_mb3sm"]
 [ext_resource type="PackedScene" uid="uid://c7xp77urqn5a3" path="res://scene/UI/MainMenu/settings.tscn" id="4_5o3al"]
+[ext_resource type="PackedScene" uid="uid://83q5ax3e4lsm" path="res://scene/UI/UIPlayer/Inventory/Inventory.tscn" id="5_4d011"]
 
 [node name="UIPlayer" type="CanvasLayer"]
 follow_viewport_scale = 915.285
+script = ExtResource("1_xque6")
 
 [node name="Beckground" type="ColorRect" parent="."]
 visible = false
@@ -25,7 +28,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ipshc")
 
-[node name="PanelContainer" parent="MarginContainer" instance=ExtResource("2_mb3sm")]
+[node name="PauseMenu" parent="MarginContainer" instance=ExtResource("2_mb3sm")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="settings" parent="MarginContainer" instance=ExtResource("4_5o3al")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
@@ -36,7 +45,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="settings" parent="MarginContainer" instance=ExtResource("4_5o3al")]
+[node name="Inventory" parent="MarginContainer" instance=ExtResource("5_4d011")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

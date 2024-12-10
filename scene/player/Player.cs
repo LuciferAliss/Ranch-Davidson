@@ -5,31 +5,26 @@ public partial class Player : CharacterBody2D
 {
 	[Export]
 	float maxSpeed = 100;
+	private bool Pause = false;
+	private bool useAction = false;
+	private bool Inventory = false;
+	public string currentTools { get; private set; } = ItemsName.ToolNames[0].ToString();
 	public AnimatedSprite2D animatedSp { get; private set; }
 	public AnimationPlayer animationPl { get; private set; }
 	private StateAnimationPlayer stateAnimation;
 	private StateActionPlayer stateAction;
-	private bool useAction = false;
-	public string currentTools { get; private set; } = ItemsName.ToolNames[0].ToString();
-	private ToolsPanel hud;
+	public UIManager uIManager;
 	public HitComponent hitComponent { get; private set; }
 	public CollisionShape2D HitBox { get; private set; }
-	private PauseMenu pauseMenu;
-	private ColorRect background;
-	public Settings settings;
-	private bool Pause = false;
+
 
 	public override void _Ready()
 	{
-		GD.Print("Я люблю альтушек");
 		animatedSp = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		animationPl = GetNode<AnimationPlayer>("AnimationPlayer");
-		hud = GetNode<ToolsPanel>("UIPlayer/MarginContainer/ToolsPanel");
 		HitBox = GetNode<CollisionShape2D>("HitComponent/CollisionShape2D");
 		hitComponent = GetNode<HitComponent>("HitComponent");
-		pauseMenu = GetNode<PauseMenu>("UIPlayer/MarginContainer/PanelContainer");
-		background = GetNode<ColorRect>("UIPlayer/Beckground");
-		settings = GetNode<Settings>("UIPlayer/MarginContainer/settings");
+		uIManager = GetNode<UIManager>("UIPlayer");
 
 		HitBox.Disabled = true;
 		HitBox.Position = new Vector2(0, 0);
@@ -38,15 +33,19 @@ public partial class Player : CharacterBody2D
 
 		animationPl.AnimationFinished += FinishedAnimation;
 		
-		hud.SetPlayer(this);
-		pauseMenu.SetPlayer(this);
+		uIManager.hud.SetPlayer(this);
+		uIManager.pauseMenu.SetPlayer(this);
 	}
 
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("pause"))
+		if (Input.IsActionJustPressed("pause") && !uIManager.inventoryVisib)
 		{
-			ManagerPauseMenu();
+			uIManager.PauseVisibility();
+		}
+		else if (Input.IsActionJustPressed("inventory") && !uIManager.pauseVisib)
+		{
+			uIManager.InventoryVisibility();
 		}
 		else if (!useAction)
 		{
@@ -61,7 +60,7 @@ public partial class Player : CharacterBody2D
 			if (mouseEvent.ButtonIndex == MouseButton.Left && mouseEvent.Pressed)
 			{
 				var mousePosition = GetViewport().GetMousePosition();
-				if (hud.GetGlobalRect().HasPoint(mousePosition))
+				if (uIManager.hud.GetGlobalRect().HasPoint(mousePosition))
 				{
 					return;
 				}
@@ -167,26 +166,5 @@ public partial class Player : CharacterBody2D
 	public void ChangeTools(string tools)
 	{
 		currentTools = tools;
-	}
-
-	public void ManagerPauseMenu()
-	{
-		if (Pause)
-		{
-			pauseMenu.Hide();
-			background.Hide();
-			settings.Hide();
-			hud.Show();
-			Engine.TimeScale = 1;
-		}
-		else 
-		{
-			pauseMenu.Show();
-			background.Show();
-			hud.Hide();
-			Engine.TimeScale = 0;
-		}
-
-		Pause = !Pause;
 	}
 }

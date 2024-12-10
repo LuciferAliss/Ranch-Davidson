@@ -18,13 +18,13 @@ public partial class PauseMenu : PanelContainer
 
     private void ContinueGame()
     {
-        player.ManagerPauseMenu();
+        player.uIManager.PauseVisibility();
     }
 
     private void OpenSetting()
     {
-        player.settings.LoadSetting();   
-        player.settings.Show();
+        player.uIManager.settings.LoadSetting();   
+        player.uIManager.settings.Show();
     }
 
     private void ExitGame()
@@ -34,7 +34,7 @@ public partial class PauseMenu : PanelContainer
 
     private void ExitInMainMenu()
     {
-        player.ManagerPauseMenu();  
+        player.uIManager.PauseVisibility();  
         ManagerScene.ChangeScene(GetParent().GetTree(), "res://scene//UI//MainMenu//MainMenu.tscn");
     }
 }

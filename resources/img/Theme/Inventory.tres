@@ -1,4 +1,37 @@
-[gd_resource type="Theme" format=3 uid="uid://mk2t1grb0gli"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://mk2t1grb0gli"]
+
+[ext_resource type="Texture2D" uid="uid://6o72sbay6xfd" path="res://resources/img/UI/HUD/BasicUI.png" id="1_y8r4d"]
+[ext_resource type="Texture2D" uid="uid://chqcxmdknwlnb" path="res://resources/img/UI/HUD/slot.png" id="2_xbmyt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vgql"]
+atlas = ExtResource("1_y8r4d")
+region = Rect2(912, 0, 119, 120)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_blhve"]
+texture = SubResource("AtlasTexture_0vgql")
+texture_margin_left = 28.0
+texture_margin_top = 28.0
+texture_margin_right = 28.0
+texture_margin_bottom = 28.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uum5m"]
+atlas = ExtResource("2_xbmyt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5xvmy"]
+texture = SubResource("AtlasTexture_uum5m")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_noh37"]
+atlas = ExtResource("2_xbmyt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vjccq"]
+texture = SubResource("AtlasTexture_noh37")
 
 [resource]
-SlotPanel/base_type = &"PanelContainer"
+InventoryPanel/base_type = &"Panel"
+InventoryPanel/styles/panel = SubResource("StyleBoxTexture_blhve")
+SlotEmpty/base_type = &"PanelContainer"
+SlotEmpty/styles/panel = SubResource("StyleBoxTexture_5xvmy")
+SlotNotEmpty/base_type = &"PanelContainer"
+SlotNotEmpty/styles/panel = SubResource("StyleBoxTexture_vjccq")

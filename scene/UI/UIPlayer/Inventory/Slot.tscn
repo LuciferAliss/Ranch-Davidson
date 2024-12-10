@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://choei8mf5shxa"]
+
+[ext_resource type="Theme" uid="uid://mk2t1grb0gli" path="res://resources/img/Theme/Inventory.tres" id="1_ims5c"]
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/Inventory/Slot.cs" id="2_7b63l"]
+
+[node name="Slot" type="PanelContainer"]
+custom_minimum_size = Vector2(120, 120)
+offset_right = 120.0
+offset_bottom = 120.0
+theme = ExtResource("1_ims5c")
+theme_type_variation = &"SlotEmpty"
+script = ExtResource("2_7b63l")
+
+[node name="icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
