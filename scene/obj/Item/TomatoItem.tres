@@ -10,4 +10,5 @@ region = Rect2(32, 0, 16, 16)
 [resource]
 script = ExtResource("1_u6tem")
 name = "Tomato"
+count = 0
 texture = SubResource("AtlasTexture_cyi5e")

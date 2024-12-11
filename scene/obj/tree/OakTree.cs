@@ -7,7 +7,7 @@ public partial class OakTree : Sprite2D
 {
 	HurtComponent hurtComponent;
 	DamageComponent damageComponent;
-	PackedScene logScene = GD.Load<PackedScene>("res://scene//obj//tree//log.tscn");
+	PackedScene logScene = GD.Load<PackedScene>("res://scene//obj//ItemForScene//log.tscn");
 
 	public override void _Ready()
 	{

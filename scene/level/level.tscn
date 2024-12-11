@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://fbp488h4oora"]
+[gd_scene load_steps=8 format=4 uid="uid://fbp488h4oora"]
 
 [ext_resource type="TileSet" uid="uid://clcmsccjr8hw3" path="res://resources/img/tileset/GameTileSetl.tres" id="1_1pabs"]
+[ext_resource type="Script" path="res://scene/level/Level.cs" id="1_f2s7v"]
 [ext_resource type="Texture2D" uid="uid://bj343avegxtrm" path="res://resources/img/tileset/x-mark-16.png" id="2_jnnnx"]
 [ext_resource type="PackedScene" uid="uid://ve1tt812qmni" path="res://scene/player/player.tscn" id="2_ln8sc"]
+[ext_resource type="PackedScene" uid="uid://bbx7ieo57kn5n" path="res://scene/obj/ItemForScene/Wheat.tscn" id="4_la47b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5n5v8"]
 texture = ExtResource("2_jnnnx")
@@ -18,6 +20,7 @@ sources/0 = SubResource("TileSetAtlasSource_5n5v8")
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_f2s7v")
 
 [node name="GameTileMap" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -46,3 +49,9 @@ tile_set = SubResource("TileSet_1tibn")
 [node name="Player" parent="." instance=ExtResource("2_ln8sc")]
 y_sort_enabled = false
 position = Vector2(176, 280)
+
+[node name="Wheat" parent="." instance=ExtResource("4_la47b")]
+position = Vector2(320, 344)
+
+[node name="Wheat2" parent="." instance=ExtResource("4_la47b")]
+position = Vector2(296, 296)

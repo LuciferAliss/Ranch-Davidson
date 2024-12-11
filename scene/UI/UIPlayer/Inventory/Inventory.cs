@@ -5,5 +5,5 @@ using System;
 public partial class Inventory : Resource
 {
     [Export]
-    public InventoryItem[] items;
+    public InventorySlot[] slots;
 }

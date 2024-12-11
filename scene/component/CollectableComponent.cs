@@ -4,16 +4,12 @@ using System;
 public partial class CollectableComponent : Area2D
 {
 	[Signal]
-	public delegate void TakeItemEventHandler(InventoryItem item);
-	[Export]
-	string collectableName;
+    public delegate void TakeItemEventHandler(InventoryItem item);
 	[Export]
 	InventoryItem item;
-	public static CollectableComponent Instance { get; private set; }
 	
 	public override void _Ready()
 	{
-		Instance = this;
 	}
 
 	public override void _Process(double delta)
@@ -23,6 +19,8 @@ public partial class CollectableComponent : Area2D
 	private void SearchPlayer(Node2D body)
 	{
 		GetParent().QueueFree();
+		var player = body as Player;
+		player.uIManager.inventory.ConnectCollectable(this);
 		EmitSignal(nameof(TakeItem), item);
 	}
 }

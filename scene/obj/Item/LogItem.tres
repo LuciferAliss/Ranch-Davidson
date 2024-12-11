@@ -10,4 +10,5 @@ region = Rect2(0, 0, 16, 16)
 [resource]
 script = ExtResource("1_u8xkw")
 name = "Log"
+maxCount = 64
 texture = SubResource("AtlasTexture_pircw")

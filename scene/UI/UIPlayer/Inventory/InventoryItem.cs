@@ -7,5 +7,7 @@ public partial class InventoryItem : Resource
     [Export]
     public string name { get; private set; }
     [Export]
+    public int maxCount;
+    [Export]
     public Texture2D texture { get; private set; } 
 }

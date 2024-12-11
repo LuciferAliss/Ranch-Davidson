@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://mk2t1grb0gli"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://mk2t1grb0gli"]
 
 [ext_resource type="Texture2D" uid="uid://6o72sbay6xfd" path="res://resources/img/UI/HUD/BasicUI.png" id="1_y8r4d"]
+[ext_resource type="FontFile" uid="uid://b76b2wdu47so" path="res://resources/img/Theme/Monocraft.otf" id="2_an178"]
 [ext_resource type="Texture2D" uid="uid://chqcxmdknwlnb" path="res://resources/img/UI/HUD/slot.png" id="2_xbmyt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0vgql"]
@@ -31,6 +32,7 @@ texture = SubResource("AtlasTexture_noh37")
 [resource]
 InventoryPanel/base_type = &"Panel"
 InventoryPanel/styles/panel = SubResource("StyleBoxTexture_blhve")
+Label/fonts/font = ExtResource("2_an178")
 SlotEmpty/base_type = &"PanelContainer"
 SlotEmpty/styles/panel = SubResource("StyleBoxTexture_5xvmy")
 SlotNotEmpty/base_type = &"PanelContainer"
