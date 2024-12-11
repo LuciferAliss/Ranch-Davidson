@@ -10,5 +10,5 @@ region = Rect2(16, 0, 16, 16)
 [resource]
 script = ExtResource("1_opbq3")
 name = "Wheat"
-maxCount = 1
+maxCount = 0
 texture = SubResource("AtlasTexture_5cnuw")

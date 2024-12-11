@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1ye22kbdr5fo"]
+
+[ext_resource type="Texture2D" uid="uid://b6qqko2huw1ij" path="res://resources/img/UI/HungryBar/Back.png" id="1_bv378"]
+[ext_resource type="Theme" uid="uid://d1d2qdx4irjpv" path="res://resources/img/Theme/HUD.tres" id="1_mf6yx"]
+[ext_resource type="Texture2D" uid="uid://p87wnv38su55" path="res://resources/img/UI/HungryBar/Process.png" id="2_aj5y3"]
+[ext_resource type="Script" path="res://scene/UI/HungryBar/HungryBarManager.cs" id="2_bfxw0"]
+
+[node name="HungryBar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_mf6yx")
+script = ExtResource("2_bfxw0")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -190.0
+offset_top = -190.0
+theme_type_variation = &"HungryBarMarginContainer"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("1_bv378")
+texture_progress = ExtResource("2_aj5y3")
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_type_variation = &"HungryBarLabel"
+text = "50%"

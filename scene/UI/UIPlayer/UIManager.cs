@@ -8,6 +8,7 @@ public partial class UIManager : CanvasLayer
     public PauseMenu pauseMenu;
 	public ColorRect background;
     public ToolsPanel hud;
+	public DayAndNightPanel dayAndNightPanel;
     public bool inventoryVisib = false;
     public bool pauseVisib = false;
 
@@ -18,6 +19,7 @@ public partial class UIManager : CanvasLayer
         pauseMenu = GetNode<PauseMenu>("MarginContainer/PauseMenu");
 		background = GetNode<ColorRect>("Beckground");
         hud = GetNode<ToolsPanel>("MarginContainer/ToolsPanel");
+		dayAndNightPanel = GetNode<DayAndNightPanel>("MarginContainer/DayAndNightPanel");
     }
 
     public void InventoryVisibility()
@@ -45,6 +47,7 @@ public partial class UIManager : CanvasLayer
 			pauseMenu.Hide();
 			background.Hide();
 			settings.Hide();
+			dayAndNightPanel.Show();
 			hud.Show();
 			Engine.TimeScale = 1;
 		}
@@ -52,6 +55,7 @@ public partial class UIManager : CanvasLayer
 		{
 			pauseMenu.Show();
 			background.Show();
+			dayAndNightPanel.Hide();
 			hud.Hide();
 			Engine.TimeScale = 0;
 		}

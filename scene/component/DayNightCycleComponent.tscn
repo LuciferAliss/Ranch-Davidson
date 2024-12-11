@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1cm6cmcjyrcp"]
+
+[ext_resource type="Script" path="res://scene/component/DayNightCycleComponent.cs" id="1_3orsv"]
+
+[node name="DayNightCycleComponent" type="CanvasModulate"]
+script = ExtResource("1_3orsv")

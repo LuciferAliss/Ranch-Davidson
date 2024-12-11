@@ -12,7 +12,7 @@ public partial class DayAndNightPanel : Control
 		DayLabel = GetNode<Label>("DayPanel/MarginContainer/DayLabel");
 
 		DayAndNightCycleManager.Instance.TimeTick += OnTimeTick;
-		DayAndNightCycleManager.Instance.GameSpeed = 2f;
+		DayAndNightCycleManager.Instance.GameSpeed = 1f;
 	}
 
 	public override void _Process(double delta)
@@ -24,4 +24,12 @@ public partial class DayAndNightPanel : Control
 		DayLabel.Text = $"Day:{day}";
 		TimeLabel.Text = TimeManager.FormatTimer(hour * 60 + minute);
 	}
+
+    public override void _ExitTree()
+    {
+		DayAndNightCycleManager.Instance.TimeTick -= OnTimeTick;
+		DayAndNightCycleManager.Instance.GameSpeed = 0f;
+        TimeLabel = null;
+		DayLabel= null;
+    }
 }

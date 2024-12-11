@@ -7,11 +7,11 @@ partial class DayAndNightCycleManager : Node
     const int MinutesPerHour = 60;
     const float GameMinuteDuration = (float)(2 * Math.PI) / MinutesPerDay;
 
-    public float GameSpeed = 2f;
+    public float GameSpeed = 1f;
 
-    int InitialDay = 1;
-    int InitialHour = 12;
-    int InitialMinutes = 30;
+    public int InitialDay = 1;
+    public int InitialHour = 13;
+    public int InitialMinute = 30;
 
     float Time = 0;
     int CurrentMinute = -1;
@@ -43,18 +43,18 @@ partial class DayAndNightCycleManager : Node
             EmitSignal(nameof(GameTime), Time);
             
             RecalculateTime();
-            GD.Print("fgew");
         }
     }
 
     private void CheckGameStart(bool value)
     {
+        RecalculateTime();
         gameStart = value;
     } 
 
-    private void SetInitialTime()
+    public void SetInitialTime()
     {
-        int initialTotalMinute = InitialDay * MinutesPerDay + (InitialHour * MinutesPerHour) + InitialMinutes;
+        int initialTotalMinute = InitialDay * MinutesPerDay + (InitialHour * MinutesPerHour) + InitialMinute;
         Time = initialTotalMinute * GameMinuteDuration;
     }
 
