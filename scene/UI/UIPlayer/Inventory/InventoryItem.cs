@@ -9,5 +9,7 @@ public partial class InventoryItem : Resource
     [Export]
     public int maxCount;
     [Export]
+    public bool used;
+    [Export]
     public Texture2D texture { get; private set; } 
 }

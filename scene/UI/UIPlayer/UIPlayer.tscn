@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c7xp77urqn5a3" path="res://scene/UI/MainMenu/settings.tscn" id="4_5o3al"]
 [ext_resource type="PackedScene" uid="uid://83q5ax3e4lsm" path="res://scene/UI/UIPlayer/Inventory/Inventory.tscn" id="5_4d011"]
 [ext_resource type="PackedScene" uid="uid://cx17jpvdseknl" path="res://scene/UI/UIPlayer/DayAndNightPanel/DayAndNightPanel.tscn" id="7_eyjsd"]
-[ext_resource type="PackedScene" uid="uid://b1ye22kbdr5fo" path="res://scene/UI/HungryBar/HungryBar.tscn" id="8_86qcq"]
+[ext_resource type="PackedScene" uid="uid://b1ye22kbdr5fo" path="res://scene/UI/UIPlayer/HungryBar/HungryBar.tscn" id="8_86qcq"]
 
 [node name="UIPlayer" type="CanvasLayer"]
 follow_viewport_scale = 915.285

@@ -1,16 +1,23 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class Level : Node2D
 {
 	DayNightCycleComponent dayNightCycleComponent;
-	public override void _Ready()
+	Player player;
+
+	public async override void _Ready()
 	{
+		Effect.Instance.PlayEffect("VignetteEffect_Close");
 		GameStart.Instance.EmitSignal(nameof(GameStart.SignalGameStart), true);
+
+		player = GetNode<Player>("Player");
+		await Task.Delay(1500);
+		player.ExitInMainMenu = false;
 		dayNightCycleComponent = GetNode<DayNightCycleComponent>("DayNightCycleComponent");
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 	}

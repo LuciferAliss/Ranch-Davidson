@@ -11,6 +11,7 @@ public partial class MainMenu : Control
     {
         using (var context = new GameContext())
 		{
+            Effect.Instance.PlayEffect("VignetteEffect_Close");
 			User user = context.Users.FirstOrDefault(u => u.login == "LuciferAliss");
 			UserData.Instance.SetUser(user);
 		}

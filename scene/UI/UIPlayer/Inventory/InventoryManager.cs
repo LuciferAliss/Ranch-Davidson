@@ -6,7 +6,7 @@ using Godot;
 public partial class InventoryManager : PanelContainer
 {
     [Signal]
-    public delegate void UseItemEventHandler(InventorySlot slot);
+    public delegate void UseItemEventHandler(InventoryItem slot);
     private Inventory inventory = GD.Load<Inventory>("res://scene//obj//Item//Inventory.tres");
     private List<Slot> slots = new();
 
@@ -84,9 +84,9 @@ public partial class InventoryManager : PanelContainer
             {
                 var findIndex = FindClickedItemIndex(mouseEvent.Position);
 
-                if (findIndex >= 0 && inventory.slots[findIndex] != null)
+                if (findIndex >= 0 && inventory.slots[findIndex].item != null && inventory.slots[findIndex].item.used == true)
                 {
-                    EmitSignal(nameof(UseItem), inventory.slots[findIndex]);
+                    EmitSignal(nameof(UseItem), inventory.slots[findIndex].item);
                     ClearItem(findIndex);
                 }
             }

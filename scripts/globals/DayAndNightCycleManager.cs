@@ -15,6 +15,7 @@ partial class DayAndNightCycleManager : Node
 
     float Time = 0;
     int CurrentMinute = -1;
+    int CurrentHour = -1;
     int CurrentDay = 0;
 
     bool gameStart = false;
@@ -25,6 +26,9 @@ partial class DayAndNightCycleManager : Node
     public delegate void TimeTickEventHandler(int day, int hour, int minute);
     [Signal]
     public delegate void TimeTickDayEventHandler(int day);
+    [Signal]
+    public delegate void TimeTickHourEventHandler();
+
 
     public static DayAndNightCycleManager Instance { get; private set; }
 
@@ -76,6 +80,15 @@ partial class DayAndNightCycleManager : Node
         {
             CurrentDay = day;
             EmitSignal(nameof(TimeTickDay), day);
+        }
+
+        if (CurrentHour != hour)
+        {
+            if (CurrentHour != -1)
+            {
+                EmitSignal(nameof(TimeTickHour));
+            }
+            CurrentHour = hour;
         }
     }
 }

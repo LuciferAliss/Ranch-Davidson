@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Xml.Schema;
 
 public partial class PauseMenu : PanelContainer
 {
@@ -34,7 +32,8 @@ public partial class PauseMenu : PanelContainer
 
     private void ExitInMainMenu()
     {
-        player.uIManager.PauseVisibility();  
-        ManagerScene.ChangeScene(player.GetParent().GetTree(), "res://scene//UI//MainMenu//MainMenu.tscn");
+        player.uIManager.PauseVisibility();
+        player.ExitInMainMenu = true;
+        ManagerScene.ChangeScene(player.GetParent().GetTree(), "res://scene//UI//MainMenu//MainMenu.tscn", "VignetteEffect_Open");
     }
 }

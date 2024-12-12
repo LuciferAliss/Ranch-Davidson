@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Net.Http.Headers;
 
 public partial class Menu : PanelContainer
 {
@@ -28,7 +26,7 @@ public partial class Menu : PanelContainer
 
 	private void NewGame()
 	{
-		ManagerScene.ChangeScene(mainMenu.GetTree(), "res://scene//level//level.tscn");
+		ManagerScene.ChangeScene(mainMenu.GetTree(), "res://scene//level//level.tscn", "VignetteEffect_Open");
 	}
 
 	private void ExitFromGame()

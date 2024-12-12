@@ -23,6 +23,7 @@ GlobalAudio="*res://scene/global/GlobalAudio.tscn"
 UserData="*res://scripts/globals/UserData.cs"
 GameStart="*res://scripts/globals/GameStart.cs"
 DayAndNightCycleManager="*res://scripts/globals/DayAndNightCycleManager.cs"
+Effect="*res://scene/UI/Effect/Effect.tscn"
 
 [display]
 

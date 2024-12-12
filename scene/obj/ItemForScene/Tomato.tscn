@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://beixp1ub0lewc"]
+
+[ext_resource type="PackedScene" uid="uid://b5hs6adradr74" path="res://scene/component/CollectableComponent.tscn" id="1_p2jjs"]
+[ext_resource type="Resource" uid="uid://by63dsps0bhnv" path="res://scene/obj/Item/TomatoItem.tres" id="2_yp0yp"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tvkrf"]
+load_path = "res://.godot/imported/item.png-0588bc5b46cf1347aef6e75d75d65928.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjugi"]
+atlas = SubResource("CompressedTexture2D_tvkrf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_suvbb"]
+radius = 8.0
+
+[node name="Tomato" type="Sprite2D"]
+texture = SubResource("AtlasTexture_bjugi")
+
+[node name="CollectableComponent" parent="." instance=ExtResource("1_p2jjs")]
+item = ExtResource("2_yp0yp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectableComponent"]
+scale = Vector2(0.38, 0.38)
+shape = SubResource("CircleShape2D_suvbb")
+debug_color = Color(0, 0.640735, 0.345352, 0.42)

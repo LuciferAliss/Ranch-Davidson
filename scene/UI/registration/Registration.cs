@@ -154,7 +154,7 @@ public partial class Registration : CanvasLayer
 
 			await Task.Delay(5000);
 
-			ManagerScene.ChangeScene(GetTree(), "res://scene//UI//MainMenu//MainMenu.tscn");
+			ChangeSceneToAuthorization();
 		}
 	}
 
@@ -241,6 +241,6 @@ public partial class Registration : CanvasLayer
 
 	private void ChangeSceneToAuthorization()
 	{
-		ManagerScene.ChangeScene(GetTree(), "res://scene//UI//authorization//authorization.tscn");	
+		ManagerScene.ChangeScene(GetTree(), "res://scene//UI//authorization//authorization.tscn", "");	
 	}
 }

@@ -138,7 +138,7 @@ public partial class Authorization : CanvasLayer
 
 				await Task.Delay(5000);
 
-				ManagerScene.ChangeScene(GetTree(), "res://scene//level//level.tscn");
+				ManagerScene.ChangeScene(GetTree(), "res://scene//level//level.tscn", "VignetteEffectOpen");
 			}
 			else
 			{
@@ -261,6 +261,6 @@ public partial class Authorization : CanvasLayer
 
 	private void ChangeSceneToRegistration()
 	{
-		ManagerScene.ChangeScene(GetTree(), "res://scene//UI//registration//registration.tscn");
+		ManagerScene.ChangeScene(GetTree(), "res://scene//UI//registration//registration.tscn", "");
 	}
 }

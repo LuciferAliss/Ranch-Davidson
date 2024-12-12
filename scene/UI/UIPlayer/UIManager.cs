@@ -9,8 +9,9 @@ public partial class UIManager : CanvasLayer
 	public ColorRect background;
     public ToolsPanel hud;
 	public DayAndNightPanel dayAndNightPanel;
-    public bool inventoryVisib = false;
-    public bool pauseVisib = false;
+	public HungryBar hungryBar;
+    public bool inventoryVisible = false;
+    public bool pauseVisible = false;
 
     public override void _Ready()
     {
@@ -20,11 +21,12 @@ public partial class UIManager : CanvasLayer
 		background = GetNode<ColorRect>("Beckground");
         hud = GetNode<ToolsPanel>("MarginContainer/ToolsPanel");
 		dayAndNightPanel = GetNode<DayAndNightPanel>("MarginContainer/DayAndNightPanel");
+		hungryBar = GetNode<HungryBar>("MarginContainer/HungryBar");
     }
 
     public void InventoryVisibility()
     {
-        if (inventoryVisib)
+        if (inventoryVisible)
 		{
 			inventory.Hide();
 			background.Hide();
@@ -37,16 +39,17 @@ public partial class UIManager : CanvasLayer
 			Engine.TimeScale = 0;
 		}
 
-		inventoryVisib = !inventoryVisib;
+		inventoryVisible = !inventoryVisible;
     }
 
     public void PauseVisibility()
     {
-        if (pauseVisib)
+        if (pauseVisible)
 		{
 			pauseMenu.Hide();
 			background.Hide();
 			settings.Hide();
+			hungryBar.Show();
 			dayAndNightPanel.Show();
 			hud.Show();
 			Engine.TimeScale = 1;
@@ -55,11 +58,12 @@ public partial class UIManager : CanvasLayer
 		{
 			pauseMenu.Show();
 			background.Show();
+			hungryBar.Hide();
 			dayAndNightPanel.Hide();
 			hud.Hide();
 			Engine.TimeScale = 0;
 		}
 
-		pauseVisib = !pauseVisib;
+		pauseVisible = !pauseVisible;
     }
 }

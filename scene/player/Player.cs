@@ -4,11 +4,13 @@ using Godot;
 public partial class Player : CharacterBody2D
 {
 	[Export]
-	float maxSpeed = 100;
+	private float maxSpeed = 100;
+	public int Satiety = 100;
 	private bool Pause = false;
 	private bool useAction = false;
 	private bool Inventory = false;
 	public string currentTools { get; private set; } = ItemsName.ToolNames[0].ToString();
+	public bool ExitInMainMenu = true;
 	public AnimatedSprite2D animatedSp { get; private set; }
 	public AnimationPlayer animationPl { get; private set; }
 	private StateAnimationPlayer stateAnimation;
@@ -16,7 +18,6 @@ public partial class Player : CharacterBody2D
 	public UIManager uIManager;
 	public HitComponent hitComponent { get; private set; }
 	public CollisionShape2D HitBox { get; private set; }
-
 
 	public override void _Ready()
 	{
@@ -32,24 +33,29 @@ public partial class Player : CharacterBody2D
 		hitComponent.SetHitComponent(this);
 
 		animationPl.AnimationFinished += FinishedAnimation;
+		uIManager.inventory.UseItem += UsedItem;
 		
+		uIManager.hungryBar.SetPlayer(this);
 		uIManager.hud.SetPlayer(this);
 		uIManager.pauseMenu.SetPlayer(this);
 	}
 
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("pause") && !uIManager.inventoryVisib)
+		if (!ExitInMainMenu)
 		{
-			uIManager.PauseVisibility();
-		}
-		else if (Input.IsActionJustPressed("inventory") && !uIManager.pauseVisib)
-		{
-			uIManager.InventoryVisibility();
-		}
-		else if (!useAction)
-		{
-			Move();
+			if (Input.IsActionJustPressed("pause") && !uIManager.inventoryVisible)
+			{
+				uIManager.PauseVisibility();
+			}
+			else if (Input.IsActionJustPressed("inventory") && !uIManager.pauseVisible)
+			{
+				uIManager.InventoryVisibility();
+			}
+			else if (!useAction)
+			{
+				Move();
+			}
 		}
 	}
 
@@ -166,5 +172,16 @@ public partial class Player : CharacterBody2D
 	public void ChangeTools(string tools)
 	{
 		currentTools = tools;
+	}
+
+	public void UsedItem(InventoryItem item)
+	{
+		switch(item.name)
+		{
+			case "Tomato":
+				Satiety = Mathf.Min(100, Satiety + 10);
+				uIManager.hungryBar.UpDateHungryBar();
+				break;
+		}
 	}
 }
