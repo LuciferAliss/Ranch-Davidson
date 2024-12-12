@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=33 format=3 uid="uid://dp800qc7208kt"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=34 format=3 uid="uid://dp800qc7208kt"]
 
 [ext_resource type="Script" path="res://scene/UI/UIPlayer/Inventory/InventorySlot.cs" id="2_7dgc8"]
 [ext_resource type="Script" path="res://scene/UI/UIPlayer/Inventory/Inventory.cs" id="2_rub52"]
+[ext_resource type="Resource" uid="uid://b4olq3r8kama0" path="res://scene/obj/Item/LogItem.tres" id="3_6e433"]
 
 [sub_resource type="Resource" id="Resource_cb5uc"]
 script = ExtResource("2_7dgc8")
@@ -13,7 +14,8 @@ count = 0
 
 [sub_resource type="Resource" id="Resource_41vjp"]
 script = ExtResource("2_7dgc8")
-count = 0
+item = ExtResource("3_6e433")
+count = 1
 
 [sub_resource type="Resource" id="Resource_pfmwa"]
 script = ExtResource("2_7dgc8")

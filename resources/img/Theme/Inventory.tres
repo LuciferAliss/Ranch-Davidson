@@ -15,50 +15,60 @@ texture_margin_top = 28.0
 texture_margin_right = 28.0
 texture_margin_bottom = 28.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wk5pk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6xn6"]
 bg_color = Color(0, 0, 0, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxp58"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yn41h"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0.631373, 0.431373, 0.0627451, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4e6g"]
-bg_color = Color(1, 1, 1, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkwbc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4r14a"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ebkn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0.631373, 0.431373, 0.0627451, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uum5m"]
 atlas = ExtResource("2_xbmyt")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 130, 140)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5xvmy"]
 texture = SubResource("AtlasTexture_uum5m")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 25.0
+region_rect = Rect2(0, 0, 130, 140)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_noh37"]
 atlas = ExtResource("2_xbmyt")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(144, 10, 130, 130)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vjccq"]
 texture = SubResource("AtlasTexture_noh37")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+region_rect = Rect2(0, 0, 130, 130)
 
 [resource]
 InventoryPanel/base_type = &"Panel"
 InventoryPanel/styles/panel = SubResource("StyleBoxTexture_blhve")
 InventorySelect/base_type = &"Button"
-InventorySelect/styles/focus = SubResource("StyleBoxFlat_wk5pk")
-InventorySelect/styles/hover = SubResource("StyleBoxFlat_kxp58")
-InventorySelect/styles/normal = SubResource("StyleBoxFlat_q4e6g")
-InventorySelect/styles/pressed = SubResource("StyleBoxFlat_4r14a")
+InventorySelect/styles/focus = SubResource("StyleBoxFlat_v6xn6")
+InventorySelect/styles/hover = SubResource("StyleBoxFlat_yn41h")
+InventorySelect/styles/normal = SubResource("StyleBoxFlat_gkwbc")
+InventorySelect/styles/pressed = SubResource("StyleBoxFlat_4ebkn")
 Label/fonts/font = ExtResource("2_an178")
 SlotEmpty/base_type = &"PanelContainer"
 SlotEmpty/styles/panel = SubResource("StyleBoxTexture_5xvmy")

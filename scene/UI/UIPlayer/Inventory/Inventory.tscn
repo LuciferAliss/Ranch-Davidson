@@ -5,9 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://choei8mf5shxa" path="res://scene/UI/UIPlayer/Inventory/Slot.tscn" id="2_iawhl"]
 
 [node name="Inventory" type="PanelContainer"]
-custom_minimum_size = Vector2(800, 227)
-offset_right = 326.0
-offset_bottom = 283.0
+offset_right = 716.0
+offset_bottom = 662.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme = ExtResource("1_8y03b")
 theme_type_variation = &"InventoryPanel"
 script = ExtResource("2_27148")
@@ -21,7 +22,6 @@ theme_override_constants/margin_bottom = 20
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 columns = 6
 
 [node name="Slot1" parent="MarginContainer/GridContainer" instance=ExtResource("2_iawhl")]

@@ -30,12 +30,14 @@ public partial class UIManager : CanvasLayer
 		{
 			inventory.Hide();
 			background.Hide();
+			dayAndNightPanel.Hide();
 			Engine.TimeScale = 1;
 		}
 		else
 		{
 			inventory.Show();
 			background.Show();
+			dayAndNightPanel.Show();
 			Engine.TimeScale = 0;
 		}
 

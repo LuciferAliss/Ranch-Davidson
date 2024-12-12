@@ -1,22 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://choei8mf5shxa"]
+[gd_scene load_steps=5 format=3 uid="uid://choei8mf5shxa"]
 
 [ext_resource type="Theme" uid="uid://mk2t1grb0gli" path="res://resources/img/Theme/Inventory.tres" id="1_ims5c"]
 [ext_resource type="Script" path="res://scene/UI/UIPlayer/Inventory/Slot.cs" id="2_7b63l"]
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/Inventory/IconSlot.cs" id="3_eii2v"]
+[ext_resource type="Texture2D" uid="uid://dtktltv8hcn4k" path="res://resources/img/UI/HUD/Brignes.png" id="4_y38qe"]
 
 [node name="Slot" type="PanelContainer"]
-custom_minimum_size = Vector2(120, 120)
-offset_right = 120.0
+custom_minimum_size = Vector2(110, 120)
+offset_right = 110.0
 offset_bottom = 120.0
+mouse_filter = 1
 theme = ExtResource("1_ims5c")
 theme_type_variation = &"SlotEmpty"
 script = ExtResource("2_7b63l")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_right = -33
-theme_override_constants/margin_bottom = -32
 
 [node name="CountItem" type="Label" parent="MarginContainer"]
 visible = false
@@ -27,19 +26,17 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "99"
 
-[node name="icon" type="TextureRect" parent="."]
+[node name="Border" type="TextureRect" parent="MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+texture = ExtResource("4_y38qe")
+
+[node name="icon" type="TextureRect" parent="MarginContainer"]
+z_index = 1
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="MarginContainer2" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_left = 22
-theme_override_constants/margin_top = 19
-theme_override_constants/margin_right = 23
-theme_override_constants/margin_bottom = 27
-
-[node name="Button" type="Button" parent="MarginContainer2"]
-layout_mode = 2
-theme_type_variation = &"InventorySelect"
+script = ExtResource("3_eii2v")

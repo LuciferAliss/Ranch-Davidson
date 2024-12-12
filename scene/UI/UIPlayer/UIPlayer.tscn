@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtdx6bjqqihp8"]
+[gd_scene load_steps=8 format=3 uid="uid://dtdx6bjqqihp8"]
 
-[ext_resource type="Theme" uid="uid://d1d2qdx4irjpv" path="res://resources/img/Theme/HUD.tres" id="1_ipshc"]
 [ext_resource type="Script" path="res://scene/UI/UIPlayer/UIManager.cs" id="1_xque6"]
 [ext_resource type="PackedScene" uid="uid://dk0ewxfhsj3b0" path="res://scene/UI/UIPlayer/ToolsPanel/ToolsPanel.tscn" id="2_gsqqg"]
 [ext_resource type="PackedScene" uid="uid://cldt8fj7qdwas" path="res://scene/UI/UIPlayer/PauseMenu/PauseMenu.tscn" id="2_mb3sm"]
@@ -28,7 +27,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_ipshc")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="PauseMenu" parent="MarginContainer" instance=ExtResource("2_mb3sm")]
 visible = false
