@@ -127,26 +127,24 @@ public partial class Player : CharacterBody2D
 		{
 			return;
 		}
-
-		else if (currentTools == "WateringCan")
+		
+		useAction = true;
+		if (currentTools == "WateringCan")
 		{
 			ChangeStateAction(new StateWatering(this));
 			stateAnimation.Watering();
-			useAction = true;
 			stateAction.Action();
 		}
 		else if (currentTools == "Axe")
 		{
 			ChangeStateAction(new StateCutting(this));
 			stateAnimation.Cutting();
-			useAction = true;
 			stateAction.Action();
 		}
 		else if (currentTools == "Hoe")
 		{
 			ChangeStateAction(new StateTilling(this));
 			stateAnimation.Tilling();
-			useAction = true;
 			stateAction.Action();
 		}
 

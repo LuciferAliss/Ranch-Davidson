@@ -12,7 +12,7 @@ public partial class DayAndNightPanel : Control
 		DayLabel = GetNode<Label>("DayPanel/MarginContainer/DayLabel");
 
 		DayAndNightCycleManager.Instance.TimeTick += OnTimeTick;
-		DayAndNightCycleManager.Instance.GameSpeed = 10f;
+		DayAndNightCycleManager.Instance.GameSpeed = 1000f;
 	}
 
 	public override void _Process(double delta)

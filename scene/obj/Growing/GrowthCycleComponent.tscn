@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj5fxhffuf8os"]
+
+[ext_resource type="Script" path="res://scene/obj/Growing/GrowthCycleComponent.cs" id="1_e0xqe"]
+
+[node name="GrowthCycleComponent" type="Node"]
+script = ExtResource("1_e0xqe")
+DaysUntilHarvest = 5

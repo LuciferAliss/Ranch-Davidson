@@ -12,3 +12,13 @@ public static class ItemsName
         [3] = "Hoe"
     };
 }
+
+public enum GrowthStates 
+{
+    Seed,
+    Germination,
+    Vegetative,
+    Reproduction,
+    Maturity,
+    Harvesting
+}

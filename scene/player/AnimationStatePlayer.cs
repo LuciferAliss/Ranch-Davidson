@@ -23,7 +23,6 @@ class DownState : StateAnimationPlayer
     {
         player.animationPl.Play("WalkDown");
         player.animatedSp.FlipH = false;
-        player.HitBox.Position = new Vector2(0, 0);
 	}
 
     public override void Idle()
@@ -33,11 +32,13 @@ class DownState : StateAnimationPlayer
 
     public override void Watering()
     {
+        player.HitBox.Position = new Vector2(-6, 3);
         player.animationPl.Play("WateringDown");
     }
 
     public override void Cutting()
     {
+        player.HitBox.Position = new Vector2(0, 0);
         player.animationPl.Play("CuttingDown");
     }
 
@@ -54,7 +55,6 @@ class UpState : StateAnimationPlayer
     {
         player.animationPl.Play("WalkUp");
         player.animatedSp.FlipH = false;
-        player.HitBox.Position = new Vector2(0, -19);
 	}
 
     public override void Idle()
@@ -64,11 +64,13 @@ class UpState : StateAnimationPlayer
 
     public override void Watering()
     {
+        player.HitBox.Position = new Vector2(6, -3);
         player.animationPl.Play("WateringUp");
     }
 
     public override void Cutting()
     {
+        player.HitBox.Position = new Vector2(0, -19);
         player.animationPl.Play("CuttingUp");
     }
 
@@ -85,7 +87,6 @@ class RightState : StateAnimationPlayer
     {
         player.animationPl.Play("WalkSide");
         player.animatedSp.FlipH = false;
-        player.HitBox.Position = new Vector2(11, -14);
 	}
 
     public override void Idle()
@@ -96,11 +97,13 @@ class RightState : StateAnimationPlayer
 
     public override void Watering()
     {
+        player.HitBox.Position = new Vector2(16, 0);
         player.animationPl.Play("WateringSide");
     }
 
     public override void Cutting()
     {
+        player.HitBox.Position = new Vector2(11, -14);
         player.animationPl.Play("CuttingSide");
     }
 
@@ -117,7 +120,6 @@ class LeftState : StateAnimationPlayer
     {
         player.animationPl.Play("WalkSide");
         player.animatedSp.FlipH = true ;
-        player.HitBox.Position = new Vector2(-11, -14);
 	}
 
     public override void Idle()
@@ -128,11 +130,13 @@ class LeftState : StateAnimationPlayer
 
     public override void Watering()
     {
+        player.HitBox.Position = new Vector2(-16, 0);
         player.animationPl.Play("WateringSide");
     }
 
     public override void Cutting()
     {
+        player.HitBox.Position = new Vector2(-11, -14);
         player.animationPl.Play("CuttingSide");
     }
 

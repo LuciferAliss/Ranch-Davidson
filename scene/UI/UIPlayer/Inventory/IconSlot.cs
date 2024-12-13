@@ -8,7 +8,12 @@ public partial class IconSlot : TextureRect
     {
         if (IsDrag)
         {
+            ZIndex = 2;
             GlobalPosition = GetGlobalMousePosition();
+        }
+        else
+        {
+            ZIndex = 1;
         }
     }
 }

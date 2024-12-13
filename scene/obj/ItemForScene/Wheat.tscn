@@ -12,6 +12,7 @@ region = Rect2(16, 0, 16, 16)
 radius = 8.0
 
 [node name="Wheat" type="Sprite2D"]
+y_sort_enabled = true
 texture = SubResource("AtlasTexture_iacaq")
 
 [node name="CollectableComponent" parent="." instance=ExtResource("2_4geo8")]

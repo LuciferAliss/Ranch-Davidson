@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://fbp488h4oora"]
+[gd_scene load_steps=11 format=4 uid="uid://fbp488h4oora"]
 
 [ext_resource type="TileSet" uid="uid://clcmsccjr8hw3" path="res://resources/img/tileset/GameTileSetl.tres" id="1_1pabs"]
 [ext_resource type="Script" path="res://scene/level/Level.cs" id="1_f2s7v"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ve1tt812qmni" path="res://scene/player/player.tscn" id="2_ln8sc"]
 [ext_resource type="PackedScene" uid="uid://bbx7ieo57kn5n" path="res://scene/obj/ItemForScene/Wheat.tscn" id="4_la47b"]
 [ext_resource type="PackedScene" uid="uid://beixp1ub0lewc" path="res://scene/obj/ItemForScene/Tomato.tscn" id="7_3o7at"]
+[ext_resource type="PackedScene" uid="uid://2v4miawx0t4b" path="res://scene/obj/Growing/WheatGrowing.tscn" id="8_jdbb2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5n5v8"]
 texture = ExtResource("2_jnnnx")
@@ -62,3 +63,6 @@ position = Vector2(296, 296)
 
 [node name="Tomato" parent="." instance=ExtResource("7_3o7at")]
 position = Vector2(376, 296)
+
+[node name="WheatGrowing" parent="." instance=ExtResource("8_jdbb2")]
+position = Vector2(280, 216)
