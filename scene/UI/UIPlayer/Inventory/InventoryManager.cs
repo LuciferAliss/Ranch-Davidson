@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 using Godot;
 
 public partial class InventoryManager : PanelContainer
 {
     [Signal]
     public delegate void UseItemEventHandler(InventoryItem slot);
+    [Signal]
+    public delegate void DestroyItemEventHandler();
     private Inventory inventory = GD.Load<Inventory>("res://scene//obj//Item//Inventory.tres");
     private List<Slot> slots = new();
     private int DraggedSlotIndex = -1;
@@ -23,13 +24,14 @@ public partial class InventoryManager : PanelContainer
     {
         if (Input.IsActionJustPressed("inventory"))
         {
-            CanselDrag();
+            CancelDrag();
         }
     }
 
     public void ConnectCollectable(CollectableComponent collectable)
     {
         collectable.TakeItem += TakeItem;
+        DestroyItem += collectable.DestroyItem;
     }
 
     private void UpdateInventory()
@@ -42,24 +44,27 @@ public partial class InventoryManager : PanelContainer
 
     private void TakeItem(InventoryItem item)
     {
-        foreach (var slot in inventory.slots)
+        var emptySlot = inventory.slots.FirstOrDefault(slot => slot.item == null);
+
+        if (emptySlot == null)
         {
-            if (slot.item == item && slot.count < slot.item.maxCount)
-            {
-                slot.count += 1;
-                UpdateInventory();
-                return;
-            }
+            return;
         }
 
-        for (int i = 0; i < inventory.slots.Length; i++)
+        var existingSlot = inventory.slots.FirstOrDefault(slot => slot.item == item && slot.count < slot.item.maxCount);
+
+        if (existingSlot != null)
         {
-            if (inventory.slots[i].item == null)
-            {
-                PutInInventory(i, item);
-                return;
-            }
+            existingSlot.count++;
         }
+        else
+        {
+            emptySlot.item = item;
+            emptySlot.count = 1;
+        }
+
+        UpdateInventory();
+        EmitSignal(nameof(DestroyItem));
     }
 
     private void PutInInventory(int position, InventoryItem newItem)
@@ -91,9 +96,19 @@ public partial class InventoryManager : PanelContainer
         return -1;
     }
 
-    private void ReplayceItem(int SlotIndex)
+    private void ReplaceSlot(int slotIndex)
     {
-
+        if (slotIndex != DraggedSlotIndex)
+        {
+            var firstSlot = inventory.slots[slotIndex];
+            var secondSlot = inventory.slots[DraggedSlotIndex];
+            
+            inventory.slots[slotIndex] = secondSlot;
+            inventory.slots[DraggedSlotIndex] = firstSlot;
+            
+            slots[slotIndex].UpDate(inventory.slots[slotIndex]);
+            slots[DraggedSlotIndex].UpDate(inventory.slots[DraggedSlotIndex]);
+        }
     }
 
     private bool IsDrag()
@@ -101,7 +116,7 @@ public partial class InventoryManager : PanelContainer
         return DraggedSlotIndex > -1;
     }
 
-    private void CanselDrag()
+    private void CancelDrag()
     {
         if (DraggedSlotIndex == -1) return;
         
@@ -110,7 +125,7 @@ public partial class InventoryManager : PanelContainer
     }
 
     public override void _Input(InputEvent @event)
-    {
+    {   
         if (@event is InputEventMouseButton mouseEvent)
         {
             var findIndex = FindClickedItemIndex(mouseEvent.Position);
@@ -135,14 +150,15 @@ public partial class InventoryManager : PanelContainer
             else if (Visible && IsDrag() && Input.IsActionJustPressed("use_item_inventory"))
             {
                 GD.Print("3");
-                CanselDrag();
+                CancelDrag();
             }
             else if (Visible && IsDrag() && mouseEvent.ButtonIndex == MouseButton.Left &&  !mouseEvent.IsPressed())
             {
                 if (findIndex > -1)
                 {
-
+                    ReplaceSlot(findIndex);
                 }
+                CancelDrag();
             }
         }
         if (@event is InputEventMouseMotion mouseMotion)

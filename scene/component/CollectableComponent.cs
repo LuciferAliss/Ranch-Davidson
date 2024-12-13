@@ -18,9 +18,16 @@ public partial class CollectableComponent : Area2D
 
 	private void SearchPlayer(Node2D body)
 	{
-		GetParent().QueueFree();
 		var player = body as Player;
 		player.uIManager.inventory.ConnectCollectable(this);
 		EmitSignal(nameof(TakeItem), item);
+	}
+
+	public void DestroyItem()
+	{
+		if (IsInstanceValid(this))
+		{
+			GetParent()?.QueueFree();
+		}
 	}
 }
