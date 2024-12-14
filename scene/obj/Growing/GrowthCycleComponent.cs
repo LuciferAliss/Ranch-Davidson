@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 public partial class GrowthCycleComponent : Node
 {
-    GrowthStates currentGrowthStates = GrowthStates.Seed; 
+    GrowthStates currentGrowthStates = GrowthStates.Germination; 
     [Export(PropertyHint.Range, "5,365")]
     private int daysUntilHarvest = 7;
     private int startingDay = 0;
@@ -47,8 +47,8 @@ public partial class GrowthCycleComponent : Node
         int stateIndex = growthDaysPassed % numStates + 1;
         currentGrowthStates = (GrowthStates)stateIndex;
 
-        var f = new GrowthStates(); 
-        var name = f[currentGrowthStates];
+        string name = Enum.GetName(typeof(GrowthStates), stateIndex);
+        GD.Print(name);
 
         if (currentGrowthStates == GrowthStates.Maturity)
         {
