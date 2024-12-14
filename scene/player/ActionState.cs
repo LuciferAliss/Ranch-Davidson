@@ -41,3 +41,15 @@ public class StateTilling : StateActionPlayer
         GD.Print("Культивировал");
     }
 }
+
+public class StateNone : StateActionPlayer
+{
+    public StateNone(Player player) : base(player) {}
+
+    public override void Action()
+    {
+        player.HitBox.Position = new Vector2(0, -12);
+        player.HitBox.Scale = new Vector2(2, 2);
+        GD.Print("Руками");
+    }
+}

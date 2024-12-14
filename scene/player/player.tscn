@@ -972,8 +972,9 @@ position_smoothing_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17)
 sprite_frames = SubResource("SpriteFrames_xgeqf")
-animation = &"CuttingDown"
+animation = &"TillingDown"
 autoplay = "IdleDown"
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -990,8 +991,8 @@ libraries = {
 tool = "Axe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
-position = Vector2(6, -3)
-scale = Vector2(0.615, 0.615)
+position = Vector2(0, -12)
+scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_vtt02")
 disabled = true
 debug_color = Color(0.900582, 0.175533, 0.637961, 0.42)

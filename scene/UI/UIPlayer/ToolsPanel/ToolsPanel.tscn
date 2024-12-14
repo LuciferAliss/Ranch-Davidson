@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dk0ewxfhsj3b0"]
+[gd_scene load_steps=29 format=3 uid="uid://dk0ewxfhsj3b0"]
 
 [ext_resource type="Texture2D" uid="uid://6o72sbay6xfd" path="res://resources/img/UI/HUD/BasicUI.png" id="1_6v7tg"]
 [ext_resource type="Script" path="res://scene/UI/UIPlayer/ToolsPanel/ToolsPanel.cs" id="2_fihg8"]
@@ -100,12 +100,22 @@ ToolButton/styles/hover = SubResource("StyleBoxTexture_gc0a2")
 ToolButton/styles/normal = SubResource("StyleBoxTexture_k7fur")
 ToolButton/styles/pressed = SubResource("StyleBoxTexture_k5aoh")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xfnxq"]
+load_path = "res://.godot/imported/Obj.png-c1b49f16dd49c2922a91274811d91c83.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sro24"]
+atlas = SubResource("CompressedTexture2D_xfnxq")
+region = Rect2(48, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kklk"]
 atlas = ExtResource("2_w1wlq")
 region = Rect2(16, 0, 16, 16)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y0ygm"]
+load_path = "res://.godot/imported/Obj.png-c1b49f16dd49c2922a91274811d91c83.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0uv5y"]
-atlas = ExtResource("2_w1wlq")
+atlas = SubResource("CompressedTexture2D_y0ygm")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x6ypl"]
@@ -126,6 +136,18 @@ script = ExtResource("2_fihg8")
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="None" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 2
+theme_type_variation = &"ToolButton"
+icon = SubResource("AtlasTexture_sro24")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control4" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(14, 0)
 layout_mode = 2
 
 [node name="ToolAxe" type="Button" parent="MarginContainer/HBoxContainer"]
@@ -152,7 +174,7 @@ expand_icon = true
 custom_minimum_size = Vector2(14, 0)
 layout_mode = 2
 
-[node name="ToolWateringCan2" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="ToolHoe" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(104, 104)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
@@ -161,19 +183,6 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Control3" type="Control" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(14, 0)
-layout_mode = 2
-
-[node name="ToolWateringCan3" type="Button" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(104, 104)
-layout_mode = 2
-theme_type_variation = &"ToolButton"
-disabled = true
-icon = SubResource("AtlasTexture_0uv5y")
-icon_alignment = 1
-expand_icon = true
-
-[node name="Control4" type="Control" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(14, 0)
 layout_mode = 2
 

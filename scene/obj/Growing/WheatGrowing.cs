@@ -9,8 +9,10 @@ public partial class WheatGrowing : Node2D
     private GpuParticles2D wateringParticles;
     private GpuParticles2D floweringParticles;
     private GrowthCycleComponent growthCycleComponent;
-    private HurtComponent hurtComponent;
-    private GrowthStates growthState = GrowthStates.Seed;  
+    private HurtComponent hurtComponent1;
+    private HurtComponent hurtComponent2;
+    private CollisionShape2D hurtComponent2CollisionShape;
+    private GrowthStates growthState = GrowthStates.Germination;
 
     public override void _Ready()
     {
@@ -18,18 +20,20 @@ public partial class WheatGrowing : Node2D
         wateringParticles = GetNode<GpuParticles2D>("WateringParticles");
         floweringParticles = GetNode<GpuParticles2D>("FloweringParticles");
         growthCycleComponent = GetNode<GrowthCycleComponent>("GrowthCycleComponent");
-        hurtComponent = GetNode<HurtComponent>("HurtComponent");
+        hurtComponent1 = GetNode<HurtComponent>("HurtComponent");
+        hurtComponent2 = GetNode<HurtComponent>("HurtComponent2");
+        hurtComponent2CollisionShape = GetNode<CollisionShape2D>("HurtComponent2/CollisionShape2D");
 
         floweringParticles.Emitting = false;
         wateringParticles.Emitting = false;
+
+        growthCycleComponent.WheatHarvesting += OnWheatHarvesting;
+        growthCycleComponent.UpdateGrowthState += UpdateGrowthState;
     }
 
     public override void _Process(double delta)
     {
-        growthState = growthCycleComponent.GetCurrentGrowthState();
-        sprite2D.Frame = (int)growthState;
-
-        if (growthState == GrowthStates.Maturity)
+        if (growthState == GrowthStates.Harvesting)
         {
             floweringParticles.Emitting = true;
         }
@@ -37,7 +41,7 @@ public partial class WheatGrowing : Node2D
 
     private async void OnHurt(int damage)
     {
-        if(!growthCycleComponent.isWatered)
+        if(!growthCycleComponent.isWatered && GrowthStates.Harvesting != growthState)
         {
             wateringParticles.Emitting = true;
             await Task.Delay(3000);
@@ -46,17 +50,31 @@ public partial class WheatGrowing : Node2D
         }
     }
 
-    private void OnWheatMaturity()
+    private void OnHurtHoe(int damage)
     {
-        floweringParticles.Emitting = true;
+        if (GrowthStates.Harvesting == growthState)
+        {
+            CallDeferred("AddWheatScene");
+            QueueFree();
+        }
     }
 
-    private void OnWheatHarvesting()
+    private void AddWheatScene()
     {
         var WheatHarvestInstance = WheatScene.Instantiate() as Node2D;
         WheatHarvestInstance.GlobalPosition = GlobalPosition;
         GetParent().AddChild(WheatHarvestInstance);
-        QueueFree();
+    }
+
+    private void OnWheatHarvesting()
+    {
+        hurtComponent2CollisionShape.Disabled = false;
+    }
+
+    private void UpdateGrowthState(int state)
+    {
+        growthState = (GrowthStates)state;
+        sprite2D.Frame = (int)growthState;
     }
 }
 

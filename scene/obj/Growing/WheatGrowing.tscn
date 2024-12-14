@@ -16,9 +16,8 @@ script = ExtResource("1_kjbqr")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
 texture = ExtResource("1_hhlwf")
-hframes = 6
+hframes = 5
 vframes = 2
-frame = 1
 
 [node name="WateringParticles" parent="." instance=ExtResource("2_dp33o")]
 
@@ -34,6 +33,13 @@ tool = "WateringCan"
 position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_sqkgy")
 
-[connection signal="WheatHarvesting" from="GrowthCycleComponent" to="." method="OnWheatHarvesting"]
-[connection signal="WheatMaturity" from="GrowthCycleComponent" to="." method="OnWheatMaturity"]
+[node name="HurtComponent2" parent="." instance=ExtResource("2_p1171")]
+position = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent2"]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_sqkgy")
+disabled = true
+
 [connection signal="Hurt" from="HurtComponent" to="." method="OnHurt"]
+[connection signal="Hurt" from="HurtComponent2" to="." method="OnHurtHoe"]

@@ -27,7 +27,7 @@ partial class DayAndNightCycleManager : Node
     [Signal]
     public delegate void TimeTickDayEventHandler(int day);
     [Signal]
-    public delegate void TimeTickHourEventHandler();
+    public delegate void TimeTickHourEventHandler(int hour);
 
 
     public static DayAndNightCycleManager Instance { get; private set; }
@@ -86,7 +86,7 @@ partial class DayAndNightCycleManager : Node
         {
             if (CurrentHour != -1)
             {
-                EmitSignal(nameof(TimeTickHour));
+                EmitSignal(nameof(TimeTickHour), hour);
             }
             CurrentHour = hour;
         }

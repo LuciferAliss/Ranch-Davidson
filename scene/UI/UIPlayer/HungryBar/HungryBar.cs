@@ -21,7 +21,7 @@ public partial class HungryBar : Control
         UpDateHungryBar();
     }
 
-    private void UpdateSatiety()
+    private void UpdateSatiety(int hour)
     {
         player.Satiety = Mathf.Max(0, player.Satiety - 1);
         UpDateHungryBar();

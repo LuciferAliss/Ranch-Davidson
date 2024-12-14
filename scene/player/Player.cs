@@ -122,14 +122,14 @@ public partial class Player : CharacterBody2D
 
 	private void Action()
 	{
-
+		useAction = true;
 		if (currentTools == "None")
 		{
-			return;
+			ChangeStateAction(new StateNone(this));
+			stateAnimation.Idle();
+			stateAction.Action();
 		}
-		
-		useAction = true;
-		if (currentTools == "WateringCan")
+		else if (currentTools == "WateringCan")
 		{
 			ChangeStateAction(new StateWatering(this));
 			stateAnimation.Watering();

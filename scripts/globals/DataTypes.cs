@@ -15,7 +15,6 @@ public static class ItemsName
 
 public enum GrowthStates 
 {
-    Seed,
     Germination,
     Vegetative,
     Reproduction,
