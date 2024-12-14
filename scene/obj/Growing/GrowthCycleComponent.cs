@@ -7,9 +7,9 @@ public partial class GrowthCycleComponent : Node
     GrowthStates currentGrowthStates = GrowthStates.Seed; 
     [Export(PropertyHint.Range, "5,365")]
     private int daysUntilHarvest = 7;
-    private int startingDay;
-    private int currentDay;
-    public bool isWatered;
+    private int startingDay = 0;
+    private int currentDay = 0;
+    public bool isWatered = false;
 
     [Signal]
     public delegate void WheatMaturityEventHandler();
@@ -23,16 +23,19 @@ public partial class GrowthCycleComponent : Node
 
     private void OnDayPassed(int day)
     {
-        if (isWatered && startingDay == 0)
+        if (isWatered)
         {
-            startingDay = day;
-        }
+            if ( startingDay == 0)
+            {
+                startingDay = day;
+            }
 
-        GrowthStatesFunk(startingDay, day);
-        HarvestState(startingDay, day);
+            GrowthStatesFunk(startingDay, day);
+            HarvestState(startingDay, day);
+        }
     }
 
-    private void GrowthStatesFunk(int StartingDay, int CurrentDay)
+    private void GrowthStatesFunk(int StartingDay, int currentDay)
     {
         if (currentGrowthStates == GrowthStates.Maturity)
         {
@@ -40,9 +43,12 @@ public partial class GrowthCycleComponent : Node
         }
 
         int numStates = 5;
-        int growthDaysPassed = (CurrentDay - StartingDay) % numStates;
+        int growthDaysPassed = (currentDay - StartingDay) % numStates;
         int stateIndex = growthDaysPassed % numStates + 1;
         currentGrowthStates = (GrowthStates)stateIndex;
+
+        var f = new GrowthStates(); 
+        var name = f[currentGrowthStates];
 
         if (currentGrowthStates == GrowthStates.Maturity)
         {
@@ -50,14 +56,14 @@ public partial class GrowthCycleComponent : Node
         }    
     }
 
-    private void HarvestState(int StartingDay, int CurrentDay)
+    private void HarvestState(int StartingDay, int currentDay)
     {
         if(currentGrowthStates == GrowthStates.Harvesting)
         {
             return;
         }
 
-        int daysPassed = (CurrentDay - StartingDay) % daysUntilHarvest;
+        int daysPassed = (currentDay - StartingDay) % daysUntilHarvest;
 
         if(daysPassed == (int)GrowthStates.Harvesting - 1)
         {

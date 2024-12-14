@@ -34,5 +34,6 @@ tool = "WateringCan"
 position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_sqkgy")
 
+[connection signal="WheatHarvesting" from="GrowthCycleComponent" to="." method="OnWheatHarvesting"]
 [connection signal="WheatMaturity" from="GrowthCycleComponent" to="." method="OnWheatMaturity"]
 [connection signal="Hurt" from="HurtComponent" to="." method="OnHurt"]

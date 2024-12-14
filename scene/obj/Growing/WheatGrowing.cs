@@ -50,5 +50,13 @@ public partial class WheatGrowing : Node2D
     {
         floweringParticles.Emitting = true;
     }
+
+    private void OnWheatHarvesting()
+    {
+        var WheatHarvestInstance = WheatScene.Instantiate() as Node2D;
+        WheatHarvestInstance.GlobalPosition = GlobalPosition;
+        GetParent().AddChild(WheatHarvestInstance);
+        QueueFree();
+    }
 }
 
