@@ -9,7 +9,7 @@ angular_velocity_max = 300.0
 orbit_velocity_min = -1.0
 orbit_velocity_max = 1.0
 gravity = Vector3(0, -10, 0)
-color = Color(0, 0.835294, 1, 1)
+color = Color(0.0941176, 0.635294, 0.847059, 1)
 
 [node name="WateringParticles" type="GPUParticles2D"]
 amount = 16

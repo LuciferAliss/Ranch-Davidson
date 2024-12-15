@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dk0ewxfhsj3b0"]
+[gd_scene load_steps=31 format=3 uid="uid://dk0ewxfhsj3b0"]
 
 [ext_resource type="Texture2D" uid="uid://6o72sbay6xfd" path="res://resources/img/UI/HUD/BasicUI.png" id="1_6v7tg"]
 [ext_resource type="Script" path="res://scene/UI/UIPlayer/ToolsPanel/ToolsPanel.cs" id="2_fihg8"]
@@ -125,6 +125,13 @@ load_path = "res://.godot/imported/Obj.png-c1b49f16dd49c2922a91274811d91c83.ctex
 atlas = SubResource("CompressedTexture2D_x6ypl")
 region = Rect2(32, 0, 16, 16)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t3rbg"]
+load_path = "res://.godot/imported/Obj.png-c1b49f16dd49c2922a91274811d91c83.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0xpf"]
+atlas = SubResource("CompressedTexture2D_t3rbg")
+region = Rect2(64, 0, 16, 16)
+
 [node name="ToolsPanel" type="PanelContainer"]
 offset_right = 70.0
 offset_bottom = 40.0
@@ -186,11 +193,10 @@ expand_icon = true
 custom_minimum_size = Vector2(14, 0)
 layout_mode = 2
 
-[node name="ToolWateringCan4" type="Button" parent="MarginContainer/HBoxContainer"]
+[node name="WheatSeeds" type="Button" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(104, 104)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
-disabled = true
-icon = SubResource("AtlasTexture_0uv5y")
+icon = SubResource("AtlasTexture_a0xpf")
 icon_alignment = 1
 expand_icon = true

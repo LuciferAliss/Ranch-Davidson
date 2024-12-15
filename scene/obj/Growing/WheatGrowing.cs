@@ -44,7 +44,7 @@ public partial class WheatGrowing : Node2D
         if(!growthCycleComponent.isWatered && GrowthStates.Harvesting != growthState)
         {
             wateringParticles.Emitting = true;
-            await Task.Delay(3000);
+            await Task.Delay(1600);
             wateringParticles.Emitting = false;
             growthCycleComponent.isWatered = true;
         }

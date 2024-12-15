@@ -14,7 +14,7 @@ public partial class Level : Node2D
 
 		player = GetNode<Player>("Player");
 		await Task.Delay(1500);
-		player.ExitInMainMenu = false;
+		player.cooldown = false;
 		dayNightCycleComponent = GetNode<DayNightCycleComponent>("DayNightCycleComponent");
 	}
 

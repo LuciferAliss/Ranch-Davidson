@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bygowgb6ho7j2"]
+
+[ext_resource type="Script" path="res://scene/level/CursorComponent.cs" id="1_0soc5"]
+
+[node name="FieldCursorComponent" type="Node"]
+script = ExtResource("1_0soc5")

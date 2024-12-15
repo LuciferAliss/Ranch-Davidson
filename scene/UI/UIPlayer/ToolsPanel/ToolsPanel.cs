@@ -15,12 +15,13 @@ public partial class ToolsPanel : PanelContainer
         Tool2 = GetNode<Button>("MarginContainer/HBoxContainer/ToolAxe");
         Tool3 = GetNode<Button>("MarginContainer/HBoxContainer/ToolWateringCan");
         Tool4 = GetNode<Button>("MarginContainer/HBoxContainer/ToolHoe");
-        Tool5 = GetNode<Button>("MarginContainer/HBoxContainer/ToolWateringCan4");
+        Tool5 = GetNode<Button>("MarginContainer/HBoxContainer/WheatSeeds");
 
         Tool1.Pressed += ChangeTool1;
         Tool2.Pressed += ChangeTool2;
         Tool3.Pressed += ChangeTool3;
         Tool4.Pressed += ChangeTool4;
+        Tool5.Pressed += ChangeTool5;
     }
 
     public void SetPlayer(Player player)
@@ -54,5 +55,11 @@ public partial class ToolsPanel : PanelContainer
     {
         player.ChangeTools(ItemsName.ToolNames[3]);
         player.hitComponent.tool = ItemsName.ToolNames[3];
+    }
+
+    private void ChangeTool5()
+    {
+        player.ChangeTools(ItemsName.ToolNames[4]);
+        player.hitComponent.tool = ItemsName.ToolNames[4];
     }
 }

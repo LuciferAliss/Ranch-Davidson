@@ -7,9 +7,10 @@ public static class ItemsName
     public static Dictionary<int, string> ToolNames = new Dictionary<int, string>
     {
         [0] = "None",
-        [1] = "WateringCan",
-        [2] = "Axe",
-        [3] = "Hoe"
+        [1] = "Axe",
+        [2] = "WateringCan",
+        [3] = "Hoe",
+        [4] = "WheatSeeds"
     };
 }
 

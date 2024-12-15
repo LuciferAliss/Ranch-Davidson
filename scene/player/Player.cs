@@ -10,7 +10,7 @@ public partial class Player : CharacterBody2D
 	private bool useAction = false;
 	private bool Inventory = false;
 	public string currentTools { get; private set; } = ItemsName.ToolNames[0].ToString();
-	public bool ExitInMainMenu = true;
+	public bool cooldown = true;
 	public AnimatedSprite2D animatedSp { get; private set; }
 	public AnimationPlayer animationPl { get; private set; }
 	private StateAnimationPlayer stateAnimation;
@@ -42,7 +42,7 @@ public partial class Player : CharacterBody2D
 
 	public override void _Process(double delta)
 	{
-		if (!ExitInMainMenu)
+		if (!cooldown)
 		{
 			if (Input.IsActionJustPressed("pause") && !uIManager.inventoryVisible)
 			{
@@ -147,7 +147,12 @@ public partial class Player : CharacterBody2D
 			stateAnimation.Tilling();
 			stateAction.Action();
 		}
-
+		else if (currentTools == "WheatSeeds")
+		{
+			ChangeStateAction(new StateSeeds(this));
+			stateAnimation.Idle();
+			stateAction.Action();
+		}
 		HitBox.Disabled = false;
 	}
 
@@ -165,6 +170,7 @@ public partial class Player : CharacterBody2D
 	{
 		useAction = false;
 		HitBox.Disabled = true;
+		cooldown = false;
 	}
 
 	public void ChangeTools(string tools)
