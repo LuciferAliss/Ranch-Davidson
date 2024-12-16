@@ -16,6 +16,7 @@ public partial class Level : Node2D
 		await Task.Delay(1500);
 		player.cooldown = false;
 		dayNightCycleComponent = GetNode<DayNightCycleComponent>("DayNightCycleComponent");
+		SaveGameManager.Instance.LoadGame();
 	}
 
 	public override void _Process(double delta)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://2v4miawx0t4b"]
+[gd_scene load_steps=10 format=3 uid="uid://2v4miawx0t4b"]
 
 [ext_resource type="Texture2D" uid="uid://dh4deoub4cq7r" path="res://resources/img/objWorld/Growing/Basic_Plants.png" id="1_hhlwf"]
 [ext_resource type="Script" path="res://scene/obj/Growing/WheatGrowing.cs" id="1_kjbqr"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://d4dqj5n5mn3dt" path="res://scene/component/HurtComponent.tscn" id="2_p1171"]
 [ext_resource type="PackedScene" uid="uid://d1w6jf2eibkd" path="res://scene/obj/Growing/FloweringParticles.tscn" id="3_ea83t"]
 [ext_resource type="PackedScene" uid="uid://bj5fxhffuf8os" path="res://scene/obj/Growing/GrowthCycleComponent.tscn" id="4_ibqyt"]
+[ext_resource type="PackedScene" uid="uid://dsbrek1hdwygm" path="res://scene/component/SaveDataComponent.tscn" id="7_stlgx"]
+[ext_resource type="Resource" uid="uid://dwf0to7xaybr3" path="res://resources/ResourceSaveGame/SceneDataResource.tres" id="8_8w0o4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqkgy"]
 size = Vector2(13, 8)
@@ -40,6 +42,9 @@ position = Vector2(0, -4)
 position = Vector2(-0.5, 3)
 shape = SubResource("RectangleShape2D_sqkgy")
 disabled = true
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("7_stlgx")]
+SaveDataResource = ExtResource("8_8w0o4")
 
 [connection signal="Hurt" from="HurtComponent" to="." method="OnHurt"]
 [connection signal="Hurt" from="HurtComponent2" to="." method="OnHurtHoe"]

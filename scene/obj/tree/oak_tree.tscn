@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcsj33frkcebu"]
+[gd_scene load_steps=13 format=3 uid="uid://dcsj33frkcebu"]
 
 [ext_resource type="Texture2D" uid="uid://b6qmsgtftj6f2" path="res://resources/img/tileset/TileSet.png" id="1_5b22u"]
 [ext_resource type="Shader" path="res://scene/obj/tree/tree_shake.gdshader" id="1_gwikf"]
 [ext_resource type="Script" path="res://scene/obj/tree/OakTree.cs" id="2_albrp"]
 [ext_resource type="PackedScene" uid="uid://d4dqj5n5mn3dt" path="res://scene/component/HurtComponent.tscn" id="3_ao3vd"]
 [ext_resource type="PackedScene" uid="uid://cdomi0obtb71a" path="res://scene/component/DamageComponent.tscn" id="4_xffw0"]
+[ext_resource type="PackedScene" uid="uid://dsbrek1hdwygm" path="res://scene/component/SaveDataComponent.tscn" id="6_fwx55"]
+[ext_resource type="Resource" uid="uid://dwf0to7xaybr3" path="res://resources/ResourceSaveGame/SceneDataResource.tres" id="7_ohwe8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_od17m"]
 resource_local_to_scene = true
@@ -58,6 +60,9 @@ debug_color = Color(0.868217, 0.31226, 0.433944, 0.42)
 
 [node name="DamageComponent" parent="." instance=ExtResource("4_xffw0")]
 maxDamage = 3
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("6_fwx55")]
+SaveDataResource = ExtResource("7_ohwe8")
 
 [connection signal="body_entered" from="Area2D" to="." method="OnInvisibility"]
 [connection signal="body_exited" from="Area2D" to="." method="OffInvisibility"]

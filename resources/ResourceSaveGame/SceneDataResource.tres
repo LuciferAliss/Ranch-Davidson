@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dwf0to7xaybr3"]
+
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/SceneDataResource.cs" id="1_ltksq"]
+
+[resource]
+script = ExtResource("1_ltksq")
