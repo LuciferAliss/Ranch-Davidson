@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://fbp488h4oora"]
+[gd_scene load_steps=13 format=4 uid="uid://fbp488h4oora"]
 
 [ext_resource type="TileSet" uid="uid://clcmsccjr8hw3" path="res://resources/img/tileset/GameTileSetl.tres" id="1_1pabs"]
 [ext_resource type="Script" path="res://scene/level/Level.cs" id="1_f2s7v"]
 [ext_resource type="PackedScene" uid="uid://1cm6cmcjyrcp" path="res://scene/component/DayNightCycleComponent.tscn" id="2_d7ey2"]
 [ext_resource type="Texture2D" uid="uid://bj343avegxtrm" path="res://resources/img/tileset/x-mark-16.png" id="2_jnnnx"]
 [ext_resource type="PackedScene" uid="uid://ve1tt812qmni" path="res://scene/player/player.tscn" id="2_ln8sc"]
+[ext_resource type="PackedScene" uid="uid://dsbrek1hdwygm" path="res://scene/component/SaveDataComponent.tscn" id="4_3e7su"]
+[ext_resource type="Resource" uid="uid://lvjba3lyywa2" path="res://resources/ResourceSaveGame/TileMapLayerDataResource.tres" id="5_cyig7"]
 [ext_resource type="PackedScene" uid="uid://bygowgb6ho7j2" path="res://scene/level/CursorComponent.tscn" id="6_yt0p1"]
 [ext_resource type="PackedScene" uid="uid://llcei3wavrpa" path="res://scene/component/SaveLevelDataComponent.tscn" id="7_3pj54"]
 [ext_resource type="Script" path="res://scene/component/SaveLevelDataComponent.cs" id="8_yxgol"]
@@ -24,6 +26,9 @@ sources/0 = SubResource("TileSetAtlasSource_5n5v8")
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_f2s7v")
+
+[node name="SaveLevelDataComponent" parent="." instance=ExtResource("7_3pj54")]
+script = ExtResource("8_yxgol")
 
 [node name="DayNightCycleComponent" parent="." instance=ExtResource("2_d7ey2")]
 
@@ -45,10 +50,16 @@ tile_set = ExtResource("1_1pabs")
 [node name="Soil" type="TileMapLayer" parent="GameTileMap"]
 tile_set = ExtResource("1_1pabs")
 
+[node name="SaveDataComponent" parent="GameTileMap/Soil" instance=ExtResource("4_3e7su")]
+SaveDataResource = ExtResource("5_cyig7")
+
 [node name="Object" type="TileMapLayer" parent="GameTileMap"]
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAIABEAAQAAAAAAAQAMABEAAQAAAAAAAQAJABUAAQAAAAAAAQANABUAAQAAAAAAAQA=")
 tile_set = ExtResource("1_1pabs")
+
+[node name="SaveDataComponent" parent="GameTileMap/Object" instance=ExtResource("4_3e7su")]
+SaveDataResource = ExtResource("5_cyig7")
 
 [node name="WorldCollision" type="TileMapLayer" parent="GameTileMap"]
 tile_map_data = PackedByteArray("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")
@@ -67,6 +78,3 @@ terrain = 2
 [node name="Player" parent="." instance=ExtResource("2_ln8sc")]
 y_sort_enabled = false
 position = Vector2(272, 181)
-
-[node name="SaveLevelDataComponent" parent="." instance=ExtResource("7_3pj54")]
-script = ExtResource("8_yxgol")

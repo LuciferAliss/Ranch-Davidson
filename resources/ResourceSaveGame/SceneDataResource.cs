@@ -1,6 +1,5 @@
 using Godot;
 
-[GlobalClass]
 partial class SceneDataResource : NodeDataResource
 {
     [Export]
@@ -14,6 +13,9 @@ partial class SceneDataResource : NodeDataResource
 
         nodeName = node.Name;
         sceneFilePath = node.SceneFilePath;
+    
+        
+        GD.Print(nodeName);
     }
 
     public override void LoadData(Window window)

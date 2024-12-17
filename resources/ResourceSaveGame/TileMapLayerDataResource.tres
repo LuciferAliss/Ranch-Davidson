@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://lvjba3lyywa2"]
+
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/TileMapLayerDataResource.cs" id="1_dximh"]
+
+[resource]
+script = ExtResource("1_dximh")
+tileMapLayerUsedCells = null
+terrainSet = 0
+terrain = 3
+globalPosition = Vector2(0, 0)
+nodePath = null
+parentNodePath = null

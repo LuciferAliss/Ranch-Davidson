@@ -11,7 +11,7 @@ partial class SaveGameManager : Node
 
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (Input.IsActionPressed("save_game"))
+        if (Input.IsActionJustPressed("save_game"))
         {
             SaveGame();
         }

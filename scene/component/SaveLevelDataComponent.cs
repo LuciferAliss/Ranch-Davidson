@@ -30,8 +30,8 @@ public partial class SaveLevelDataComponent : Node
             foreach(SaveDataComponent node in nodes)
             {
                 NodeDataResource saveDataResource = (NodeDataResource)node.SaveData();
-                var saveFinalResource = saveDataResource.Duplicate();
-                gameDataResource.saveDataNodes.Append(saveFinalResource);
+                var saveFinalResource = saveDataResource.Duplicate(); 
+                gameDataResource.saveDataNodes.Add((NodeDataResource)saveFinalResource);
             }
         }
     }
@@ -45,7 +45,7 @@ public partial class SaveLevelDataComponent : Node
 
         var levelSaveFileName = $"save_{levelNameScene}_game_data.tres";
 
-        SaveNodeData();        
+        SaveNodeData();
 
         var result = ResourceSaver.Save(gameDataResource, saveGameDataPath + levelSaveFileName);
         GD.Print($"result: {result}");
@@ -54,14 +54,14 @@ public partial class SaveLevelDataComponent : Node
     public void LoadGame()
     {
         string levelSaveFileName = $"save_{levelNameScene}_game_data.tres";
-        string saveGamepath = saveGameDataPath + levelSaveFileName;
+        string saveGamePath = saveGameDataPath + levelSaveFileName;
 
-        if (!FileAccess.FileExists(saveGamepath))
+        if (!FileAccess.FileExists(saveGamePath))
         {
             return;
         }
 
-        gameDataResource = (SaveGameDataResource)ResourceLoader.Load(saveGamepath);
+        gameDataResource = (SaveGameDataResource)ResourceLoader.Load(saveGamePath);
 
         if (gameDataResource == null)
         {

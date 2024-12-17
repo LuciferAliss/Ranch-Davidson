@@ -1,6 +1,5 @@
 using Godot;
 
-[GlobalClass]
 public partial class NodeDataResource : SaveResource
 {
     [Export]
@@ -25,5 +24,7 @@ public partial class NodeDataResource : SaveResource
 
     public virtual void LoadData(Window window)
     {
+        GD.Print("fwiw");
+        return;
     }
 }

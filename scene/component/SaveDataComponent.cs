@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class SaveDataComponent : Node
 {
@@ -12,7 +11,7 @@ public partial class SaveDataComponent : Node
         AddToGroup("SaveDataComponent");
     }
 
-    public Resource SaveData()
+    public SaveResource SaveData()
     {
         if (parentNode == null)
         {
