@@ -16,7 +16,7 @@ public partial class CursorComponent : Node
 	[Export]
 	int terrainSet = 0;
 	[Export]
-	int terrain = 3;
+	int terrain = 2;
 	Vector2 mousePosition;
 	Vector2I cellPosition;
 	Vector2 localCellPosition;

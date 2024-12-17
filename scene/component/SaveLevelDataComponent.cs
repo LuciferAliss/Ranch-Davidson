@@ -15,6 +15,12 @@ public partial class SaveLevelDataComponent : Node
         levelNameScene = GetParent().Name;
     }
 
+    public override void _ExitTree()
+    {
+        gameDataResource = null;
+        RemoveFromGroup("SaveLevelDataComponent");
+    }
+
     private void SaveNodeData()
     {
         SaveDataComponent[] nodes = GetTree().GetNodesInGroup("SaveDataComponent").Select(u => (SaveDataComponent)u).ToArray();

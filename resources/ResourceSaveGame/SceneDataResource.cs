@@ -13,9 +13,6 @@ partial class SceneDataResource : NodeDataResource
 
         nodeName = node.Name;
         sceneFilePath = node.SceneFilePath;
-    
-        
-        GD.Print(nodeName);
     }
 
     public override void LoadData(Window window)
@@ -37,6 +34,7 @@ partial class SceneDataResource : NodeDataResource
         if (parentNode != null && sceneNode != null)
         {
             sceneNode.GlobalPosition = globalPosition;
+            GD.Print($"parentNode.Name: {parentNode.Name}, sceneNode.Name: {sceneNode.Name}, sceneNode.GlobalPosition {globalPosition}");
             parentNode.AddChild(sceneNode);
         }
     }

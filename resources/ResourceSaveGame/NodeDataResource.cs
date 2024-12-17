@@ -24,7 +24,6 @@ public partial class NodeDataResource : SaveResource
 
     public virtual void LoadData(Window window)
     {
-        GD.Print("fwiw");
         return;
     }
 }

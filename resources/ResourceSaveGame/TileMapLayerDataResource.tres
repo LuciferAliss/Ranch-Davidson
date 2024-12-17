@@ -6,7 +6,7 @@
 script = ExtResource("1_dximh")
 tileMapLayerUsedCells = null
 terrainSet = 0
-terrain = 3
+terrain = 2
 globalPosition = Vector2(0, 0)
 nodePath = null
 parentNodePath = null
