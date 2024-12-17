@@ -4,6 +4,8 @@ partial class PlayerDataSource : SceneDataResource
 {
     [Export]
     public int satiety;
+    [Export]
+    InventorySlot[] inventory;
 
     public override void SaveData(Node2D node)
     {
@@ -11,6 +13,7 @@ partial class PlayerDataSource : SceneDataResource
         if (node is Player player)
         {
             satiety = player.Satiety;
+            inventory = player.uIManager.inventory.inventory.slots;
         }
     }
 
@@ -18,5 +21,6 @@ partial class PlayerDataSource : SceneDataResource
     {
         UserData.Instance.playerPosition = globalPosition;
         UserData.Instance.satiety = satiety;
+        UserData.Instance.inventory = inventory;
     }
 }

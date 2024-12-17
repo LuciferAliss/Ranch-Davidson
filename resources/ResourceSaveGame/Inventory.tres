@@ -1,0 +1,128 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=33 format=3 uid="uid://dp800qc7208kt"]
+
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/Inventory.cs" id="1_gv85a"]
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/Inventory/InventorySlot.cs" id="2_7dgc8"]
+
+[sub_resource type="Resource" id="Resource_xr80e"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_7a6u6"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_ejccr"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_ah81m"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_vbv2u"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_1g7lr"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_vfid5"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_n4v6y"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_xddfd"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_18o1q"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_ljm5c"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_5o4xo"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_pd6wu"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_jn4cc"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_oyt33"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_prs6k"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_yf4ps"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_lqcu6"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_iju6v"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_a7tx3"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_1bush"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_aqodo"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_sflbi"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_3tutb"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_t18qh"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_we2sq"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_iijve"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_qqlwa"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_ixk78"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[sub_resource type="Resource" id="Resource_soxbw"]
+script = ExtResource("2_7dgc8")
+count = 0
+
+[resource]
+script = ExtResource("1_gv85a")
+slots = Array[Object]([SubResource("Resource_xr80e"), SubResource("Resource_7a6u6"), SubResource("Resource_ejccr"), SubResource("Resource_ah81m"), SubResource("Resource_vbv2u"), SubResource("Resource_1g7lr"), SubResource("Resource_vfid5"), SubResource("Resource_n4v6y"), SubResource("Resource_xddfd"), SubResource("Resource_18o1q"), SubResource("Resource_ljm5c"), SubResource("Resource_5o4xo"), SubResource("Resource_pd6wu"), SubResource("Resource_jn4cc"), SubResource("Resource_oyt33"), SubResource("Resource_prs6k"), SubResource("Resource_yf4ps"), SubResource("Resource_lqcu6"), SubResource("Resource_iju6v"), SubResource("Resource_a7tx3"), SubResource("Resource_1bush"), SubResource("Resource_aqodo"), SubResource("Resource_sflbi"), SubResource("Resource_3tutb"), SubResource("Resource_t18qh"), SubResource("Resource_we2sq"), SubResource("Resource_iijve"), SubResource("Resource_qqlwa"), SubResource("Resource_ixk78"), SubResource("Resource_soxbw")])

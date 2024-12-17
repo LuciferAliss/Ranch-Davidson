@@ -9,7 +9,7 @@ public partial class InventoryManager : PanelContainer
     public delegate void UseItemEventHandler(InventoryItem slot);
     [Signal]
     public delegate void DestroyItemEventHandler();
-    private Inventory inventory = GD.Load<Inventory>("res://scene//obj//Item//Inventory.tres");
+    public Inventory inventory = GD.Load<Inventory>("res://resources//ResourceSaveGame//Inventory.tres");
     private List<Slot> slots = new();
     private int DraggedSlotIndex = -1;
     private int ChooseSlot = -1;
@@ -34,7 +34,7 @@ public partial class InventoryManager : PanelContainer
         DestroyItem += collectable.DestroyItem;
     }
 
-    private void UpdateInventory()
+    public void UpdateInventory()
     {
         for (int i = 0; i <  Math.Min(inventory.slots.Length, slots.Count); i++)
         {
