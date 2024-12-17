@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c0m8jhit3g24y"]
+
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/DayNightSceneDataResource.cs" id="1_ouw7s"]
+
+[resource]
+script = ExtResource("1_ouw7s")

@@ -46,12 +46,12 @@ public partial class WheatGrowing : Plant
 
     private async void OnHurt(int damage)
     {
-        if(!growthCycleComponent.isWatered && GrowthStates.Harvesting != growthState)
+        if(!isWatered && GrowthStates.Harvesting != growthState)
         {
             wateringParticles.Emitting = true;
             await Task.Delay(1600);
             wateringParticles.Emitting = false;
-            growthCycleComponent.isWatered = true;
+            isWatered = true;
         }
     }
 

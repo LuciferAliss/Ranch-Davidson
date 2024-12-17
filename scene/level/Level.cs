@@ -9,6 +9,7 @@ public partial class Level : Node2D
 	public async override void _Ready()
 	{
 		SaveGameManager.Instance.LoadGame();
+		dayNightCycleComponent = GetNode<DayNightCycleComponent>("DayNightCycleComponent");
 		player = GetNode<Player>("Player");
 		player.camera.PositionSmoothingEnabled = false;
 		player.GlobalPosition = UserData.Instance.playerPosition;
@@ -16,6 +17,7 @@ public partial class Level : Node2D
 		player.uIManager.inventory.inventory.slots = UserData.Instance.inventory;
 		player.uIManager.inventory.UpdateInventory();
 		player.uIManager.hungryBar.UpdateHungryBar();
+		dayNightCycleComponent.SetTimeWorld(UserData.Instance.timeWorld);
 		GD.Print(UserData.Instance.satiety);
 		Effect.Instance.PlayEffect("VignetteEffect_Close");
 		GameStart.Instance.EmitSignal(nameof(GameStart.SignalGameStart), true);
@@ -23,7 +25,6 @@ public partial class Level : Node2D
 		await Task.Delay(1500);
 		player.camera.PositionSmoothingEnabled = true;
 		player.cooldown = false;
-		dayNightCycleComponent = GetNode<DayNightCycleComponent>("DayNightCycleComponent");
 	}
 
 	public override void _Process(double delta)

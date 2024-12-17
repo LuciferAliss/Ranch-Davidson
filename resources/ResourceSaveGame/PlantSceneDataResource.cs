@@ -6,6 +6,8 @@ partial class PlantSceneDataResource : SceneDataResource
     GrowthStates growthState;
     [Export]
     int currentHour;
+    [Export]
+    bool isWatered;
 
     public override void SaveData(Node2D node)
     {
@@ -15,6 +17,7 @@ partial class PlantSceneDataResource : SceneDataResource
         {
             growthState = plant.growthState;
             currentHour = plant.currentHour;
+            isWatered = plant.isWatered;
         }
     }
 
@@ -39,6 +42,7 @@ partial class PlantSceneDataResource : SceneDataResource
             sceneNode.GlobalPosition = globalPosition;
             sceneNode.growthState = growthState;
             sceneNode.currentHour = currentHour;
+            sceneNode.isWatered = isWatered;
             GD.Print($"parentNode.Name: {parentNode.Name}, sceneNode.Name: {sceneNode.Name}, sceneNode.GlobalPosition {globalPosition}");
             parentNode.AddChild(sceneNode);
         }

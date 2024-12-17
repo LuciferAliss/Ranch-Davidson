@@ -8,7 +8,6 @@ public partial class GrowthCycleComponent : Node
     [Export(PropertyHint.Range, "5,365")]
     int currentHour;
     private int daysUntilHarvest = 7;
-    public bool isWatered = false;
     Plant plant;
 
     [Signal]
@@ -26,7 +25,7 @@ public partial class GrowthCycleComponent : Node
 
     private void OnHourPassed(int hour)
     {
-        if (isWatered)
+        if (plant.isWatered)
         {
             currentHour += 1;
             plant.currentHour = currentHour;
@@ -38,7 +37,7 @@ public partial class GrowthCycleComponent : Node
         
             if (currentHour % 24 == 0)
             {
-                isWatered = false;
+                plant.isWatered = false;
             }
         }
     }

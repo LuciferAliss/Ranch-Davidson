@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 
 partial class DayAndNightCycleManager : Node
@@ -89,5 +90,10 @@ partial class DayAndNightCycleManager : Node
             }
             CurrentHour = hour;
         }
+    }
+
+    public int[] GetTimeWorld()
+    {
+        return new int[] { CurrentMinute, CurrentHour, CurrentDay };
     }
 }

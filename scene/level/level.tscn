@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://fbp488h4oora"]
+[gd_scene load_steps=16 format=4 uid="uid://fbp488h4oora"]
 
 [ext_resource type="TileSet" uid="uid://clcmsccjr8hw3" path="res://resources/img/tileset/GameTileSetl.tres" id="1_1pabs"]
 [ext_resource type="Script" path="res://scene/level/Level.cs" id="1_f2s7v"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ve1tt812qmni" path="res://scene/player/player.tscn" id="2_ln8sc"]
 [ext_resource type="PackedScene" uid="uid://dsbrek1hdwygm" path="res://scene/component/SaveDataComponent.tscn" id="4_3e7su"]
 [ext_resource type="Resource" uid="uid://lvjba3lyywa2" path="res://resources/ResourceSaveGame/TileMapLayerDataResource.tres" id="5_cyig7"]
+[ext_resource type="Resource" uid="uid://c0m8jhit3g24y" path="res://resources/ResourceSaveGame/DayNightSceneDataResource.tres" id="6_6nygv"]
 [ext_resource type="PackedScene" uid="uid://bygowgb6ho7j2" path="res://scene/level/CursorComponent.tscn" id="6_yt0p1"]
 [ext_resource type="PackedScene" uid="uid://llcei3wavrpa" path="res://scene/component/SaveLevelDataComponent.tscn" id="7_3pj54"]
 [ext_resource type="Script" path="res://resources/ResourceSaveGame/TileMapLayerDataResource.cs" id="8_f18dq"]
@@ -41,6 +42,9 @@ script = ExtResource("1_f2s7v")
 script = ExtResource("8_yxgol")
 
 [node name="DayNightCycleComponent" parent="." instance=ExtResource("2_d7ey2")]
+
+[node name="SaveDataComponent" parent="DayNightCycleComponent" instance=ExtResource("4_3e7su")]
+SaveDataResource = ExtResource("6_6nygv")
 
 [node name="GameTileMap" type="Node2D" parent="."]
 y_sort_enabled = true

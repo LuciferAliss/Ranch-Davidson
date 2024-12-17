@@ -3,9 +3,9 @@ using System;
 
 public partial class DayNightCycleComponent : CanvasModulate
 {
-    private int initialDay = 1;
-    private int initialHour = 9;
-    private int initialMinute = 0;
+    public int initialDay = 1;
+    public int initialHour = 9;
+    public int initialMinute = 0;
 
     private int InitialDay
     {
@@ -69,6 +69,13 @@ public partial class DayNightCycleComponent : CanvasModulate
     {
         float SampleValue = 0.5f * (float)(Math.Sin(Time - Math.PI * 0.5f) + 1f);
         Color = DayNightGradientTexture.Gradient.Sample(SampleValue);
+    }
+
+    public void SetTimeWorld(int[] timeWorld)
+    {
+        InitialMinute = timeWorld[0];
+        InitialHour = timeWorld[1];
+        InitialDay = timeWorld[2];
     }
 
     public override void _ExitTree()
