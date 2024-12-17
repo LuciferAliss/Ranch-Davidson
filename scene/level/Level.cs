@@ -1,5 +1,4 @@
 using Godot;
-using System;
 using System.Threading.Tasks;
 
 public partial class Level : Node2D
@@ -10,11 +9,17 @@ public partial class Level : Node2D
 	public async override void _Ready()
 	{
 		SaveGameManager.Instance.LoadGame();
+		player = GetNode<Player>("Player");
+		player.camera.PositionSmoothingEnabled = false;
+		player.GlobalPosition = UserData.Instance.playerPosition;
+		player.Satiety = UserData.Instance.satiety;
+		player.uIManager.hungryBar.UpdateHungryBar();
+		GD.Print(UserData.Instance.satiety);
 		Effect.Instance.PlayEffect("VignetteEffect_Close");
 		GameStart.Instance.EmitSignal(nameof(GameStart.SignalGameStart), true);
 
-		player = GetNode<Player>("Player");
 		await Task.Delay(1500);
+		player.camera.PositionSmoothingEnabled = true;
 		player.cooldown = false;
 		dayNightCycleComponent = GetNode<DayNightCycleComponent>("DayNightCycleComponent");
 	}

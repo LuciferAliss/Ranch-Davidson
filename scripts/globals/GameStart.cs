@@ -11,5 +11,4 @@ partial class GameStart : Node
         Instance = this;
         EmitSignal(nameof(SignalGameStart), false);
     }
-
-}
+}  

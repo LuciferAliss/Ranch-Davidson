@@ -1,24 +1,27 @@
 using Godot;
 
-partial class SceneDataResource : NodeDataResource
+partial class PlantSceneDataResource : SceneDataResource
 {
     [Export]
-    protected string nodeName;
+    GrowthStates growthState;
     [Export]
-    protected string sceneFilePath;
+    int currentHour;
 
     public override void SaveData(Node2D node)
     {
         base.SaveData(node);
 
-        nodeName = node.Name;
-        sceneFilePath = node.SceneFilePath;
+        if (node is Plant plant)
+        {
+            growthState = plant.growthState;
+            currentHour = plant.currentHour;
+        }
     }
 
     public override void LoadData(Window window)
     {
         Node2D parentNode = null;
-        Node2D sceneNode = null;
+        Plant sceneNode = null;
 
         if (parentNodePath != null)
         {
@@ -28,12 +31,14 @@ partial class SceneDataResource : NodeDataResource
         if (nodePath != null)
         {
             var sceneFileResource = GD.Load<PackedScene>(sceneFilePath);
-            sceneNode = sceneFileResource.Instantiate() as Node2D;
+            sceneNode = sceneFileResource.Instantiate() as Plant;
         }   
 
         if (parentNode != null && sceneNode != null)
         {
             sceneNode.GlobalPosition = globalPosition;
+            sceneNode.growthState = growthState;
+            sceneNode.currentHour = currentHour;
             GD.Print($"parentNode.Name: {parentNode.Name}, sceneNode.Name: {sceneNode.Name}, sceneNode.GlobalPosition {globalPosition}");
             parentNode.AddChild(sceneNode);
         }

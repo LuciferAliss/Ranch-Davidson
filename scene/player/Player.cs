@@ -11,6 +11,7 @@ public partial class Player : CharacterBody2D
 	private bool Inventory = false;
 	public string currentTools { get; private set; } = ItemsName.ToolNames[0].ToString();
 	public bool cooldown = true;
+	public Camera2D camera;
 	public AnimatedSprite2D animatedSp { get; private set; }
 	public AnimationPlayer animationPl { get; private set; }
 	private StateAnimationPlayer stateAnimation;
@@ -26,6 +27,7 @@ public partial class Player : CharacterBody2D
 		HitBox = GetNode<CollisionShape2D>("HitComponent/CollisionShape2D");
 		hitComponent = GetNode<HitComponent>("HitComponent");
 		uIManager = GetNode<UIManager>("UIPlayer");
+		camera = GetNode<Camera2D>("Camera2D");
 
 		HitBox.Disabled = true;
 		HitBox.Position = new Vector2(0, 0);
@@ -184,7 +186,7 @@ public partial class Player : CharacterBody2D
 		{
 			case "Tomato":
 				Satiety = Mathf.Min(100, Satiety + 10);
-				uIManager.hungryBar.UpDateHungryBar();
+				uIManager.hungryBar.UpdateHungryBar();
 				break;
 		}
 	}

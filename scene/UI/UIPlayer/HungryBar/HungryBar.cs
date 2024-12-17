@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class HungryBar : Control
 {
@@ -18,16 +17,16 @@ public partial class HungryBar : Control
     public void SetPlayer(Player player)
     {
         this.player = player;
-        UpDateHungryBar();
+        UpdateHungryBar();
     }
 
     private void UpdateSatiety(int hour)
     {
         player.Satiety = Mathf.Max(0, player.Satiety - 1);
-        UpDateHungryBar();
+        UpdateHungryBar();
     }
 
-    public void UpDateHungryBar()
+    public void UpdateHungryBar()
     {
         progressHungryBar.Value = player.Satiety;
         valueHungryBarLabel.Text = $"{player.Satiety}%";

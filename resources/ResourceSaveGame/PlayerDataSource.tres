@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bm1pcf1kb7w4h"]
+
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/PlayerDataSource.cs" id="1_usnmv"]
+
+[resource]
+script = ExtResource("1_usnmv")
+nodeName = ""
+sceneFilePath = ""
+globalPosition = Vector2(0, 0)
+nodePath = null
+parentNodePath = null

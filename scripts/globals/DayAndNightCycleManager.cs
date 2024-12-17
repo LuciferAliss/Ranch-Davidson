@@ -29,7 +29,6 @@ partial class DayAndNightCycleManager : Node
     [Signal]
     public delegate void TimeTickHourEventHandler(int hour);
 
-
     public static DayAndNightCycleManager Instance { get; private set; }
 
     public override void _Ready()

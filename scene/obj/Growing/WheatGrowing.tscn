@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://scene/obj/Growing/WheatGrowing.cs" id="1_kjbqr"]
 [ext_resource type="PackedScene" uid="uid://bjjlbdwdsy6dk" path="res://scene/obj/Growing/WateringParticles.tscn" id="2_dp33o"]
 [ext_resource type="PackedScene" uid="uid://d4dqj5n5mn3dt" path="res://scene/component/HurtComponent.tscn" id="2_p1171"]
+[ext_resource type="Resource" uid="uid://cswvl1fwx4dwa" path="res://resources/ResourceSaveGame/PlantSceneDataResource.tres" id="3_5hh0r"]
 [ext_resource type="PackedScene" uid="uid://d1w6jf2eibkd" path="res://scene/obj/Growing/FloweringParticles.tscn" id="3_ea83t"]
 [ext_resource type="PackedScene" uid="uid://bj5fxhffuf8os" path="res://scene/obj/Growing/GrowthCycleComponent.tscn" id="4_ibqyt"]
 [ext_resource type="PackedScene" uid="uid://dsbrek1hdwygm" path="res://scene/component/SaveDataComponent.tscn" id="7_stlgx"]
-[ext_resource type="Resource" uid="uid://dwf0to7xaybr3" path="res://resources/ResourceSaveGame/SceneDataResource.tres" id="8_8w0o4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqkgy"]
 size = Vector2(13, 8)
@@ -16,7 +16,7 @@ size = Vector2(13, 8)
 script = ExtResource("1_kjbqr")
 
 [node name="SaveDataComponent" parent="." instance=ExtResource("7_stlgx")]
-SaveDataResource = ExtResource("8_8w0o4")
+SaveDataResource = ExtResource("3_5hh0r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)

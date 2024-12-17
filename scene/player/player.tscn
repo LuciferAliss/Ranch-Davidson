@@ -1,8 +1,10 @@
-[gd_scene load_steps=85 format=3 uid="uid://ve1tt812qmni"]
+[gd_scene load_steps=87 format=3 uid="uid://ve1tt812qmni"]
 
 [ext_resource type="Script" path="res://scene/player/Player.cs" id="1_1w410"]
 [ext_resource type="Texture2D" uid="uid://c2x61l551l2an" path="res://resources/img/characters/MCanimate.png" id="1_sort2"]
+[ext_resource type="PackedScene" uid="uid://dsbrek1hdwygm" path="res://scene/component/SaveDataComponent.tscn" id="2_8s0mh"]
 [ext_resource type="PackedScene" uid="uid://dtdx6bjqqihp8" path="res://scene/UI/UIPlayer/UIPlayer.tscn" id="3_86tqm"]
+[ext_resource type="Resource" uid="uid://bm1pcf1kb7w4h" path="res://resources/ResourceSaveGame/PlayerDataSource.tres" id="3_hxo1d"]
 [ext_resource type="PackedScene" uid="uid://v2a36nlmprye" path="res://scene/component/HitComponent.tscn" id="4_va24u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1msnf"]
@@ -963,6 +965,9 @@ y_sort_enabled = true
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_1w410")
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("2_8s0mh")]
+SaveDataResource = ExtResource("3_hxo1d")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -16)

@@ -4,11 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 public partial class GrowthCycleComponent : Node
 {
-    GrowthStates currentGrowthStates = GrowthStates.Germination; 
+    GrowthStates currentGrowthStates; 
     [Export(PropertyHint.Range, "5,365")]
+    int currentHour;
     private int daysUntilHarvest = 7;
-    private int currentHour = 0;
     public bool isWatered = false;
+    Plant plant;
 
     [Signal]
     public delegate void WheatHarvestingEventHandler();
@@ -18,6 +19,9 @@ public partial class GrowthCycleComponent : Node
     public override void _Ready()
     {
         DayAndNightCycleManager.Instance.Connect(nameof(DayAndNightCycleManager.TimeTickHour), new Callable(this, nameof(OnHourPassed)));
+        plant = GetParent() as Plant;
+        currentGrowthStates = plant.growthState;
+        currentHour = plant.currentHour;
     }
 
     private void OnHourPassed(int hour)
@@ -25,6 +29,7 @@ public partial class GrowthCycleComponent : Node
         if (isWatered)
         {
             currentHour += 1;
+            plant.currentHour = currentHour;
 
             GrowthStatesFunk(currentHour);
             HarvestState(currentHour);

@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class WheatGrowing : Node2D
+public partial class WheatGrowing : Plant
 {
     PackedScene WheatScene = GD.Load<PackedScene>("res://scene//obj//ItemForScene//Wheat.tscn");
     private Sprite2D sprite2D;
@@ -12,7 +12,6 @@ public partial class WheatGrowing : Node2D
     private HurtComponent hurtComponent1;
     private HurtComponent hurtComponent2;
     private CollisionShape2D hurtComponent2CollisionShape;
-    private GrowthStates growthState = GrowthStates.Germination;
 
     public override void _Ready()
     {
@@ -29,6 +28,8 @@ public partial class WheatGrowing : Node2D
 
         growthCycleComponent.WheatHarvesting += OnWheatHarvesting;
         growthCycleComponent.UpdateGrowthState += UpdateGrowthState;
+    
+        sprite2D.Frame = (int)growthState;
     }
 
     public override void _Process(double delta)
@@ -36,6 +37,10 @@ public partial class WheatGrowing : Node2D
         if (growthState == GrowthStates.Harvesting)
         {
             floweringParticles.Emitting = true;
+            if (floweringParticles.Emitting)
+            {
+                hurtComponent2CollisionShape.Disabled = false;
+            }
         }
     }
 
