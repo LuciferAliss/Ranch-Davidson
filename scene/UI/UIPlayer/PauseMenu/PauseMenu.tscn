@@ -49,6 +49,7 @@ theme_type_variation = &"ButtonMainMenu"
 text = "Выйти"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ContinueButton" to="." method="ContinueGame"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/SaveButton" to="." method="SaveGame"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/SettingButton" to="." method="OpenSetting"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ExitInMainMenuButton" to="." method="ExitInMainMenu"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ExitFromGame" to="." method="ExitGame"]

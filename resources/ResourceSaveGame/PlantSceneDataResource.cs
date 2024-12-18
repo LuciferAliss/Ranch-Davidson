@@ -43,7 +43,6 @@ partial class PlantSceneDataResource : SceneDataResource
             sceneNode.growthState = growthState;
             sceneNode.currentHour = currentHour;
             sceneNode.isWatered = isWatered;
-            GD.Print($"parentNode.Name: {parentNode.Name}, sceneNode.Name: {sceneNode.Name}, sceneNode.GlobalPosition {globalPosition}");
             parentNode.AddChild(sceneNode);
         }
     }

@@ -37,4 +37,9 @@ public partial class PauseMenu : PanelContainer
         player.cooldown = true;
         ManagerScene.ChangeScene(player.GetParent().GetTree(), "res://scene//UI//MainMenu//MainMenu.tscn", "VignetteEffect_Open");
     }
+
+    private void SaveGame()
+    {
+        SaveGameManager.Instance.SaveGame();
+    }
 }

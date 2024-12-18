@@ -26,7 +26,6 @@ partial class TileMapLayerDataResource : NodeDataResource
 
         if (sceneNode is TileMapLayer tileMapLayer)
         {
-            GD.Print($"{sceneNode.Name}\n{tileMapLayerUsedCells}");
             tileMapLayer.Clear();
             tileMapLayer.SetCellsTerrainConnect(tileMapLayerUsedCells, terrainSet, terrain, true);
         }

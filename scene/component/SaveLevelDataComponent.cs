@@ -54,7 +54,6 @@ public partial class SaveLevelDataComponent : Node
         SaveNodeData();
 
         var result = ResourceSaver.Save(gameDataResource, saveGamePath);
-        GD.Print($"result: {result}");
 
         using (var context = new SaveContext())
         {

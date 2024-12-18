@@ -5,12 +5,15 @@ public partial class Effect : CanvasLayer
 {
 	public static Effect Instance { get; private set; }
 	private AnimationPlayer playerAnim;
+	private AnimatedSprite2D animSpryte;
 	ColorRect rect;		
 
 	public override void _Ready()
 	{
 		Instance = this;
 
+		animSpryte = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		animSpryte.Hide();
 		playerAnim = GetNode<AnimationPlayer>("AnimationPlayer");
 		rect = GetNode<ColorRect>("ColorRect");
 		rect.Hide();
@@ -23,7 +26,12 @@ public partial class Effect : CanvasLayer
 
 	public void PlayEffect(string Effect)
 	{
-		if (playerAnim.HasAnimation(Effect))
+		if (Effect == "Save_")
+		{
+			animSpryte.Show();
+			playerAnim.Play(Effect);
+		}
+		else if (playerAnim.HasAnimation(Effect))
 		{
 			rect.Show();
 			playerAnim.Play(Effect);
@@ -35,6 +43,10 @@ public partial class Effect : CanvasLayer
 		if  (animName.ToString().Split("_")[1] == "Close")
 		{
 			rect.Hide();
+		}
+		else if (animName == "Save_")
+		{
+			animSpryte.Hide();
 		}
 	}
 }

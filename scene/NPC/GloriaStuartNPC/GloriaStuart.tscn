@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5wry3ahqfet1"]
+
+[ext_resource type="PackedScene" uid="uid://onl4lmy25vim" path="res://scene/NPC/BasicNpc.tscn" id="1_n83dl"]
+[ext_resource type="Texture2D" uid="uid://dadam2akqa2jn" path="res://resources/img/NPC/GloriaStuartNPC/walk and idle.png" id="2_ygmlk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry4j8"]
+atlas = ExtResource("2_ygmlk")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ri1y"]
+atlas = ExtResource("2_ygmlk")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i2utu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry4j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ri1y")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_usp2c"]
+radius = 24.0208
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hwbu4"]
+radius = 8.0
+
+[node name="GloriaStuart" instance=ExtResource("1_n83dl")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(-1, -13)
+scale = Vector2(1.16667, 1.16667)
+sprite_frames = SubResource("SpriteFrames_i2utu")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent" index="0"]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_usp2c")
+
+[node name="InteractableLabelComponent" parent="." index="2"]
+offset_left = -24.0
+offset_top = -37.0
+offset_right = -6.0
+offset_bottom = -19.0
+
+[node name="StaticBody2D" parent="." index="3"]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, -4)
+scale = Vector2(0.75, 0.75)
+shape = SubResource("CircleShape2D_hwbu4")
