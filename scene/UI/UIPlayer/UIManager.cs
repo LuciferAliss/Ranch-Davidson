@@ -12,6 +12,7 @@ public partial class UIManager : CanvasLayer
 	public HungryBar hungryBar;
     public bool inventoryVisible = false;
     public bool pauseVisible = false;
+	public MarginContainer margin;
 
     public override void _Ready()
     {
@@ -22,6 +23,7 @@ public partial class UIManager : CanvasLayer
         hud = GetNode<ToolsPanel>("MarginContainer/ToolsPanel");
 		dayAndNightPanel = GetNode<DayAndNightPanel>("MarginContainer/DayAndNightPanel");
 		hungryBar = GetNode<HungryBar>("MarginContainer/HungryBar");
+		margin = GetNode<MarginContainer>("MarginContainer");
     }
 
     public void InventoryVisibility()

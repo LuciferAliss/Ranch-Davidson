@@ -33,6 +33,7 @@ public partial class PauseMenu : PanelContainer
     private void ExitInMainMenu()
     {
         player.uIManager.PauseVisibility();
+        player.uIManager.Hide();
         player.cooldown = true;
         ManagerScene.ChangeScene(player.GetParent().GetTree(), "res://scene//UI//MainMenu//MainMenu.tscn", "VignetteEffect_Open");
     }

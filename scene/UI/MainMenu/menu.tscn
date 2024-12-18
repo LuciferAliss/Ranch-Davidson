@@ -34,7 +34,7 @@ text = "Новая игра"
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"ButtonMainMenu"
-text = "Загрузить"
+text = "Продолжить"
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

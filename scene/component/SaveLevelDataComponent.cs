@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Linq;
-
 public partial class SaveLevelDataComponent : Node
 {
     string levelNameScene;
@@ -49,18 +48,44 @@ public partial class SaveLevelDataComponent : Node
             DirAccess.MakeDirAbsolute(saveGameDataPath);
         }
 
-        var levelSaveFileName = $"save_{levelNameScene}_game_data.tres";
+        string levelSaveFileName = $"save_{levelNameScene}_game_data.tres";
+        string saveGamePath = saveGameDataPath + levelSaveFileName;
 
         SaveNodeData();
 
-        var result = ResourceSaver.Save(gameDataResource, saveGameDataPath + levelSaveFileName);
+        var result = ResourceSaver.Save(gameDataResource, saveGamePath);
         GD.Print($"result: {result}");
+
+        using (var context = new SaveContext())
+        {
+            var save = context.Save.FirstOrDefault(u => u.id == UserData.Instance.user.id);
+                
+            FileAccess file = FileAccess.Open(saveGamePath, FileAccess.ModeFlags.Read);
+            save.Save = file.GetAsText();
+        
+            context.SaveChanges();
+            file.Close();
+        }
+
+        DirAccess.RemoveAbsolute(saveGamePath);
     }
 
     public void LoadGame()
     {
-        string levelSaveFileName = $"save_{levelNameScene}_game_data.tres";
+        string save;
+        using (var context = new SaveContext())
+        {
+            var dbSave = context.Save.FirstOrDefault(u => u.id == UserData.Instance.user.id);
+            save = dbSave.Save;
+        }
+
+        string levelSaveFileName = $"save_{levelNameScene + UserData.Instance.count++.ToString()}_game_data.tres";
+
         string saveGamePath = saveGameDataPath + levelSaveFileName;
+        
+        using var file = FileAccess.Open(saveGamePath, FileAccess.ModeFlags.Write);
+        file.StoreString(save);
+        file.Close();
 
         if (!FileAccess.FileExists(saveGamePath))
         {
@@ -86,5 +111,8 @@ public partial class SaveLevelDataComponent : Node
                 }
             }
         } 
+
+        DirAccess.RemoveAbsolute(saveGamePath);
+        gameDataResource = null;
     }
 }

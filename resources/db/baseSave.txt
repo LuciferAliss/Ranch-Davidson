@@ -1,0 +1,203 @@
+[gd_resource type="Resource" load_steps=45 format=3]
+
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/DayNightSceneDataResource.cs" id="1_8qpcb"]
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/TileMapLayerDataResource.cs" id="2_jjf07"]
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/SceneDataResource.cs" id="3_kw0be"]
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/Inventory/InventorySlot.cs" id="4_3kfia"]
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/PlayerDataSource.cs" id="5_7e3ew"]
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/SaveGameDataResource.cs" id="6_2ymv3"]
+
+[sub_resource type="Resource" id="Resource_fdt48"]
+script = ExtResource("1_8qpcb")
+currentMinute = 50
+currentHour = 13
+currentDay = 1
+nodeName = "DayNightCycleComponent"
+sceneFilePath = "res://scene/component/DayNightCycleComponent.tscn"
+globalPosition = Vector2(0, 0)
+nodePath = NodePath("/root/Level/DayNightCycleComponent")
+parentNodePath = NodePath("/root/Level")
+
+[sub_resource type="Resource" id="Resource_t6tu2"]
+script = ExtResource("2_jjf07")
+tileMapLayerUsedCells = Array[Vector2i]([])
+terrainSet = 0
+terrain = 2
+globalPosition = Vector2(0, 0)
+nodePath = NodePath("/root/Level/GameTileMap/Soil")
+parentNodePath = NodePath("/root/Level/GameTileMap")
+
+[sub_resource type="Resource" id="Resource_u61qa"]
+script = ExtResource("2_jjf07")
+tileMapLayerUsedCells = Array[Vector2i]([Vector2i(8, 17), Vector2i(12, 17), Vector2i(9, 21), Vector2i(13, 21)])
+terrainSet = 0
+terrain = -1
+globalPosition = Vector2(0, 0)
+nodePath = NodePath("/root/Level/GameTileMap/Object")
+parentNodePath = NodePath("/root/Level/GameTileMap")
+
+[sub_resource type="Resource" id="Resource_ur5w8"]
+script = ExtResource("3_kw0be")
+nodeName = "oak-tree"
+sceneFilePath = "res://scene/obj/tree/oak_tree.tscn"
+globalPosition = Vector2(136, 280)
+nodePath = NodePath("/root/Level/GameTileMap/Object/oak-tree")
+parentNodePath = NodePath("/root/Level/GameTileMap/Object")
+
+[sub_resource type="Resource" id="Resource_5n47t"]
+script = ExtResource("3_kw0be")
+nodeName = "@Sprite2D@12"
+sceneFilePath = "res://scene/obj/tree/oak_tree.tscn"
+globalPosition = Vector2(200, 280)
+nodePath = NodePath("/root/Level/GameTileMap/Object/@Sprite2D@12")
+parentNodePath = NodePath("/root/Level/GameTileMap/Object")
+
+[sub_resource type="Resource" id="Resource_bcwta"]
+script = ExtResource("3_kw0be")
+nodeName = "@Sprite2D@13"
+sceneFilePath = "res://scene/obj/tree/oak_tree.tscn"
+globalPosition = Vector2(152, 344)
+nodePath = NodePath("/root/Level/GameTileMap/Object/@Sprite2D@13")
+parentNodePath = NodePath("/root/Level/GameTileMap/Object")
+
+[sub_resource type="Resource" id="Resource_tu1am"]
+script = ExtResource("3_kw0be")
+nodeName = "@Sprite2D@14"
+sceneFilePath = "res://scene/obj/tree/oak_tree.tscn"
+globalPosition = Vector2(216, 344)
+nodePath = NodePath("/root/Level/GameTileMap/Object/@Sprite2D@14")
+parentNodePath = NodePath("/root/Level/GameTileMap/Object")
+
+[sub_resource type="Resource" id="Resource_xr80e"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_7a6u6"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_ejccr"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_ah81m"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_vbv2u"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_1g7lr"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_vfid5"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_n4v6y"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_xddfd"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_18o1q"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_ljm5c"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_5o4xo"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_pd6wu"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_jn4cc"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_oyt33"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_prs6k"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_yf4ps"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_lqcu6"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_iju6v"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_a7tx3"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_1bush"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_aqodo"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_sflbi"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_3tutb"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_t18qh"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_we2sq"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_iijve"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_qqlwa"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_ixk78"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_soxbw"]
+script = ExtResource("4_3kfia")
+count = 0
+
+[sub_resource type="Resource" id="Resource_1lsh0"]
+script = ExtResource("5_7e3ew")
+satiety = 100
+inventory = [SubResource("Resource_xr80e"), SubResource("Resource_7a6u6"), SubResource("Resource_ejccr"), SubResource("Resource_ah81m"), SubResource("Resource_vbv2u"), SubResource("Resource_1g7lr"), SubResource("Resource_vfid5"), SubResource("Resource_n4v6y"), SubResource("Resource_xddfd"), SubResource("Resource_18o1q"), SubResource("Resource_ljm5c"), SubResource("Resource_5o4xo"), SubResource("Resource_pd6wu"), SubResource("Resource_jn4cc"), SubResource("Resource_oyt33"), SubResource("Resource_prs6k"), SubResource("Resource_yf4ps"), SubResource("Resource_lqcu6"), SubResource("Resource_iju6v"), SubResource("Resource_a7tx3"), SubResource("Resource_1bush"), SubResource("Resource_aqodo"), SubResource("Resource_sflbi"), SubResource("Resource_3tutb"), SubResource("Resource_t18qh"), SubResource("Resource_we2sq"), SubResource("Resource_iijve"), SubResource("Resource_qqlwa"), SubResource("Resource_ixk78"), SubResource("Resource_soxbw")]
+nodeName = "Player"
+sceneFilePath = "res://scene/player/player.tscn"
+globalPosition = Vector2(282, 171)
+nodePath = NodePath("/root/Level/Player")
+parentNodePath = NodePath("/root/Level")
+
+[resource]
+script = ExtResource("6_2ymv3")
+saveDataNodes = [SubResource("Resource_fdt48"), SubResource("Resource_t6tu2"), SubResource("Resource_u61qa"), SubResource("Resource_ur5w8"), SubResource("Resource_5n47t"), SubResource("Resource_bcwta"), SubResource("Resource_tu1am"), SubResource("Resource_1lsh0")]

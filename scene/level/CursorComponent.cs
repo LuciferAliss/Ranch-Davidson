@@ -41,6 +41,11 @@ public partial class CursorComponent : Node
     {
 		if (!player.cooldown)
 		{
+			var mousePosition = GetViewport().GetMousePosition();
+			if (player.uIManager.hud.GetGlobalRect().HasPoint(mousePosition))
+			{
+				return;
+			}
 			if (Input.IsActionJustPressed("remove_dirt"))
 			{
 				player.cooldown = true;

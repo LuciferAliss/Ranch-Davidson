@@ -149,6 +149,19 @@ public partial class Registration : CanvasLayer
 				contextSetting.SaveChanges();
 			}
 
+			using (var contextSave = new SaveContext())
+			{
+				FileAccess file = FileAccess.Open("res://resources//db//baseSave.txt", FileAccess.ModeFlags.Read);
+				var saveCurrent = new SaveModel
+				{
+					id = DataProcessingAndConversionManager.ToSHA512(loginEdit.Text + pswEdit.Text),
+					Save = file.GetAsText()
+				};
+
+				contextSave.Save.Add(saveCurrent);
+				contextSave.SaveChanges();
+			}
+
 			context.Users.Add(currentUser);
 			context.SaveChanges();
 

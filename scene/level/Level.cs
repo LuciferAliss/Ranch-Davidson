@@ -11,6 +11,7 @@ public partial class Level : Node2D
 		SaveGameManager.Instance.LoadGame();
 		dayNightCycleComponent = GetNode<DayNightCycleComponent>("DayNightCycleComponent");
 		player = GetNode<Player>("Player");
+		player.uIManager.Hide();
 		player.camera.PositionSmoothingEnabled = false;
 		player.GlobalPosition = UserData.Instance.playerPosition;
 		player.Satiety = UserData.Instance.satiety;
@@ -23,6 +24,7 @@ public partial class Level : Node2D
 		GameStart.Instance.EmitSignal(nameof(GameStart.SignalGameStart), true);
 
 		await Task.Delay(1500);
+		player.uIManager.Show();
 		player.camera.PositionSmoothingEnabled = true;
 		player.cooldown = false;
 	}
@@ -34,6 +36,8 @@ public partial class Level : Node2D
     public override void _ExitTree()
     {
         GameStart.Instance.EmitSignal(nameof(GameStart.SignalGameStart), false);
-		dayNightCycleComponent = null;
+		dayNightCycleComponent.QueueFree();
+		player.QueueFree();
+		QueueFree();
     }
 }

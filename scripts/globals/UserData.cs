@@ -8,6 +8,7 @@ partial class UserData : Node
     public int satiety = 100;
     public InventorySlot[] inventory = GD.Load<Inventory>("res://resources//ResourceSaveGame//Inventory.tres").slots;
     public int[] timeWorld = new int[] { 30, 13, 1 };
+    public int count = 0;
     
     public override void _Ready()
     {
