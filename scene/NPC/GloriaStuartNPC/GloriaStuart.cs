@@ -7,7 +7,6 @@ namespace Helpers
     {
         [Export] public Resource dialogueResponse;
         [Export] public string dialogueStart = "start";
-        private bool acquaintance = false;
 
         public override void StartDialogue()
         {

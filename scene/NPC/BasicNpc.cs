@@ -8,9 +8,12 @@ public partial class BasicNpc : Node2D
     protected Control interactableLable;
     protected InteractableComponent interactableComponent;
     protected bool isRange = false;
+    public bool acquaintance = false;
 
     public override void _Ready()
     {
+        AddToGroup("NPC");
+
         interactableComponent = GetNode<InteractableComponent>("InteractableComponent");
         interactableLable = GetNode<Control>("InteractableLabelComponent");
 

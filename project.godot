@@ -29,6 +29,7 @@ SaveGameManager="*res://scripts/globals/SaveGameManager.cs"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Signals="*res://scripts/globals/Signals.cs"
 GameDialogueManager="*res://scripts/globals/GameDialogueManager.cs"
+NpcData="*res://scripts/globals/NPCData.cs"
 
 [dialogue_manager]
 

@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://onl4lmy25vim"]
+[gd_scene load_steps=6 format=3 uid="uid://onl4lmy25vim"]
 
 [ext_resource type="PackedScene" uid="uid://cefssk25pfdbk" path="res://scene/component/InteractableComponent.tscn" id="1_2vxw2"]
 [ext_resource type="Script" path="res://scene/NPC/BasicNpc.cs" id="1_vh3ui"]
 [ext_resource type="PackedScene" uid="uid://cnmci1ks061ad" path="res://scene/component/InteractableLabelComponent.tscn" id="2_hg4gm"]
+[ext_resource type="PackedScene" uid="uid://dsbrek1hdwygm" path="res://scene/component/SaveDataComponent.tscn" id="4_0hmeo"]
+[ext_resource type="Resource" uid="uid://cs5e50glu8ogt" path="res://resources/ResourceSaveGame/NPCDataSorce.tres" id="5_vle8g"]
 
 [node name="BasicNPC" type="Node2D"]
 script = ExtResource("1_vh3ui")
@@ -14,3 +16,6 @@ script = ExtResource("1_vh3ui")
 [node name="InteractableLabelComponent" parent="." instance=ExtResource("2_hg4gm")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="SaveDataComponent" parent="." instance=ExtResource("4_0hmeo")]
+SaveDataResource = ExtResource("5_vle8g")
