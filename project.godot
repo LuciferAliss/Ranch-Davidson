@@ -27,6 +27,7 @@ DayAndNightCycleManager="*res://scripts/globals/DayAndNightCycleManager.cs"
 Effect="*res://scene/UI/Effect/Effect.tscn"
 SaveGameManager="*res://scripts/globals/SaveGameManager.cs"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+GameDialogueManager="*res://scripts/globals/GameDialogueManager.cs"
 
 [dialogue_manager]
 

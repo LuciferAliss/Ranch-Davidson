@@ -149,6 +149,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(104, 104)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
+toggle_mode = true
 icon = SubResource("AtlasTexture_sro24")
 icon_alignment = 1
 expand_icon = true

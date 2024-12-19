@@ -24,4 +24,9 @@ partial class UserData : Node
     {
         this.timeWorld = timeWorld;
     }
+
+    public string GetLogin()
+    {
+        return user.login;
+    }
 }

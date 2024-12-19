@@ -1,0 +1,108 @@
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://dcxi3ni6lyxvq"]
+
+[ext_resource type="FontFile" uid="uid://b76b2wdu47so" path="res://resources/img/Theme/Monocraft.otf" id="1_1kqrs"]
+[ext_resource type="Texture2D" uid="uid://6o72sbay6xfd" path="res://resources/img/UI/HUD/BasicUI.png" id="1_hmq0k"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ifh57"]
+load_path = "res://.godot/imported/BasicUI.png-f6e2e8503c0f55650f4245df98f93e47.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtbm5"]
+atlas = SubResource("CompressedTexture2D_ifh57")
+region = Rect2(1248, 134, 96, 106)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1iikw"]
+texture = SubResource("AtlasTexture_xtbm5")
+texture_margin_left = 16.0
+texture_margin_top = 15.0
+texture_margin_right = 16.0
+texture_margin_bottom = 22.0
+region_rect = Rect2(0, 0, 96, 106)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5g47r"]
+load_path = "res://.godot/imported/BasicUI.png-f6e2e8503c0f55650f4245df98f93e47.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r53gp"]
+atlas = SubResource("CompressedTexture2D_5g47r")
+region = Rect2(1136, 134, 96, 106)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5aig"]
+texture = SubResource("AtlasTexture_r53gp")
+texture_margin_left = 16.0
+texture_margin_top = 15.0
+texture_margin_right = 16.0
+texture_margin_bottom = 22.0
+region_rect = Rect2(0, 0, 96, 106)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s3h1v"]
+load_path = "res://.godot/imported/BasicUI.png-f6e2e8503c0f55650f4245df98f93e47.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm5qf"]
+atlas = SubResource("CompressedTexture2D_s3h1v")
+region = Rect2(1136, 134, 96, 106)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f6nuf"]
+texture = SubResource("AtlasTexture_wm5qf")
+texture_margin_left = 16.0
+texture_margin_top = 15.0
+texture_margin_right = 16.0
+texture_margin_bottom = 22.0
+region_rect = Rect2(0, 0, 96, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m52lm"]
+atlas = ExtResource("1_hmq0k")
+region = Rect2(912, 134, 96, 106)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u37em"]
+texture = SubResource("AtlasTexture_m52lm")
+texture_margin_left = 16.0
+texture_margin_top = 15.0
+texture_margin_right = 16.0
+texture_margin_bottom = 22.0
+region_rect = Rect2(0, 0, 96, 106)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hmcle"]
+load_path = "res://.godot/imported/BasicUI.png-f6e2e8503c0f55650f4245df98f93e47.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhlm4"]
+atlas = SubResource("CompressedTexture2D_hmcle")
+region = Rect2(1024, 133, 96, 107)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pfqfr"]
+texture = SubResource("AtlasTexture_xhlm4")
+texture_margin_left = 16.0
+texture_margin_top = 15.0
+texture_margin_right = 16.0
+texture_margin_bottom = 22.0
+region_rect = Rect2(0, 0, 96, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77w2p"]
+atlas = ExtResource("1_hmq0k")
+region = Rect2(1184, 0, 156, 80)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxy71"]
+texture = SubResource("AtlasTexture_77w2p")
+texture_margin_left = 13.0
+texture_margin_top = 13.0
+texture_margin_right = 13.0
+texture_margin_bottom = 18.0
+region_rect = Rect2(0, 0, 156, 80)
+
+[resource]
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_1kqrs")
+Button/styles/disabled = SubResource("StyleBoxTexture_1iikw")
+Button/styles/focus = SubResource("StyleBoxTexture_g5aig")
+Button/styles/hover = SubResource("StyleBoxTexture_f6nuf")
+Button/styles/normal = SubResource("StyleBoxTexture_u37em")
+Button/styles/pressed = SubResource("StyleBoxTexture_pfqfr")
+CharacterNameText/base_type = &"RichTextLabel"
+CharacterNameText/font_sizes/normal_font_size = 36
+CharacterNameText/fonts/normal_font = ExtResource("1_1kqrs")
+DialogueText/base_type = &"RichTextLabel"
+DialogueText/font_sizes/normal_font_size = 30
+DialogueText/fonts/normal_font = ExtResource("1_1kqrs")
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
+Panel/styles/panel = SubResource("StyleBoxTexture_xxy71")

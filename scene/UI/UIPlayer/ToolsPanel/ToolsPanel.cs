@@ -22,6 +22,12 @@ public partial class ToolsPanel : PanelContainer
         Tool3.Pressed += ChangeTool3;
         Tool4.Pressed += ChangeTool4;
         Tool5.Pressed += ChangeTool5;
+
+        Tool1.SetPressed(true);
+        Tool2.Disabled = true;
+        Tool3.Disabled = true;
+        Tool4.Disabled = true;
+        Tool5.Disabled = true;
     }
 
     public void SetPlayer(Player player)
@@ -41,25 +47,37 @@ public partial class ToolsPanel : PanelContainer
 
     private void ChangeTool2()
     {
-        player.ChangeTools(ItemsName.ToolNames[1]);
-        player.hitComponent.tool = ItemsName.ToolNames[1];
+        if (!Tool2.Disabled)
+        {
+            player.ChangeTools(ItemsName.ToolNames[1]);
+            player.hitComponent.tool = ItemsName.ToolNames[1];
+        }
     }
 
     private void ChangeTool3()
     {
-        player.ChangeTools(ItemsName.ToolNames[2]);
-        player.hitComponent.tool = ItemsName.ToolNames[2];
+        if (!Tool3.Disabled)
+        {
+            player.ChangeTools(ItemsName.ToolNames[2]);
+            player.hitComponent.tool = ItemsName.ToolNames[2];
+        }
     }
 
     private void ChangeTool4()
     {
-        player.ChangeTools(ItemsName.ToolNames[3]);
-        player.hitComponent.tool = ItemsName.ToolNames[3];
+        if (!Tool4.Disabled)
+        {
+            player.ChangeTools(ItemsName.ToolNames[3]);
+            player.hitComponent.tool = ItemsName.ToolNames[3];
+        }
     }
 
     private void ChangeTool5()
     {
-        player.ChangeTools(ItemsName.ToolNames[4]);
-        player.hitComponent.tool = ItemsName.ToolNames[4];
+        if (!Tool5.Disabled)
+        {
+            player.ChangeTools(ItemsName.ToolNames[4]);
+            player.hitComponent.tool = ItemsName.ToolNames[4];
+        }
     }
 }
