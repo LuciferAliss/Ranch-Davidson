@@ -17,17 +17,33 @@ public partial class ToolsPanel : PanelContainer
         Tool4 = GetNode<Button>("MarginContainer/HBoxContainer/ToolHoe");
         Tool5 = GetNode<Button>("MarginContainer/HBoxContainer/WheatSeeds");
 
+        GameDialogueManager.Instance.ActivationTools += OnActivationTools;
+
         Tool1.Pressed += ChangeTool1;
         Tool2.Pressed += ChangeTool2;
         Tool3.Pressed += ChangeTool3;
         Tool4.Pressed += ChangeTool4;
         Tool5.Pressed += ChangeTool5;
+    }
 
-        Tool1.SetPressed(true);
-        Tool2.Disabled = true;
-        Tool3.Disabled = true;
-        Tool4.Disabled = true;
-        Tool5.Disabled = true;
+    public void UpdateStateTools()
+    {
+        if (player.accessTools)
+        {
+            Tool1.SetPressed(false);
+            Tool2.Disabled = false;
+            Tool3.Disabled = false;
+            Tool4.Disabled = false;
+            Tool5.Disabled = false;
+        }
+        else
+        {
+            Tool1.SetPressed(true);
+            Tool2.Disabled = true;
+            Tool3.Disabled = true;
+            Tool4.Disabled = true;
+            Tool5.Disabled = true;
+        }
     }
 
     public void SetPlayer(Player player)
@@ -37,6 +53,15 @@ public partial class ToolsPanel : PanelContainer
 
     public override void _Process(double delta)
     {
+    }
+
+    public void OnActivationTools()
+    {
+        Tool2.Disabled = false;
+        Tool3.Disabled = false;
+        Tool4.Disabled = false;
+        Tool5.Disabled = false;
+        player.accessTools = true;
     }
 
     private void ChangeTool1()

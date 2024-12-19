@@ -10,6 +10,7 @@ public partial class UserData : Node
     public InventorySlot[] inventory = GD.Load<Inventory>("res://resources//ResourceSaveGame//Inventory.tres").slots;
     public int[] timeWorld = new int[] { 30, 13, 1 };
     public int count = 0;
+    public bool accessTools = false;
     
     public override void _Ready()
     {
@@ -25,10 +26,5 @@ public partial class UserData : Node
     public void SetTimeWorld(int[] timeWorld)
     {
         this.timeWorld = timeWorld;
-    }
-
-    public string GetLogin()
-    {
-        return user.login;
     }
 }

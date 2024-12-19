@@ -15,6 +15,8 @@ public partial class Level : Node2D
 		player.camera.PositionSmoothingEnabled = false;
 		player.GlobalPosition = UserData.Instance.playerPosition;
 		player.Satiety = UserData.Instance.satiety;
+		player.accessTools = UserData.Instance.accessTools;
+		player.uIManager.hud.UpdateStateTools();
 		player.uIManager.inventory.inventory.slots = UserData.Instance.inventory;
 		player.uIManager.inventory.UpdateInventory();
 		player.uIManager.hungryBar.UpdateHungryBar();

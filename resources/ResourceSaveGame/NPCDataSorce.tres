@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cs5e50glu8ogt"]
+
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/NPCDataSorce.cs" id="1_nvx6s"]
+
+[resource]
+script = ExtResource("1_nvx6s")

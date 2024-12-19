@@ -6,6 +6,7 @@ public partial class Player : CharacterBody2D
 	private float maxSpeed = 100;
 	public int Satiety = 100;
 	Vector2 direction;
+	public bool accessTools = false; 
 	private bool Pause = false;
 	private bool useAction = false;
 	private bool Inventory = false;
@@ -38,6 +39,7 @@ public partial class Player : CharacterBody2D
 
 		animationPl.AnimationFinished += FinishedAnimation;
 		uIManager.inventory.UseItem += UsedItem;
+		GameDialogueManager.Instance.AllowMovePlayer += OnAllowMovePlayer;
 		
 		uIManager.hungryBar.SetPlayer(this);
 		uIManager.hud.SetPlayer(this);
@@ -80,12 +82,9 @@ public partial class Player : CharacterBody2D
 				}
 			}
 		}
-		if (OpportunityDialogue && npc != null)
+		if (OpportunityDialogue && npc != null && Input.IsActionJustPressed("Interaction"))
 		{
-			if (Input.IsActionJustPressed("Interaction"))
-			{
-				npc.StartDialogue();
-			}
+			npc.StartDialogue();
 			direction = new Vector2(0, 0);
 		}
 		else
@@ -201,5 +200,10 @@ public partial class Player : CharacterBody2D
 				uIManager.hungryBar.UpdateHungryBar();
 				break;
 		}
+	}
+
+	public void OnAllowMovePlayer()
+	{
+		npc = null;
 	}
 }

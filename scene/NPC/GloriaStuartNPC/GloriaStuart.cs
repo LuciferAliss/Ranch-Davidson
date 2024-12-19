@@ -1,14 +1,19 @@
 using Godot;
 using DialogueManagerRuntime;
 
-public partial class GloriaStuart : BasicNpc
+namespace Helpers
 {
-    [Export] public Resource dialogueResponse;
-    [Export] public string dialogueStart = "start";
-    public bool acquaintance = false;
-
-    public override void StartDialogue()
+    public partial class GloriaStuart : BasicNpc
     {
-        DialogueManager.ShowDialogueBalloon(dialogueResponse, dialogueStart);
+        [Export] public Resource dialogueResponse;
+        [Export] public string dialogueStart = "start";
+        private bool acquaintance = false;
+
+        public override void StartDialogue()
+        {
+            Signals.Instance.EmitSignalCheckAcquaintance(acquaintance);
+            DialogueManager.ShowDialogueBalloon(dialogueResponse, dialogueStart);
+            acquaintance = true;
+        }
     }
 }
