@@ -1,11 +1,12 @@
 using Godot;
 
-partial class UserData : Node
+public partial class UserData : Node
 {
     public User user { get; private set; }
+    public string login = "";
     public static UserData Instance { get; private set; }
     public Vector2 playerPosition = new Vector2(282, 171);
-    public int satiety = 100;
+    public int satiety = 100; 
     public InventorySlot[] inventory = GD.Load<Inventory>("res://resources//ResourceSaveGame//Inventory.tres").slots;
     public int[] timeWorld = new int[] { 30, 13, 1 };
     public int count = 0;
@@ -18,6 +19,7 @@ partial class UserData : Node
     public void SetUser(User user)
     {
         this.user = user;
+        login = user.login;
     }
 
     public void SetTimeWorld(int[] timeWorld)

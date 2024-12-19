@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cg6rgxksxlfre"]
+[gd_scene load_steps=5 format=3 uid="uid://csg4xpw1lye3r"]
 
-[ext_resource type="Script" path="res://dialogue/GameDialogueBalloon.cs" id="1_cri0s"]
-[ext_resource type="Theme" uid="uid://dcxi3ni6lyxvq" path="res://resources/img/Theme/GameDialogueBalloonTheme.tres" id="2_boiva"]
-[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_m6otm"]
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_xuexe"]
+[ext_resource type="Script" path="res://dialogue/DialogueBalloon.cs" id="1_36de5"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
+[ext_resource type="Theme" uid="uid://dcxi3ni6lyxvq" path="res://resources/img/Theme/GameDialogueBalloonTheme.tres" id="2_g2p64"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
 
-[node name="GameDialogueBalloon" type="CanvasLayer"]
+[node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
-script = ExtResource("1_cri0s")
+script = ExtResource("1_36de5")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -17,19 +17,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_boiva")
+theme = ExtResource("2_g2p64")
 
 [node name="Panel" type="Panel" parent="Balloon"]
 clip_children = 2
-clip_contents = true
-custom_minimum_size = Vector2(700, 250)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 21.0
-offset_top = -183.0
+offset_top = -280.0
 offset_right = -19.0
 offset_bottom = -19.0
 grow_horizontal = 2
@@ -59,10 +57,10 @@ fit_content = true
 scroll_active = false
 
 [node name="Control" type="Control" parent="Balloon/Panel/Dialogue/VBoxContainer"]
-custom_minimum_size = Vector2(0, 3.475)
+custom_minimum_size = Vector2(0, 14.445)
 layout_mode = 2
 
-[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("2_m6otm")]
+[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -76,10 +74,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -175.0
-offset_top = -79.5
-offset_right = 225.0
-offset_bottom = 39.5
+offset_left = -320.5
+offset_top = -54.0
+offset_right = 320.5
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -88,7 +86,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
-script = ExtResource("3_xuexe")
+script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]

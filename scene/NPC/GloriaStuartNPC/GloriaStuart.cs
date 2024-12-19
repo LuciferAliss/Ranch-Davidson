@@ -1,15 +1,14 @@
 using Godot;
-using System;
+using DialogueManagerRuntime;
 
 public partial class GloriaStuart : BasicNpc
 {
-    public override void _UnhandledInput(InputEvent @event)
+    [Export] public Resource dialogueResponse;
+    [Export] public string dialogueStart = "start";
+    public bool acquaintance = false;
+
+    public override void StartDialogue()
     {
-        if (Input.IsActionJustPressed("Interaction") && isRange)
-        {
-            BaseGameDialogueBalloon balloon = (BaseGameDialogueBalloon)balloonScene.Instantiate();
-            GetTree().CurrentScene.AddChild(balloon);
-            balloon.Start(GD.Load("res://dialogue/conversations/GloriaStuart.dialogue"), "start");
-        }
+        DialogueManager.ShowDialogueBalloon(dialogueResponse, dialogueStart);
     }
 }

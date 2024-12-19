@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using Godot;
 
 public partial class Player : CharacterBody2D
@@ -6,6 +5,7 @@ public partial class Player : CharacterBody2D
 	[Export]
 	private float maxSpeed = 100;
 	public int Satiety = 100;
+	Vector2 direction;
 	private bool Pause = false;
 	private bool useAction = false;
 	private bool Inventory = false;
@@ -19,6 +19,8 @@ public partial class Player : CharacterBody2D
 	public UIManager uIManager;
 	public HitComponent hitComponent { get; private set; }
 	public CollisionShape2D HitBox { get; private set; }
+	public bool OpportunityDialogue = false;
+	public BasicNpc npc; 
 
 	public override void _Ready()
 	{
@@ -78,19 +80,29 @@ public partial class Player : CharacterBody2D
 				}
 			}
 		}
+		if (OpportunityDialogue && npc != null)
+		{
+			if (Input.IsActionJustPressed("Interaction"))
+			{
+				npc.StartDialogue();
+			}
+			direction = new Vector2(0, 0);
+		}
+		else
+		{
+			direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
+		}
 	}
 
-	private Vector2 MovementVector()
+	public void OpportunityForDialogue(bool Opportunity, BasicNpc npc)
 	{
-		float movement_x = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
-		float movement_y = Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
-		return new Vector2(movement_x, movement_y);
+		OpportunityDialogue = Opportunity;
+		this.npc = npc;
 	}
 
 	private void Move()
 	{
-		Vector2 direction = MovementVector().Normalized();
-		Vector2 velocity = maxSpeed * direction;
+		Vector2 velocity = maxSpeed * direction.Normalized();
 
 		if (direction.X > 0 && direction.Y == 0)
 		{

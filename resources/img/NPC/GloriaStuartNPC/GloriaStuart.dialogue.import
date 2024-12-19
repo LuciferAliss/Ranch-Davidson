@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://cdoqrm4lwlmx0"
+path="res://.godot/imported/GloriaStuart.dialogue-316cc85c11b0206509c97270b5562748.tres"
+
+[deps]
+
+source_file="res://resources/img/NPC/GloriaStuartNPC/GloriaStuart.dialogue"
+dest_files=["res://.godot/imported/GloriaStuart.dialogue-316cc85c11b0206509c97270b5562748.tres"]
+
+[params]
+
+defaults=true

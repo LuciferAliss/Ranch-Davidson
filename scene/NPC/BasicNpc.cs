@@ -1,3 +1,4 @@
+using DialogueManagerRuntime;
 using Godot;
 using System;
 
@@ -12,7 +13,6 @@ public partial class BasicNpc : Node2D
     {
         interactableComponent = GetNode<InteractableComponent>("InteractableComponent");
         interactableLable = GetNode<Control>("InteractableLabelComponent");
-        balloonScene = GD.Load<PackedScene>("res://dialogue/GameDialogueBalloon.tscn");
 
         interactableComponent.InteractableActivated += OnInteractableActivated;
         interactableComponent.InteractableDeactivated += OnInteractableDeactivated;
@@ -20,15 +20,21 @@ public partial class BasicNpc : Node2D
         interactableLable.Hide();
     }
 
-    protected void OnInteractableActivated()
+    protected void OnInteractableActivated(Player player)
     {
         interactableLable.Show();
         isRange = true;
+        player.OpportunityForDialogue(isRange, this);
     }
 
-    protected void OnInteractableDeactivated()
+    protected void OnInteractableDeactivated(Player player)
     {
         interactableLable.Hide();
         isRange = false;
+        player.OpportunityForDialogue(isRange, null);
+    }
+
+    public virtual void StartDialogue()
+    {
     }
 }

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5wry3ahqfet1"]
+[gd_scene load_steps=10 format=3 uid="uid://c5wry3ahqfet1"]
 
 [ext_resource type="PackedScene" uid="uid://onl4lmy25vim" path="res://scene/NPC/BasicNpc.tscn" id="1_n83dl"]
 [ext_resource type="Script" path="res://scene/NPC/GloriaStuartNPC/GloriaStuart.cs" id="2_1wr7j"]
 [ext_resource type="Texture2D" uid="uid://dadam2akqa2jn" path="res://resources/img/NPC/GloriaStuartNPC/walk and idle.png" id="2_ygmlk"]
+[ext_resource type="Resource" uid="uid://cdoqrm4lwlmx0" path="res://resources/img/NPC/GloriaStuartNPC/GloriaStuart.dialogue" id="3_mumsd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ry4j8"]
 atlas = ExtResource("2_ygmlk")
@@ -34,6 +35,8 @@ radius = 8.0
 
 [node name="GloriaStuart" instance=ExtResource("1_n83dl")]
 script = ExtResource("2_1wr7j")
+dialogueResponse = ExtResource("3_mumsd")
+dialogueStart = "start"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(-1, -13)

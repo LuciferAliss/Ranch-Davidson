@@ -1,8 +1,9 @@
-using DialogueManagerRuntime;
 using Godot;
 using Godot.Collections;
 
-  public partial class BaseGameDialogueBalloon : CanvasLayer
+namespace DialogueManagerRuntime
+{
+  public partial class DialogueBalloon : CanvasLayer
   {
     [Export] public string NextAction = "ui_accept";
     [Export] public string SkipAction = "ui_cancel";
@@ -215,3 +216,4 @@ using Godot.Collections;
 
     #endregion
   }
+}
