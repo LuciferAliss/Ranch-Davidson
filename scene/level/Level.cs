@@ -68,11 +68,13 @@ public partial class Level : Node2D
 
 	private void NewGame()
 	{
-
+		player.accessTools = false;
+		player.uIManager.hud.UpdateStateTools();
 	}
 
 	private void ContinuationGame()
 	{
+		SaveGameManager.Instance.LoadGame();
 		GetNPCOnScene();
 		LoadGameResource();
 	}

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d4dqj5n5mn3dt" path="res://scene/component/HurtComponent.tscn" id="3_ao3vd"]
 [ext_resource type="PackedScene" uid="uid://cdomi0obtb71a" path="res://scene/component/DamageComponent.tscn" id="4_xffw0"]
 [ext_resource type="PackedScene" uid="uid://dsbrek1hdwygm" path="res://scene/component/SaveDataComponent.tscn" id="6_3ttu4"]
+[ext_resource type="PackedScene" uid="uid://gl5jxnpbwj6l" path="res://scene/component/VisibleComponent.tscn" id="6_342hb"]
 [ext_resource type="Resource" uid="uid://dwf0to7xaybr3" path="res://resources/ResourceSaveGame/SceneDataResource.tres" id="7_rmn6r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_od17m"]
@@ -20,10 +21,6 @@ region = Rect2(0, 80, 48, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7cgb"]
 size = Vector2(14, 10)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pstta"]
-radius = 24.0
-height = 64.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ltw"]
 size = Vector2(16, 31.75)
@@ -45,15 +42,9 @@ position = Vector2(0, -6)
 scale = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_k7cgb")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -52)
-shape = SubResource("CapsuleShape2D_pstta")
+[node name="VisibleComponent" parent="." instance=ExtResource("6_342hb")]
 
 [node name="HurtComponent" parent="." instance=ExtResource("3_ao3vd")]
-tool = "Axe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtComponent"]
 position = Vector2(2, -10.16)
@@ -63,6 +54,3 @@ debug_color = Color(0.868217, 0.31226, 0.433944, 0.42)
 
 [node name="DamageComponent" parent="." instance=ExtResource("4_xffw0")]
 maxDamage = 3
-
-[connection signal="body_entered" from="Area2D" to="." method="OnInvisibility"]
-[connection signal="body_exited" from="Area2D" to="." method="OffInvisibility"]

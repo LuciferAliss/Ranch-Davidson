@@ -14,6 +14,18 @@ public partial class MainMenu : Control
 		{
 			User user = context.Users.FirstOrDefault(u => u.login == "LuciferAliss");
 			UserData.Instance.SetUser(user);
+            using (var contextSave = new SaveContext())
+            {
+                var save = contextSave.Save.FirstOrDefault(u => UserData.Instance.user.id == u.id);
+                if (save.Save == null)
+                {
+                    UserData.Instance.haveSave = false;
+                }
+                else
+                {
+                    UserData.Instance.haveSave = true;
+                }
+            }
 		}
 
         settings = GetNode<Settings>("MarginContainer/settings");
@@ -21,6 +33,8 @@ public partial class MainMenu : Control
 
         menu.SetMenu(this);
         settings.SetSettings(this);
+
+        menu.UpdateButton();
 
         LoadBGMainMenu();
         LoadSetting();

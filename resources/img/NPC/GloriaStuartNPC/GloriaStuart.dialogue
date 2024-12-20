@@ -23,6 +23,8 @@ if (GameDialogueManager.acquaintance == false)
 				{{UserData.login}}: Спасибо большое за помощь и прости за эту шутку.
 				Глория Стюарт: Будешь должен, а за такие шутки можешь ещё и в жбан получить.
 	do GameDialogueManager.OnActivationTools()
+	do GameDialogueManager.OnAllowMovePlayer()
+	=> END
 else
 	while (GameDialogueManager.CountQuest > GameDialogueManager.i)
 		do GameDialogueManager.ChangeState()

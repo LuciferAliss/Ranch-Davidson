@@ -994,7 +994,6 @@ libraries = {
 visible = false
 
 [node name="HitComponent" parent="." instance=ExtResource("4_va24u")]
-tool = "Axe"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitComponent"]
 position = Vector2(0, -12)

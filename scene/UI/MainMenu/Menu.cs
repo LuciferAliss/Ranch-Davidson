@@ -1,4 +1,5 @@
 using Godot;
+using System.Linq;
 
 public partial class Menu : PanelContainer
 {
@@ -7,14 +8,18 @@ public partial class Menu : PanelContainer
 
 	public override void _Ready()
 	{
-		using (var contextSave = new SaveContext())
-		{
-			
-		}
 		ContinuationGameButton = GetNode<Button>("MarginContainer/VBoxContainer/LoadGame");
+	}
+
+	public override void _Process(double delta)
+	{
+	}
+	
+	public void UpdateButton()
+	{
 		if (UserData.Instance.haveSave)
 		{
-			ContinuationGameButton.Show()	;
+			ContinuationGameButton.Show();
 		}
 		else
 		{
@@ -22,10 +27,6 @@ public partial class Menu : PanelContainer
 		}
 	}
 
-	public override void _Process(double delta)
-	{
-	}
-	
 	public void SetMenu(MainMenu mainMenu)
     {
         this.mainMenu = mainMenu;
@@ -42,12 +43,12 @@ public partial class Menu : PanelContainer
 	{
 		ManagerScene.ChangeScene(mainMenu.GetTree(), "res://scene//level//level.tscn", "VignetteEffect_Open");
 		GameStart.Instance.newGame = true;
-		UserData.Instance.haveSave = true;
 	}
 
 	private void ContinuationGame()
 	{
 		ManagerScene.ChangeScene(mainMenu.GetTree(), "res://scene//level//level.tscn", "VignetteEffect_Open");
+		GameStart.Instance.newGame = false;
 	}
 
 	private void ExitFromGame()

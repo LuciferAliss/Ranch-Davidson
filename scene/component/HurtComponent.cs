@@ -3,7 +3,7 @@ using Godot;
 public partial class HurtComponent : Area2D
 {
 	[Export]
-	public string tool { get; private set; } = ItemsName.ToolNames[0];
+	public string tool { get; private set; } = ItemsName.ToolNames[1];
 	[Signal]
 	public delegate void HurtEventHandler(int Damage);
 

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scene/NPC/BasicNpc.cs" id="1_vh3ui"]
 [ext_resource type="PackedScene" uid="uid://cnmci1ks061ad" path="res://scene/component/InteractableLabelComponent.tscn" id="2_hg4gm"]
 [ext_resource type="PackedScene" uid="uid://dsbrek1hdwygm" path="res://scene/component/SaveDataComponent.tscn" id="4_0hmeo"]
-[ext_resource type="Resource" uid="uid://cs5e50glu8ogt" path="res://resources/ResourceSaveGame/NPCDataSorce.tres" id="5_vle8g"]
+[ext_resource type="Resource" path="res://resources/ResourceSaveGame/NPCDataSorce.tres" id="5_vle8g"]
 
 [node name="BasicNPC" type="Node2D"]
 script = ExtResource("1_vh3ui")

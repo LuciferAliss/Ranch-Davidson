@@ -13,6 +13,13 @@ public static class ItemsName
         [3] = "Hoe",
         [4] = "WheatSeeds"
     };
+
+    public static Dictionary<int, string> ItemNames = new Dictionary<int, string>
+    {
+        [0] = "Wheat",
+        [1] = "Apple",
+        [2] = "Log"
+    };
 }
 
 public enum GrowthStates 

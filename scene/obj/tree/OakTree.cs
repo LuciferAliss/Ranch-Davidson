@@ -8,6 +8,7 @@ public partial class OakTree : Sprite2D
 	HurtComponent hurtComponent;
 	DamageComponent damageComponent;
 	PackedScene logScene = GD.Load<PackedScene>("res://scene//obj//ItemForScene//log.tscn");
+	PackedScene appleScene = GD.Load<PackedScene>("res://scene/obj/ItemForScene/Tomato.tscn");
 
 	public override void _Ready()
 	{
@@ -20,18 +21,6 @@ public partial class OakTree : Sprite2D
 
 	public override void _Process(double delta)
 	{
-	}
-
-	void OnInvisibility(Node2D body)
-	{
-		Color color = new Color(1, 1, 1, 0.4f);
-		this.Modulate = color;
-	}
-
-	void OffInvisibility(Node2D body)
-	{
-		Color color = new Color(1, 1, 1, 1);
-		this.Modulate = color;
 	}
 
 	public async void OnHurt(int Damage)
@@ -52,7 +41,13 @@ public partial class OakTree : Sprite2D
 	private void AddLogScene()
 	{
 		var logInstance = logScene.Instantiate() as Node2D; 
+		var appleInstance = appleScene.Instantiate() as Node2D;
 		logInstance.GlobalPosition = GlobalPosition;
+		Random random = new ();
+		int x = random.Next(-15, 15);
+		int y = random.Next(-15, 15);
+		appleInstance.GlobalPosition = new Vector2(GlobalPosition.X + x, GlobalPosition.Y + y);
 		GetParent().AddChild(logInstance);
+		GetParent().AddChild(appleInstance);
 	}
 }

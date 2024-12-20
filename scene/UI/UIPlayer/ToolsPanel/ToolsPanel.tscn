@@ -161,6 +161,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(104, 104)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
+disabled = true
 icon = SubResource("AtlasTexture_4kklk")
 icon_alignment = 1
 expand_icon = true
@@ -173,6 +174,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(104, 104)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
+disabled = true
 icon = SubResource("AtlasTexture_0uv5y")
 icon_alignment = 1
 expand_icon = true
@@ -185,6 +187,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(104, 104)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
+disabled = true
 icon = SubResource("AtlasTexture_257hb")
 icon_alignment = 1
 expand_icon = true
@@ -197,6 +200,13 @@ layout_mode = 2
 custom_minimum_size = Vector2(104, 104)
 layout_mode = 2
 theme_type_variation = &"ToolButton"
+disabled = true
 icon = SubResource("AtlasTexture_a0xpf")
 icon_alignment = 1
 expand_icon = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/None" to="." method="ChangeTool1"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolAxe" to="." method="ChangeTool2"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolWateringCan" to="." method="ChangeTool3"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ToolHoe" to="." method="ChangeTool4"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/WheatSeeds" to="." method="ChangeTool5"]

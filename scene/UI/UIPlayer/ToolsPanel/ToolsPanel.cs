@@ -18,12 +18,6 @@ public partial class ToolsPanel : PanelContainer
         Tool5 = GetNode<Button>("MarginContainer/HBoxContainer/WheatSeeds");
 
         GameDialogueManager.Instance.ActivationTools += OnActivationTools;
-
-        Tool1.Pressed += ChangeTool1;
-        Tool2.Pressed += ChangeTool2;
-        Tool3.Pressed += ChangeTool3;
-        Tool4.Pressed += ChangeTool4;
-        Tool5.Pressed += ChangeTool5;
     }
 
     public override void _ExitTree()
@@ -35,7 +29,6 @@ public partial class ToolsPanel : PanelContainer
     {
         if (player.accessTools)
         {
-            Tool1.SetPressed(false);
             Tool2.Disabled = false;
             Tool3.Disabled = false;
             Tool4.Disabled = false;
@@ -43,7 +36,6 @@ public partial class ToolsPanel : PanelContainer
         }
         else
         {
-            Tool1.SetPressed(true);
             Tool2.Disabled = true;
             Tool3.Disabled = true;
             Tool4.Disabled = true;
