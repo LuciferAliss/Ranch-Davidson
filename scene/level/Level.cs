@@ -16,6 +16,7 @@ public partial class Level : Node2D
 		player = GetNode<Player>("Player");
 		player.uIManager.Hide();
 
+		GetNPCOnScene();
 		LoadGameResource();
 
 		Effect.Instance.PlayEffect("VignetteEffect_Close");

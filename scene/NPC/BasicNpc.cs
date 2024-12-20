@@ -1,6 +1,7 @@
 using DialogueManagerRuntime;
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class BasicNpc : Node2D
 {
@@ -9,6 +10,7 @@ public partial class BasicNpc : Node2D
     protected InteractableComponent interactableComponent;
     protected bool isRange = false;
     public bool acquaintance = false;
+    public List<Tasks> tasks;
 
     public override void _Ready()
     {

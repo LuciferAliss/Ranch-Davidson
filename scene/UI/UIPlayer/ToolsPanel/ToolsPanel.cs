@@ -26,6 +26,11 @@ public partial class ToolsPanel : PanelContainer
         Tool5.Pressed += ChangeTool5;
     }
 
+    public override void _ExitTree()
+    {
+        GameDialogueManager.Instance.ActivationTools -= OnActivationTools;
+    }
+
     public void UpdateStateTools()
     {
         if (player.accessTools)

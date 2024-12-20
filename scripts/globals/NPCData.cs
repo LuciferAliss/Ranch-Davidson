@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -5,6 +6,25 @@ public struct DataNpc
 {
     public bool acquaintance;
     public Vector2 globalPosition;
+}
+
+public enum StateTask
+{
+    NotAccepted,
+    Execution,
+    Completed
+}
+
+public class Tasks
+{
+    public string Name { get; set; }
+    public StateTask TaskState { get; set; }
+
+    public Tasks(string name, StateTask taskState)
+    {
+        Name = name;
+        TaskState = taskState;
+    }
 }
 
 partial class NPCData : Node

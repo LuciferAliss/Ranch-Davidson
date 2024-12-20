@@ -1,5 +1,7 @@
 using Godot;
 using DialogueManagerRuntime;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Helpers
 {
@@ -7,6 +9,16 @@ namespace Helpers
     {
         [Export] public Resource dialogueResponse;
         [Export] public string dialogueStart = "start";
+
+        public override void _Ready()
+        {
+            tasks = new List<Tasks>
+            {
+                new Tasks("Bring a tree", StateTask.NotAccepted),
+                new Tasks("Bring 10 wheat", StateTask.NotAccepted),
+                new Tasks("Bring 25 wheat and 10 apples", StateTask.NotAccepted)
+            };
+        }
 
         public override void StartDialogue()
         {
