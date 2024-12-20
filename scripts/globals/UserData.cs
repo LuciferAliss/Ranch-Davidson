@@ -5,12 +5,13 @@ public partial class UserData : Node
     public User user { get; private set; }
     public string login = "";
     public static UserData Instance { get; private set; }
-    public Vector2 playerPosition = new Vector2(282, 171);
+    public Vector2 playerPosition = new Vector2(1008, 80);
     public int satiety = 100; 
     public InventorySlot[] inventory = GD.Load<Inventory>("res://resources//ResourceSaveGame//Inventory.tres").slots;
     public int[] timeWorld = new int[] { 30, 13, 1 };
     public int count = 0;
     public bool accessTools = false;
+    public bool haveSave = false;
     
     public override void _Ready()
     {

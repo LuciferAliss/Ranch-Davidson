@@ -26,6 +26,7 @@ parentNodePath = null
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5n5v8"]
 texture = ExtResource("2_jnnnx")
 0:0/0 = 0
+0:0/0/modulate = Color(1, 1, 1, 0)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, -8, -8)
 0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(8, -8, 8, -8, 8, 8, -8, -8)
 
@@ -90,7 +91,7 @@ worldCollisionTileLayer = NodePath("../GameTileMap/WorldCollision")
 
 [node name="Player" parent="." instance=ExtResource("2_ln8sc")]
 y_sort_enabled = false
-position = Vector2(272, 181)
+position = Vector2(1008, 80)
 
 [node name="GloriaStuart" parent="." instance=ExtResource("13_wn6ec")]
 position = Vector2(376, 248)

@@ -12,13 +12,21 @@ public partial class Level : Node2D
 
 	public async override void _Ready()
 	{
-		SaveGameManager.Instance.LoadGame();
 		dayNightCycleComponent = GetNode<DayNightCycleComponent>("DayNightCycleComponent");
 		player = GetNode<Player>("Player");
+		
+		if (GameStart.Instance.newGame)
+		{
+			NewGame();
+		}
+		else
+		{
+			ContinuationGame();
+		}
+
+		
 		player.uIManager.Hide();
 
-		GetNPCOnScene();
-		LoadGameResource();
 
 		Effect.Instance.PlayEffect("VignetteEffect_Close");
 		GameStart.Instance.EmitSignal(nameof(GameStart.SignalGameStart), true);
@@ -56,6 +64,17 @@ public partial class Level : Node2D
 	private void GetNPCOnScene()
 	{
 		npcs = GetTree().GetNodesInGroup("NPC").Select(u => (BasicNpc)u).ToList();
+	}
+
+	private void NewGame()
+	{
+
+	}
+
+	private void ContinuationGame()
+	{
+		GetNPCOnScene();
+		LoadGameResource();
 	}
 
 	public override void _Process(double delta)

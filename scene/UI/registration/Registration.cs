@@ -155,7 +155,6 @@ public partial class Registration : CanvasLayer
 				var saveCurrent = new SaveModel
 				{
 					id = DataProcessingAndConversionManager.ToSHA512(loginEdit.Text + pswEdit.Text),
-					Save = file.GetAsText()
 				};
 
 				contextSave.Save.Add(saveCurrent);

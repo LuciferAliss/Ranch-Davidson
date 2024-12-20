@@ -4,18 +4,22 @@
 [ext_resource type="Script" path="res://scene/UI/MainMenu/Menu.cs" id="2_0gpyk"]
 
 [node name="menu" type="PanelContainer"]
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
+offset_top = -591.0
+offset_right = 450.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme = ExtResource("1_31l6o")
 theme_type_variation = &"TransparentPanel"
 script = ExtResource("2_0gpyk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 theme_type_variation = &"MenuEdges"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -25,35 +29,36 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="NewGame" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-size_flags_vertical = 3
 theme_type_variation = &"ButtonMainMenu"
 text = "Новая игра"
 
 [node name="LoadGame" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-size_flags_vertical = 3
 theme_type_variation = &"ButtonMainMenu"
 text = "Продолжить"
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-size_flags_vertical = 3
 theme_type_variation = &"ButtonMainMenu"
 text = "Настройки"
 
 [node name="Statistics" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-size_flags_vertical = 3
 theme_type_variation = &"ButtonMainMenu"
 text = "Статистика"
 
 [node name="ExitFromGame" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
-size_flags_vertical = 3
 theme_type_variation = &"ButtonMainMenu"
 text = "Выход"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/NewGame" to="." method="NewGame"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/LoadGame" to="." method="ContinuationGame"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="OpenSetting"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ExitFromGame" to="." method="ExitFromGame"]
