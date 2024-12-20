@@ -35,7 +35,7 @@ NpcData="*res://scripts/globals/NPCData.cs"
 
 general/uses_dotnet=true
 general/balloon_path="res://dialogue/Balloon.tscn"
-general/states=["UserData"]
+general/states=["UserData", "NpcData", "GameDialogueManager"]
 
 [display]
 

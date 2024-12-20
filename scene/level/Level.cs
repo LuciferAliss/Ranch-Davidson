@@ -2,6 +2,7 @@ using Godot;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static NPCData;
 
 public partial class Level : Node2D
 {
@@ -16,6 +17,7 @@ public partial class Level : Node2D
 		player = GetNode<Player>("Player");
 		player.uIManager.Hide();
 
+		GetNPCOnScene();
 		LoadGameResource();
 
 		Effect.Instance.PlayEffect("VignetteEffect_Close");
@@ -43,7 +45,7 @@ public partial class Level : Node2D
 		{
 			foreach (var npc in npcs)
 			{
-				DataNpc dataNpc = NPCData.Instance.npcData[npc.Name];
+				DataNpc dataNpc = Instance.npcData[npc.Name];
 				npc.GlobalPosition = dataNpc.globalPosition;
 				npc.acquaintance = dataNpc.acquaintance;
 			}

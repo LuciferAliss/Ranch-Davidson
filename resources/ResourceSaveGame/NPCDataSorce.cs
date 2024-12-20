@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Godot;
+using static NPCData;
 
 partial class NPCDataSorce : SceneDataResource
 {
@@ -21,6 +23,6 @@ partial class NPCDataSorce : SceneDataResource
             globalPosition = this.globalPosition,
             acquaintance = this.acquaintance
         };
-        NPCData.Instance.npcData.Add(nodeName, dataNpc);
+        Instance.npcData.Add(nodeName, dataNpc);
     }   
 }

@@ -82,7 +82,13 @@ public partial class Player : CharacterBody2D
 				}
 			}
 		}
-		if (OpportunityDialogue && npc != null && Input.IsActionJustPressed("Interaction"))
+		
+		if (Input.IsActionJustPressed("Interaction"))
+		{
+			OpportunityDialogue = true;
+		}
+
+		if (OpportunityDialogue && npc != null)
 		{
 			npc.StartDialogue();
 			direction = new Vector2(0, 0);
@@ -95,7 +101,6 @@ public partial class Player : CharacterBody2D
 
 	public void OpportunityForDialogue(bool Opportunity, BasicNpc npc)
 	{
-		OpportunityDialogue = Opportunity;
 		this.npc = npc;
 	}
 
@@ -204,6 +209,6 @@ public partial class Player : CharacterBody2D
 
 	public void OnAllowMovePlayer()
 	{
-		npc = null;
+		OpportunityDialogue = false;
 	}
 }

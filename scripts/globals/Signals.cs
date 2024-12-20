@@ -2,7 +2,8 @@ using Godot;
 
 partial class Signals : Node
 {
-    [Signal] public delegate void CheckAcquaintanceEventHandler(bool acquaintance); 
+    [Signal] public delegate void InfNPCEventHandler(BasicNpc npc);
+    
     public static Signals Instance { get; private set; }
 
     public override void _Ready()
@@ -10,8 +11,8 @@ partial class Signals : Node
         Instance = this;
     }
 
-    public void EmitSignalCheckAcquaintance(bool acquaintance)
+    public void EmitSignalInfNPC(BasicNpc npc)
     {
-        EmitSignal(nameof(CheckAcquaintance), acquaintance);
+        EmitSignal(nameof(InfNPC), npc);
     }
 }

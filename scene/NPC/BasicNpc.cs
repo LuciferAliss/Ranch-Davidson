@@ -1,6 +1,6 @@
-using DialogueManagerRuntime;
 using Godot;
-using System;
+using System.Collections.Generic;
+using static NPCData;
 
 public partial class BasicNpc : Node2D
 {
@@ -9,6 +9,7 @@ public partial class BasicNpc : Node2D
     protected InteractableComponent interactableComponent;
     protected bool isRange = false;
     public bool acquaintance = false;
+    public List<QuestNPC> questNPCs = new();
 
     public override void _Ready()
     {
@@ -40,4 +41,8 @@ public partial class BasicNpc : Node2D
     public virtual void StartDialogue()
     {
     }
+
+    public virtual void UpdataStateQuest(string name, int state)
+	{
+	}
 }

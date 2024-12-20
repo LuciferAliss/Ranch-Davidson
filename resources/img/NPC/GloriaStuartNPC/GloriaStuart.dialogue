@@ -24,7 +24,45 @@ if (GameDialogueManager.acquaintance == false)
 				Глория Стюарт: Будешь должен, а за такие шутки можешь ещё и в жбан получить.
 	do GameDialogueManager.OnActivationTools()
 else
-	Глория Стюарт: !
+	while (GameDialogueManager.CountQuest > GameDialogueManager.i)
+		do GameDialogueManager.ChangeState()
+		if (GameDialogueManager.questNPCState == 1)
+			=> ManagerQuest
+		elif (GameDialogueManager.questNPCState == 0)
+			=> ManagerQuest
+		do GameDialogueManager.i += 1
+	Глория Стюарт: Прости, но сейчас у меня нер ничего для тебя, подойди позже.
+	do GameDialogueManager.OnAllowMovePlayer()
+	
+~ ManagerQuest
+
+if i == 0
+	=> Quest1
+elif i == 1
+	=> Quest2
+else
+	=> Quest3
+
+~ Quest1
+if (GameDialogueManager.questNPCState == 0)
+	Глория Стюарт: Ой, {{UserData.login}} рада тебя видеть и ты как раз вовремя.
+	Глория Стюарт: Можешь принести пожалуйста десять брёвен?
+	- Да
+		do GameDialogueManager.UpdataStateQuest(1)
+	- Нет
+elif (GameDialogueManager.questNPCState == 1)
+	Глория Стюарт: Приветик, {{UserData.login}} рада видеть тебя снова, ты выполнил задание?
+	- Да
+	- Нет
+set GameDialogueManager.i = 0
+do GameDialogueManager.OnAllowMovePlayer()
+
+~ Quest2
+
+do GameDialogueManager.OnAllowMovePlayer()
+
+~ Quest3
+
 do GameDialogueManager.OnAllowMovePlayer()
 
 => END
