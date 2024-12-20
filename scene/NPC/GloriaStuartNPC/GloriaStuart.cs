@@ -16,7 +16,8 @@ namespace Helpers
 
             questNPCs = new List<QuestNPC>
             {
-                new QuestNPC("Collect 10 logs", StateQuest.NotTaken)
+                new QuestNPC("Collect 10 logs", StateQuest.NotTaken),
+                new QuestNPC("Collect 5 logs", StateQuest.NotTaken)
             };
         }
 

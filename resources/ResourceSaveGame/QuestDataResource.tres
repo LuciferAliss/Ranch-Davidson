@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://3aj47g14lme5"]
+
+[ext_resource type="Script" path="res://resources/ResourceSaveGame/QuestDataResource.cs" id="1_qud7m"]
+
+[resource]
+script = ExtResource("1_qud7m")

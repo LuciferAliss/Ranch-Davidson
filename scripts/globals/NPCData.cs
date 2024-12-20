@@ -8,6 +8,7 @@ public partial class NPCData : Node
     {
         public bool acquaintance;
         public Vector2 globalPosition;
+        public List<QuestNPC> questNPCs;
     }
 
     public enum StateQuest

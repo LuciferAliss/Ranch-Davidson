@@ -49,9 +49,13 @@ if (GameDialogueManager.questNPCState == 0)
 	Глория Стюарт: Можешь принести пожалуйста десять брёвен?
 	- Да
 		do GameDialogueManager.UpdataStateQuest(1)
+		{{UserData.login}}: Да, конечно.
+		Глория Стюарт: Спасибо.
 	- Нет
+		{{UserData.login}}: Прости, но я занят.
+		Глория Стюарт: Ничего, я подожду.
 elif (GameDialogueManager.questNPCState == 1)
-	Глория Стюарт: Приветик, {{UserData.login}} рада видеть тебя снова, ты выполнил задание?
+	Глория Стюарт: Приветик, {{UserData.login}}, рада видеть тебя снова, ты выполнил задание?
 	- Да
 	- Нет
 set GameDialogueManager.i = 0

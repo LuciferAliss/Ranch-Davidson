@@ -48,6 +48,7 @@ public partial class Level : Node2D
 				DataNpc dataNpc = Instance.npcData[npc.Name];
 				npc.GlobalPosition = dataNpc.globalPosition;
 				npc.acquaintance = dataNpc.acquaintance;
+				npc.questNPCs = dataNpc.questNPCs;
 			}
 		}
 	}

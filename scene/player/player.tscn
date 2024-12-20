@@ -991,6 +991,7 @@ libraries = {
 }
 
 [node name="UIPlayer" parent="." instance=ExtResource("3_86tqm")]
+visible = false
 
 [node name="HitComponent" parent="." instance=ExtResource("4_va24u")]
 tool = "Axe"
