@@ -79,6 +79,7 @@ partial class DayAndNightCycleManager : Node
         if (CurrentDay != day)
         {
             CurrentDay = day;
+            UserData.Instance.NumberDays += 1;
             EmitSignal(nameof(TimeTickDay), day);
         }
 

@@ -10,23 +10,6 @@ public partial class MainMenu : Control
     public override void _Ready()
     {
         Effect.Instance.PlayEffect("VignetteEffect_Close");
-        using (var context = new GameContext())
-		{
-			User user = context.Users.FirstOrDefault(u => u.login == "LuciferAliss");
-			UserData.Instance.SetUser(user);
-            using (var contextSave = new SaveContext())
-            {
-                var save = contextSave.Save.FirstOrDefault(u => UserData.Instance.user.id == u.id);
-                if (save.Save == "")
-                {
-                    UserData.Instance.haveSave = false;
-                }
-                else
-                {
-                    UserData.Instance.haveSave = true;
-                }
-            }
-		}
 
         settings = GetNode<Settings>("MarginContainer/settings");
         menu = GetNode<Menu>("MarginContainer/menu");

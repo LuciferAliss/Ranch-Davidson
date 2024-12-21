@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://12s8hps5i0wk"]
+
+[ext_resource type="PackedScene" uid="uid://bhk2f0kv4i8p7" path="res://scene/obj/House/House1.tscn" id="1_jwj7d"]
+[ext_resource type="Texture2D" uid="uid://d0di6qfpljedn" path="res://resources/img/tileset/House2.png" id="2_lqp61"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edivc"]
+atlas = ExtResource("2_lqp61")
+region = Rect2(20, 2, 91, 121)
+
+[node name="House1" instance=ExtResource("1_jwj7d")]
+texture = SubResource("AtlasTexture_edivc")
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(0, 20.78)
+
+[node name="CollisionShape2D" parent="VisibleComponent" index="0"]
+position = Vector2(0, -36)
+scale = Vector2(0.95, 0.95)

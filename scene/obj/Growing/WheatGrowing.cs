@@ -59,6 +59,7 @@ public partial class WheatGrowing : Plant
     {
         if (GrowthStates.Harvesting == growthState)
         {
+            UserData.Instance.AmountWheatHarvested += 1;
             CallDeferred("AddWheatScene");
             QueueFree();
         }

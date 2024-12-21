@@ -12,6 +12,10 @@ public partial class UserData : Node
     public int count = 0;
     public bool accessTools = false;
     public bool haveSave = false;
+    public int NumberActions = 0;
+    public int NumberDays = 0;
+    public int NumberTreesCutDown = 0; 
+    public int AmountWheatHarvested = 0;
     
     public override void _Ready()
     {

@@ -33,8 +33,8 @@ public partial class OakTree : Sprite2D
 
 	private void OnMaxDamagedReached()
 	{
+		UserData.Instance.NumberTreesCutDown += 1;
 		CallDeferred("AddLogScene");
-		GD.Print("Я dead inside");
 		QueueFree();
 	}
 

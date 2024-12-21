@@ -142,6 +142,7 @@ public partial class Player : CharacterBody2D
 	private void Action()
 	{
 		useAction = true;
+		UserData.Instance.NumberActions += 1;
 		if (currentTools == "None")
 		{
 			ChangeStateAction(new StateNone(this));

@@ -1,10 +1,12 @@
-[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://clcmsccjr8hw3"]
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://clcmsccjr8hw3"]
 
 [ext_resource type="Texture2D" uid="uid://d2ogynx4fj4mo" path="res://resources/img/tileset/Tilled_Dirt_Wide_v2.png" id="1_f4y16"]
 [ext_resource type="PackedScene" uid="uid://dcsj33frkcebu" path="res://scene/obj/tree/oak_tree.tscn" id="2_s7d0o"]
 [ext_resource type="Texture2D" uid="uid://bj343avegxtrm" path="res://resources/img/tileset/x-mark-16.png" id="3_opj7f"]
 [ext_resource type="Texture2D" uid="uid://qnbxqttadnov" path="res://resources/img/tileset/Water-sheet.png" id="4_r81d1"]
+[ext_resource type="PackedScene" uid="uid://bhk2f0kv4i8p7" path="res://scene/obj/House/House1.tscn" id="4_xy2dw"]
 [ext_resource type="Texture2D" uid="uid://du667ks3russ0" path="res://resources/img/tileset/Grass.png" id="5_2lisp"]
+[ext_resource type="PackedScene" uid="uid://12s8hps5i0wk" path="res://scene/obj/House/House2.tscn" id="5_6em1g"]
 [ext_resource type="Texture2D" uid="uid://bnwre01ymdsl6" path="res://resources/img/tileset/Road.png" id="5_8kysy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yoyrf"]
@@ -251,6 +253,10 @@ scenes/1/scene = ExtResource("2_s7d0o")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_difdw"]
 texture = ExtResource("3_opj7f")
 0:0/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4e62u"]
+scenes/1/scene = ExtResource("4_xy2dw")
+scenes/2/scene = ExtResource("5_6em1g")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h1i3i"]
 texture = ExtResource("4_r81d1")
@@ -706,3 +712,4 @@ sources/4 = SubResource("TileSetAtlasSource_h1i3i")
 sources/6 = SubResource("TileSetAtlasSource_vi6e4")
 sources/8 = SubResource("TileSetAtlasSource_22tst")
 sources/0 = SubResource("TileSetAtlasSource_yoyrf")
+sources/3 = SubResource("TileSetScenesCollectionSource_4e62u")

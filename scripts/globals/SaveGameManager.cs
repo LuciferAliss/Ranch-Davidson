@@ -1,3 +1,4 @@
+using System.Linq;
 using Godot;
 
 partial class SaveGameManager : Node
@@ -26,6 +27,17 @@ partial class SaveGameManager : Node
     }
     public void SaveGame()
     {
+        using (var contextStatistics = new StatisticsContext())
+        {
+            var Statistics = contextStatistics.Statistics.FirstOrDefault(u => UserData.Instance.user.id == u.id);
+			Statistics.NumberActions = UserData.Instance.NumberActions;
+			Statistics.NumberDays = UserData.Instance.NumberDays;
+			Statistics.NumberTreesCutDown = UserData.Instance.NumberTreesCutDown;
+			Statistics.AmountWheatHarvested = UserData.Instance.AmountWheatHarvested;
+            
+            contextStatistics.SaveChanges();
+        }
+
         SaveLevelDataComponent saveLevelDataComponent = (SaveLevelDataComponent)GetTree().GetFirstNodeInGroup("SaveLevelDataComponent");
 
         if (saveLevelDataComponent != null)

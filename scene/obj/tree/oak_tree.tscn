@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcsj33frkcebu"]
+[gd_scene load_steps=14 format=3 uid="uid://dcsj33frkcebu"]
 
 [ext_resource type="Texture2D" uid="uid://b6qmsgtftj6f2" path="res://resources/img/tileset/TileSet.png" id="1_5b22u"]
 [ext_resource type="Shader" path="res://scene/obj/tree/tree_shake.gdshader" id="1_gwikf"]
@@ -22,6 +22,10 @@ region = Rect2(0, 80, 48, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7cgb"]
 size = Vector2(14, 10)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ittdh"]
+radius = 24.0
+height = 64.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ltw"]
 size = Vector2(16, 31.75)
 
@@ -43,6 +47,10 @@ scale = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_k7cgb")
 
 [node name="VisibleComponent" parent="." instance=ExtResource("6_342hb")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibleComponent"]
+position = Vector2(0, -52)
+shape = SubResource("CapsuleShape2D_ittdh")
 
 [node name="HurtComponent" parent="." instance=ExtResource("3_ao3vd")]
 

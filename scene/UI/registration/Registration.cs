@@ -32,6 +32,7 @@ public partial class Registration : CanvasLayer
 		loginEdit.TextChanged += LoginFilter;
 		pswEdit.TextChanged += PswFilter;
 		repPswEdit.TextChanged += RepPswFilter;
+		codeInput.TextChanged += CodeFilter;
 
 		optionButton.Select(0);
 		var error = GetNode<Label>("MarginContainer/VBoxContainer/error");
@@ -151,7 +152,6 @@ public partial class Registration : CanvasLayer
 
 			using (var contextSave = new SaveContext())
 			{
-				FileAccess file = FileAccess.Open("res://resources//db//baseSave.txt", FileAccess.ModeFlags.Read);
 				var saveCurrent = new SaveModel
 				{
 					id = DataProcessingAndConversionManager.ToSHA512(loginEdit.Text + pswEdit.Text),
@@ -159,6 +159,21 @@ public partial class Registration : CanvasLayer
 
 				contextSave.Save.Add(saveCurrent);
 				contextSave.SaveChanges();
+			}
+
+			using (var contextStatistics = new StatisticsContext())
+			{
+				var statisticsCurrent = new StatisticsModel
+				{
+					id = DataProcessingAndConversionManager.ToSHA512(loginEdit.Text + pswEdit.Text),
+					NumberActions = 0,
+					NumberDays = 0,
+					NumberTreesCutDown = 0,
+					AmountWheatHarvested = 0
+				};
+
+				contextStatistics.Statistics.Add(statisticsCurrent);
+				contextStatistics.SaveChanges();
 			}
 
 			context.Users.Add(currentUser);

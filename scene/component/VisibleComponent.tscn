@@ -1,18 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://gl5jxnpbwj6l"]
+[gd_scene load_steps=2 format=3 uid="uid://gl5jxnpbwj6l"]
 
 [ext_resource type="Script" path="res://scene/component/VisibleComponent.cs" id="1_j5cb2"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pstta"]
-radius = 24.0
-height = 64.0
 
 [node name="VisibleComponent" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_j5cb2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -52)
-shape = SubResource("CapsuleShape2D_pstta")
 
 [connection signal="body_entered" from="." to="." method="OnInvisibility"]
 [connection signal="body_exited" from="." to="." method="OffInvisibility"]

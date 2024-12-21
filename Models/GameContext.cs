@@ -44,3 +44,18 @@ public class SaveContext : DbContext
         optionsBuilder.UseSqlite("Data Source=resources/db/db.db");
     }
 }
+
+public class StatisticsContext : DbContext
+{
+    public DbSet<StatisticsModel> Statistics { get; set; }
+
+    public StatisticsContext()
+    {
+        Database.EnsureCreated();
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlite("Data Source=resources/db/db.db");
+    }
+}

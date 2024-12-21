@@ -138,7 +138,28 @@ public partial class Authorization : CanvasLayer
 
 				await Task.Delay(5000);
 
-				ManagerScene.ChangeScene(GetTree(), "res://scene//level//level.tscn", "VignetteEffectOpen");
+				using (var contextSave = new SaveContext())
+				{
+					var save = contextSave.Save.FirstOrDefault(u => UserData.Instance.user.id == u.id);
+					if (save.Save == "" || save.Save == null)
+					{
+						UserData.Instance.haveSave = false;
+					}
+					else
+					{
+						UserData.Instance.haveSave = true;
+					}
+				}
+
+				using (var contextStatistics = new StatisticsContext())
+				{
+					var Statistics = contextStatistics.Statistics.FirstOrDefault(u => UserData.Instance.user.id == u.id);
+					UserData.Instance.NumberActions = Statistics.NumberActions;
+					UserData.Instance.NumberDays = Statistics.NumberDays;
+					UserData.Instance.NumberTreesCutDown = Statistics.NumberTreesCutDown;
+					UserData.Instance.AmountWheatHarvested = Statistics.AmountWheatHarvested;
+				}
+				ManagerScene.ChangeScene(GetTree(), "res://scene/UI/MainMenu/MainMenu.tscn", "VignetteEffect_Open");
 			}
 			else
 			{
