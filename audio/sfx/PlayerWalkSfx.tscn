@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpqprycf8vplb"]
+
+[ext_resource type="AudioStream" uid="uid://blffg5vn072n6" path="res://resources/audio/sfx/walk.ogg" id="1_qdncl"]
+
+[node name="PlayerWalkSFX" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_qdncl")
+bus = &"SFX"

@@ -1,14 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://rsla2bd8adka"]
+[gd_scene load_steps=3 format=3 uid="uid://rsla2bd8adka"]
 
 [ext_resource type="Script" path="res://scene/global/GlobalAudio.cs" id="1_wrbrx"]
+[ext_resource type="PackedScene" uid="uid://b4ik4b85l67kc" path="res://audio/music/OnTheFarmMusic.tscn" id="2_h1hr7"]
 
 [node name="GlobalAudio" type="Node"]
 script = ExtResource("1_wrbrx")
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-autoplay = true
-bus = &"Music"
-
-[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
-autoplay = true
-bus = &"SoundEffects"
+[node name="OnTheFarmMusic" parent="." instance=ExtResource("2_h1hr7")]

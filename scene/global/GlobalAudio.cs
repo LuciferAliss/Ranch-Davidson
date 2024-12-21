@@ -6,15 +6,14 @@ using System.Collections.Generic;
 public partial class GlobalAudio : Node
 {
 	public static GlobalAudio Instance { get; private set; }
-	private AudioStreamPlayer music;  
-	private AudioStreamPlayer soundEffects;  
+	public AudioStreamPlayer2D music;  
+	private AudioStreamPlayer2D soundEffects;  
 	private Dictionary<string, string> linkNameSound;
 
 	public override void _Ready()
 	{
+		music = GetNode<AudioStreamPlayer2D>("OnTheFarmMusic");
 		Instance = this;
-		music = GetNode<AudioStreamPlayer>("Music");
-		soundEffects = GetNode<AudioStreamPlayer>("SoundEffects");
 		linkNameSound = new Dictionary<string, string>()
 		{
 			{"ButtonMapping", ""},
@@ -33,7 +32,7 @@ public partial class GlobalAudio : Node
 
 	public void ChangeVolumeSoundEffects(float volume)
 	{
-		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("SoundEffects"), volume);
+		AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("SFX"), volume);
 	}
 
 	public void PlaySoundEffects(string NameSoundEffects)

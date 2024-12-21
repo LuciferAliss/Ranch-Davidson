@@ -24,6 +24,11 @@ public partial class MainMenu : Control
 
         LoadBGMainMenu();
         LoadSetting();
+
+        if (!GlobalAudio.Instance.music.Playing)
+        {
+            GlobalAudio.Instance.music.Play();
+        } 
     }
 
     private void LoadBGMainMenu()
