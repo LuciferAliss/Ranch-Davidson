@@ -4,4 +4,5 @@
 
 [node name="PlayerWaterSFX" type="AudioStreamPlayer"]
 stream = ExtResource("1_0b143")
+volume_db = -15.0
 bus = &"SFX"

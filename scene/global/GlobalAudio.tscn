@@ -7,3 +7,4 @@
 script = ExtResource("1_wrbrx")
 
 [node name="OnTheFarmMusic" parent="." instance=ExtResource("2_h1hr7")]
+volume_db = -15.0

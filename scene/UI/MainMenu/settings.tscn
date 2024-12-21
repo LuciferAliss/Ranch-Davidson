@@ -164,6 +164,8 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 theme_type_variation = &"SettingHSlider"
+min_value = -22.0
+max_value = 22.0
 
 [node name="EffectsContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 46)
@@ -184,6 +186,8 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
 theme_type_variation = &"SettingHSlider"
+min_value = -22.0
+max_value = 22.0
 
 [node name="Control4" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 24)
@@ -199,4 +203,6 @@ theme_type_variation = &"ExitButton"
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/VBoxContainer/PermissionContainer/ButtonChengPermission" to="." method="PermissionSelected"]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer/BorderButtonChengScreenMode/ButtonChengScreenMode" to="." method="ChangeScreenMode"]
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/BrightnessContainer/SliderChengBrightness" to="." method="ChangeGlobalBrightness"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/MusicContainer/SliderChengeMusic" to="." method="ChangeValueMusic"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/VBoxContainer/EffectsContainer/SliderChengeEffects" to="." method="ChangeValueSFX"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ExitButton" to="." method="CloseSetting"]

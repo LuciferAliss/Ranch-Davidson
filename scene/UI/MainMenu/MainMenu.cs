@@ -81,6 +81,9 @@ public partial class MainMenu : Control
             Vector2I windowSize = DisplayServer.WindowGetSize();
             Vector2I position = (screenSize - windowSize) / 2;
             DisplayServer.WindowSetPosition(position);
+
+            GlobalAudio.Instance.ChangeVolumeMusic(setting.music);
+            GlobalAudio.Instance.ChangeVolumeSoundEffects(setting.effects);
 		}
     }
 }

@@ -4,3 +4,4 @@
 
 [node name="PlayerGravelSFX" type="AudioStreamPlayer"]
 stream = ExtResource("1_sdmtw")
+volume_db = -15.0

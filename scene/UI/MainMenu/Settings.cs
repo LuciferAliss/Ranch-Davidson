@@ -41,6 +41,8 @@ public partial class Settings : PanelContainer
 			var buttonChengPermission = GetNode<OptionButton>("MarginContainer/HBoxContainer/VBoxContainer/PermissionContainer/ButtonChengPermission");
 			var buttonChengScreenMode = GetNode<CheckBox>("MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer/BorderButtonChengScreenMode/ButtonChengScreenMode");
 			var sliderChengBrightness = GetNode<HSlider>("MarginContainer/HBoxContainer/VBoxContainer/BrightnessContainer/SliderChengBrightness");
+			var SliderChengeMusic = GetNode<HSlider>("MarginContainer/HBoxContainer/VBoxContainer/MusicContainer/SliderChengeMusic");
+			var SliderChengeEffects =GetNode<HSlider>("MarginContainer/HBoxContainer/VBoxContainer/EffectsContainer/SliderChengeEffects");
 
             var setting = context.Settings.FirstOrDefault(u => u.id == UserData.Instance.user.id);
 
@@ -58,6 +60,9 @@ public partial class Settings : PanelContainer
 			Vector2I windowSize = DisplayServer.WindowGetSize();
 			Vector2I position = (screenSize - windowSize) / 2;
 			DisplayServer.WindowSetPosition(position);
+
+			SliderChengeMusic.Value = setting.music;
+			SliderChengeEffects.Value = setting.effects;
 		}
     }
 
@@ -95,6 +100,18 @@ public partial class Settings : PanelContainer
 		SaveSettings();
 	}
 
+	private void ChangeValueMusic(float valueMusic)
+	{
+		GlobalAudio.Instance.ChangeVolumeMusic(valueMusic);
+		SaveSettings();
+	}
+
+	private void ChangeValueSFX(float valueSFX)
+	{
+		GlobalAudio.Instance.ChangeVolumeSoundEffects(valueSFX);
+		SaveSettings();
+	}
+
 	private void SaveSettings()
 	{
 		using (var context = new SettingContext())
@@ -102,14 +119,16 @@ public partial class Settings : PanelContainer
 			var buttonChengPermission = GetNode<OptionButton>("MarginContainer/HBoxContainer/VBoxContainer/PermissionContainer/ButtonChengPermission");
 			var buttonChengScreenMode = GetNode<CheckBox>("MarginContainer/HBoxContainer/VBoxContainer/ScreenModeContainer/BorderButtonChengScreenMode/ButtonChengScreenMode");
 			var sliderChengBrightness = GetNode<HSlider>("MarginContainer/HBoxContainer/VBoxContainer/BrightnessContainer/SliderChengBrightness");
+			var SliderChengeMusic = GetNode<HSlider>("MarginContainer/HBoxContainer/VBoxContainer/MusicContainer/SliderChengeMusic");
+			var SliderChengeEffects =GetNode<HSlider>("MarginContainer/HBoxContainer/VBoxContainer/EffectsContainer/SliderChengeEffects");
 
 			var setting = context.Settings.FirstOrDefault(u => u.id == UserData.Instance.user.id);
 
 			setting.permission = $"{PermissionSize[buttonChengPermission.Selected].X}x{PermissionSize[buttonChengPermission.Selected].Y}";
             setting.screenMode = buttonChengScreenMode.ButtonPressed;
             setting.Brightness = (float)sliderChengBrightness.Value;
-            setting.music = 0;
-            setting.effects = 0;
+            setting.music = (float)SliderChengeMusic.Value;
+            setting.effects = (float)SliderChengeEffects.Value;;
 
             context.SaveChanges();
 		}
