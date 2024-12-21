@@ -37,6 +37,7 @@ partial class DayAndNightCycleManager : Node
         GameStart.Instance.SignalGameStart += CheckGameStart;
         Instance = this;
         SetInitialTime();
+        UserData.Instance.NumberDays -= 1;
     }
 
     public override void _Process(double delta)

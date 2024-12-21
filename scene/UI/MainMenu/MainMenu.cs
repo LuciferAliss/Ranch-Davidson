@@ -5,6 +5,7 @@ using System.Linq;
 public partial class MainMenu : Control
 {
     public Settings settings { get; private set; }
+    public Statistics statistics { get; private set; }
     public Menu menu { get; private set; }
 
     public override void _Ready()
@@ -13,9 +14,11 @@ public partial class MainMenu : Control
 
         settings = GetNode<Settings>("MarginContainer/settings");
         menu = GetNode<Menu>("MarginContainer/menu");
+        statistics = GetNode<Statistics>("MarginContainer/Statistics");
 
         menu.SetMenu(this);
         settings.SetSettings(this);
+        statistics.SetStatistics(this);
 
         menu.UpdateButton();
 

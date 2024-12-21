@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2x6nco1po4d2"]
+
+[ext_resource type="Theme" uid="uid://dsq62fggbf3c1" path="res://resources/img/Theme/menu.tres" id="1_hmpxh"]
+[ext_resource type="Script" path="res://scene/UI/MainMenu/Statistics.cs" id="2_rsj6j"]
+
+[node name="Statistics" type="PanelContainer"]
+custom_minimum_size = Vector2(1170, 528)
+offset_right = 1170.0
+offset_bottom = 528.0
+theme = ExtResource("1_hmpxh")
+theme_type_variation = &"SettingPanel"
+script = ExtResource("2_rsj6j")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_type_variation = &"StatisticsMargin"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 35
+text = "Статистика"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NumberActions" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"StatisticsLabel"
+text = "Количество действий:"
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="NumberTreesCutDown" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"StatisticsLabel"
+text = "Количество срубленых деревьев:"
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NumberDays" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_type_variation = &"StatisticsLabel"
+text = "Количество дней:"
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="AmountWheatHarvested" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_type_variation = &"StatisticsLabel"
+text = "Количество собранной пшеницы:"
+
+[node name="ExitButton" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_type_variation = &"ExitButton"
+
+[connection signal="pressed" from="MarginContainer/ExitButton" to="." method="Close"]

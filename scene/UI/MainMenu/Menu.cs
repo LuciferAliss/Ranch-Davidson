@@ -39,6 +39,12 @@ public partial class Menu : PanelContainer
 		mainMenu.settings.Visible = true;
 	}
 
+	private void OpenStatistics()
+	{
+		this.Visible = false;
+		mainMenu.statistics.Visible = true;
+	}
+
 	private void NewGame()
 	{
 		ManagerScene.ChangeScene(mainMenu.GetTree(), "res://scene//level//level.tscn", "VignetteEffect_Open");

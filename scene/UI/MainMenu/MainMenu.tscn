@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dord7kt75xuyd"]
+[gd_scene load_steps=5 format=3 uid="uid://dord7kt75xuyd"]
 
 [ext_resource type="Script" path="res://scene/UI/MainMenu/MainMenu.cs" id="1_i1siy"]
 [ext_resource type="PackedScene" uid="uid://da5kfelcdm8dd" path="res://scene/UI/MainMenu/menu.tscn" id="2_x3ytb"]
 [ext_resource type="PackedScene" uid="uid://c7xp77urqn5a3" path="res://scene/UI/MainMenu/settings.tscn" id="3_vo7xw"]
+[ext_resource type="PackedScene" uid="uid://b2x6nco1po4d2" path="res://scene/UI/MainMenu/Statistics.tscn" id="4_kejay"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -36,6 +37,12 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="settings" parent="MarginContainer" instance=ExtResource("3_vo7xw")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Statistics" parent="MarginContainer" instance=ExtResource("4_kejay")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
