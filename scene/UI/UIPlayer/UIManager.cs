@@ -14,6 +14,7 @@ public partial class UIManager : CanvasLayer
     public bool pauseVisible = false;
 	public MarginContainer margin;
 	public DeathPanel deathPanel;
+	public EndGamePanel endGamePanel;
 
     public override void _Ready()
     {
@@ -26,6 +27,7 @@ public partial class UIManager : CanvasLayer
 		hungryBar = GetNode<HungryBar>("MarginContainer/HungryBar");
 		margin = GetNode<MarginContainer>("MarginContainer");
 		deathPanel= GetNode<DeathPanel>("MarginContainer/DeathPanel");
+		endGamePanel = GetNode<EndGamePanel>("MarginContainer/EndGamePanel");
     }
 
     public void InventoryVisibility()

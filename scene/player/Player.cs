@@ -53,6 +53,7 @@ public partial class Player : CharacterBody2D
 		uIManager.hud.SetPlayer(this);
 		uIManager.pauseMenu.SetPlayer(this);
 		uIManager.deathPanel.SetPlayer(this);
+		uIManager.endGamePanel.SetPlayer(this);
 	}
 
 	public override void _Process(double delta)

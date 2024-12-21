@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn1d1ym7k86yq"]
+
+[ext_resource type="Theme" uid="uid://dsq62fggbf3c1" path="res://resources/img/Theme/menu.tres" id="1_m4kdo"]
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/EndGamePanel/EndGamePanel.cs" id="2_2wrt1"]
+
+[node name="EndGamePanel" type="PanelContainer"]
+custom_minimum_size = Vector2(896, 448)
+offset_right = 896.0
+offset_bottom = 448.0
+theme = ExtResource("1_m4kdo")
+theme_type_variation = &"SettingPanel"
+script = ExtResource("2_2wrt1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_type_variation = &"SettingEdges"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 78
+text = "ПОЗДРОВЛЯЮ"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Вы прошли пред-альфу
+данного проекта, спасибо
+большое за вашу потдержку!"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 13.875)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(660, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_type_variation = &"ButtonMainMenu"
+text = "Вернуться в главное меню"
