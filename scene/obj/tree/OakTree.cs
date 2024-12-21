@@ -9,11 +9,13 @@ public partial class OakTree : Sprite2D
 	DamageComponent damageComponent;
 	PackedScene logScene = GD.Load<PackedScene>("res://scene//obj//ItemForScene//log.tscn");
 	PackedScene appleScene = GD.Load<PackedScene>("res://scene/obj/ItemForScene/Tomato.tscn");
+	AudioStreamPlayer WoodSFX;
 
 	public override void _Ready()
 	{
 		hurtComponent = GetNode<HurtComponent>("HurtComponent");
 		damageComponent = GetNode<DamageComponent>("DamageComponent");
+		WoodSFX = GetNode<AudioStreamPlayer>("WoodSFX");
 
 		hurtComponent.Hurt += OnHurt;
 		damageComponent.MaxDamagedReached += OnMaxDamagedReached;
@@ -25,6 +27,7 @@ public partial class OakTree : Sprite2D
 
 	public async void OnHurt(int Damage)
 	{
+		WoodSFX.Play();
 		damageComponent.ApplyDamage(Damage);
 		((ShaderMaterial)Material).SetShaderParameter("shake_intensity", 0.5);
 		await ToSignal(GetTree().CreateTimer(1.0f), "timeout");

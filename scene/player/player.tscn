@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://ve1tt812qmni"]
+[gd_scene load_steps=91 format=3 uid="uid://ve1tt812qmni"]
 
 [ext_resource type="Script" path="res://scene/player/Player.cs" id="1_1w410"]
 [ext_resource type="Texture2D" uid="uid://c2x61l551l2an" path="res://resources/img/characters/MCanimate.png" id="1_sort2"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dtdx6bjqqihp8" path="res://scene/UI/UIPlayer/UIPlayer.tscn" id="3_86tqm"]
 [ext_resource type="Resource" uid="uid://bm1pcf1kb7w4h" path="res://resources/ResourceSaveGame/PlayerDataSource.tres" id="3_hxo1d"]
 [ext_resource type="PackedScene" uid="uid://v2a36nlmprye" path="res://scene/component/HitComponent.tscn" id="4_va24u"]
+[ext_resource type="PackedScene" uid="uid://7s6t06yekjik" path="res://audio/sfx/PlayerWaterSFX.tscn" id="7_0137o"]
+[ext_resource type="PackedScene" uid="uid://jv8g2h1cv8s7" path="res://audio/sfx/PlayerMoveSFX.tscn" id="7_xc6in"]
+[ext_resource type="PackedScene" uid="uid://dn7m11rnjkusw" path="res://audio/sfx/PlayerSeedSFX.tscn" id="9_bwxph"]
+[ext_resource type="PackedScene" uid="uid://c8it0gwwg8whm" path="res://audio/sfx/PlayerGravelSFX.tscn" id="10_61s26"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1msnf"]
 atlas = ExtResource("1_sort2")
@@ -1001,5 +1005,13 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_vtt02")
 disabled = true
 debug_color = Color(0.900582, 0.175533, 0.637961, 0.42)
+
+[node name="PlayerWaterSFX" parent="." instance=ExtResource("7_0137o")]
+
+[node name="PlayerMoveSFX" parent="." instance=ExtResource("7_xc6in")]
+
+[node name="PlayerSeedSFX" parent="." instance=ExtResource("9_bwxph")]
+
+[node name="PlayerGravelSFX" parent="." instance=ExtResource("10_61s26")]
 
 [editable path="UIPlayer"]

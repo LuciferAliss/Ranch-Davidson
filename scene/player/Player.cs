@@ -22,6 +22,10 @@ public partial class Player : CharacterBody2D
 	public CollisionShape2D HitBox { get; private set; }
 	public bool OpportunityDialogue = false;
 	public BasicNpc npc; 
+	public AudioStreamPlayer PlayerMoveSFX;
+	public AudioStreamPlayer PlayerWaterSFX;
+	public AudioStreamPlayer PlayerSeedSFX;
+	public AudioStreamPlayer PlayerGravelSFX;
 
 	public override void _Ready()
 	{
@@ -31,6 +35,10 @@ public partial class Player : CharacterBody2D
 		hitComponent = GetNode<HitComponent>("HitComponent");
 		uIManager = GetNode<UIManager>("UIPlayer");
 		camera = GetNode<Camera2D>("Camera2D");
+		PlayerMoveSFX = GetNode<AudioStreamPlayer>("PlayerMoveSFX");
+		PlayerWaterSFX = GetNode<AudioStreamPlayer>("PlayerWaterSFX");
+		PlayerSeedSFX = GetNode<AudioStreamPlayer>("PlayerSeedSFX");
+		PlayerGravelSFX = GetNode<AudioStreamPlayer>("PlayerGravelSFX");
 
 		HitBox.Disabled = true;
 		HitBox.Position = new Vector2(0, 0);
@@ -44,6 +52,7 @@ public partial class Player : CharacterBody2D
 		uIManager.hungryBar.SetPlayer(this);
 		uIManager.hud.SetPlayer(this);
 		uIManager.pauseMenu.SetPlayer(this);
+		uIManager.deathPanel.SetPlayer(this);
 	}
 
 	public override void _Process(double delta)
@@ -133,6 +142,10 @@ public partial class Player : CharacterBody2D
 		else
 		{
 			stateAnimation.Move();
+			if (!PlayerMoveSFX.Playing && velocity != Vector2.Zero)
+			{
+				PlayerMoveSFX.Play();
+			}
 		}
 		
 		Velocity = velocity;
@@ -154,6 +167,7 @@ public partial class Player : CharacterBody2D
 			ChangeStateAction(new StateWatering(this));
 			stateAnimation.Watering();
 			stateAction.Action();
+			PlayerWaterSFX.Play();
 		}
 		else if (currentTools == "Axe")
 		{
@@ -166,12 +180,14 @@ public partial class Player : CharacterBody2D
 			ChangeStateAction(new StateTilling(this));
 			stateAnimation.Tilling();
 			stateAction.Action();
+			PlayerGravelSFX.Play();
 		}
 		else if (currentTools == "WheatSeeds")
 		{
 			ChangeStateAction(new StateSeeds(this));
 			stateAnimation.Idle();
 			stateAction.Action();
+			PlayerSeedSFX.Play();
 		}
 		HitBox.Disabled = false;
 	}
@@ -191,6 +207,9 @@ public partial class Player : CharacterBody2D
 		useAction = false;
 		HitBox.Disabled = true;
 		cooldown = false;
+		PlayerWaterSFX.Stop();
+		PlayerSeedSFX.Stop();
+		PlayerGravelSFX.Stop();
 	}
 
 	public void ChangeTools(string tools)

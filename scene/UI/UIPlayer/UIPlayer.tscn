@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtdx6bjqqihp8"]
+[gd_scene load_steps=9 format=3 uid="uid://dtdx6bjqqihp8"]
 
 [ext_resource type="Script" path="res://scene/UI/UIPlayer/UIManager.cs" id="1_xque6"]
 [ext_resource type="PackedScene" uid="uid://dk0ewxfhsj3b0" path="res://scene/UI/UIPlayer/ToolsPanel/ToolsPanel.tscn" id="2_gsqqg"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://83q5ax3e4lsm" path="res://scene/UI/UIPlayer/Inventory/Inventory.tscn" id="5_4d011"]
 [ext_resource type="PackedScene" uid="uid://cx17jpvdseknl" path="res://scene/UI/UIPlayer/DayAndNightPanel/DayAndNightPanel.tscn" id="7_eyjsd"]
 [ext_resource type="PackedScene" uid="uid://b1ye22kbdr5fo" path="res://scene/UI/UIPlayer/HungryBar/HungryBar.tscn" id="8_86qcq"]
+[ext_resource type="PackedScene" uid="uid://dtp8m4yqsbw2" path="res://scene/UI/UIPlayer/DeathPeanel/DeathPanel.tscn" id="8_al1oy"]
 
 [node name="UIPlayer" type="CanvasLayer"]
 follow_viewport_scale = 915.285
@@ -63,3 +64,9 @@ size_flags_horizontal = 8
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+
+[node name="DeathPanel" parent="MarginContainer" instance=ExtResource("8_al1oy")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

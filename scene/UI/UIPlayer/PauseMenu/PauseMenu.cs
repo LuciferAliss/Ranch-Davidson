@@ -30,7 +30,7 @@ public partial class PauseMenu : PanelContainer
         GetTree().Quit();
     }
 
-    private void ExitInMainMenu()
+    public void ExitInMainMenu()
     {
         player.animationPl.AnimationFinished -= player.FinishedAnimation;
         player.cooldown = true;

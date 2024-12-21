@@ -30,6 +30,10 @@ public partial class HungryBar : Control
     {
         progressHungryBar.Value = player.Satiety;
         valueHungryBarLabel.Text = $"{player.Satiety}%";
+        if (player.Satiety == 0)
+        {
+            player.uIManager.deathPanel.Dead();
+        }
     }
 
     public override void _ExitTree()

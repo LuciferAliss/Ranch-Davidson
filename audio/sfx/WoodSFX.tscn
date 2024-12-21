@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://snyme8i12lv"]
+
+[node name="WoodSFX" type="AudioStreamPlayer"]
+bus = &"SFX"

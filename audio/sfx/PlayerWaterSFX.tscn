@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://7s6t06yekjik"]
+
+[ext_resource type="AudioStream" uid="uid://bn3opawvm5und" path="res://resources/audio/sfx/water.ogg" id="1_0b143"]
+
+[node name="PlayerWaterSFX" type="AudioStreamPlayer"]
+stream = ExtResource("1_0b143")
+bus = &"SFX"

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtp8m4yqsbw2"]
+
+[ext_resource type="Theme" uid="uid://dsq62fggbf3c1" path="res://resources/img/Theme/menu.tres" id="1_xbhmc"]
+[ext_resource type="Script" path="res://scene/UI/UIPlayer/DeathPeanel/DeathPanel.cs" id="2_nfqxa"]
+
+[node name="DeathPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(896, 448)
+offset_right = 896.0
+offset_bottom = 448.0
+theme = ExtResource("1_xbhmc")
+theme_type_variation = &"SettingPanel"
+script = ExtResource("2_nfqxa")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_type_variation = &"SettingEdges"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 78
+text = "ВЫ МЕРТВЫ"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Надо было лучше кушать"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(660, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"ButtonMainMenu"
+text = "Вернуться в главное меню"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="ExitInMenu"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8it0gwwg8whm"]
+
+[ext_resource type="AudioStream" uid="uid://bsscsneqhvmba" path="res://resources/audio/sfx/gravel.ogg" id="1_sdmtw"]
+
+[node name="PlayerGravelSFX" type="AudioStreamPlayer"]
+stream = ExtResource("1_sdmtw")

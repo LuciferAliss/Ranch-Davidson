@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn7m11rnjkusw"]
+
+[ext_resource type="AudioStream" uid="uid://cekuhl842tw54" path="res://resources/audio/sfx/seed.mp3" id="1_2o8l6"]
+
+[node name="PlayerSeedSFX" type="AudioStreamPlayer"]
+stream = ExtResource("1_2o8l6")
+bus = &"SFX"

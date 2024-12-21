@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dcsj33frkcebu"]
+[gd_scene load_steps=16 format=3 uid="uid://dcsj33frkcebu"]
 
 [ext_resource type="Texture2D" uid="uid://b6qmsgtftj6f2" path="res://resources/img/tileset/TileSet.png" id="1_5b22u"]
 [ext_resource type="Shader" path="res://scene/obj/tree/tree_shake.gdshader" id="1_gwikf"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dsbrek1hdwygm" path="res://scene/component/SaveDataComponent.tscn" id="6_3ttu4"]
 [ext_resource type="PackedScene" uid="uid://gl5jxnpbwj6l" path="res://scene/component/VisibleComponent.tscn" id="6_342hb"]
 [ext_resource type="Resource" uid="uid://dwf0to7xaybr3" path="res://resources/ResourceSaveGame/SceneDataResource.tres" id="7_rmn6r"]
+[ext_resource type="PackedScene" uid="uid://snyme8i12lv" path="res://audio/sfx/WoodSFX.tscn" id="9_67bdc"]
+[ext_resource type="AudioStream" uid="uid://bw34uryagaeap" path="res://resources/audio/sfx/wood.ogg" id="10_y0ro3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_od17m"]
 resource_local_to_scene = true
@@ -62,3 +64,6 @@ debug_color = Color(0.868217, 0.31226, 0.433944, 0.42)
 
 [node name="DamageComponent" parent="." instance=ExtResource("4_xffw0")]
 maxDamage = 3
+
+[node name="WoodSFX" parent="." instance=ExtResource("9_67bdc")]
+stream = ExtResource("10_y0ro3")
