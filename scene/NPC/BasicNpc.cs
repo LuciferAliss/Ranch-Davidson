@@ -42,7 +42,7 @@ public partial class BasicNpc : Node2D
     {
     }
 
-    public virtual void UpdataStateQuest(string name, int state)
+    public virtual void UpdateStateQuest(string name, int state)
 	{
 	}
 }

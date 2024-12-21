@@ -50,7 +50,7 @@ if (GameDialogueManager.questNPCState == 0)
 	Глория Стюарт: Ой, {{UserData.login}} рада тебя видеть и ты как раз вовремя.
 	Глория Стюарт: Можешь принести пожалуйста десять брёвен?
 	- Да
-		do GameDialogueManager.UpdataStateQuest(1)
+		do GameDialogueManager.UpdateStateQuest(1)
 		{{UserData.login}}: Да, конечно.
 		Глория Стюарт: Спасибо.
 	- Нет
@@ -59,16 +59,99 @@ if (GameDialogueManager.questNPCState == 0)
 elif (GameDialogueManager.questNPCState == 1)
 	Глория Стюарт: Приветик, {{UserData.login}}, рада видеть тебя снова, ты выполнил задание?
 	- Да
+		do GameDialogueManager.CheckItem(2, 10)
+		if (GameDialogueManager.valueForQuest)
+			do GameDialogueManager.ClearItem(2, 10)
+			Глория Стюарт: Спасибо, ты очень меня выручил!
+			{{UserData.login}}: Да не за что.
+			do GameDialogueManager.UpdateStateQuest(2)
+		else
+			Глория Стюарт: Ой, мне кажеться ты ошибся, у тебя этого нет с собой.
+			{{UserData.login}}: Прости.
 	- Нет
+		{{UserData.login}}: Прости, но я занят.
+		Глория Стюарт: Ничего, я подожду.
 set GameDialogueManager.i = 0
 do GameDialogueManager.OnAllowMovePlayer()
+=> END
 
 ~ Quest2
 
+if (GameDialogueManager.questNPCState == 0)
+	Глория Стюарт: Ой, вот и ты {{UserData.login}}, как же я рада тебя видеть.
+	Глория Стюарт: Можешь принести пожалуйста ёщё двадцать брёвен и 30 яблок?
+	- Да
+		do GameDialogueManager.UpdateStateQuest(1)
+		{{UserData.login}}: Да, конечно.
+		Глория Стюарт: Спасибо.
+	- Нет
+		{{UserData.login}}: Прости, но я занят.
+		Глория Стюарт: Ничего, я подожду.
+elif (GameDialogueManager.questNPCState == 1)
+	Глория Стюарт: Приветик, {{UserData.login}}, рада видеть тебя снова, ты выполнил задание?
+	- Да
+		do GameDialogueManager.CheckItem(2, 20)
+		if (GameDialogueManager.valueForQuest)
+			do GameDialogueManager.CheckItem(1, 30)
+			if (GameDialogueManager.valueForQuest)
+				do GameDialogueManager.ClearItem(2, 20)
+				do GameDialogueManager.ClearItem(1, 30)
+				Глория Стюарт: Спасибо, ты очень меня выручил!
+				{{UserData.login}}: Да не за что.
+				do GameDialogueManager.UpdateStateQuest(2)
+			else
+				Глория Стюарт: Ой, мне кажеться ты ошибся, у тебя этого нет с собой.
+				{{UserData.login}}: Прости.
+		else
+			Глория Стюарт: Ой, мне кажеться ты ошибся, у тебя этого нет с собой.
+			{{UserData.login}}: Прости.
+	- Нет
+		{{UserData.login}}: Прости, но я занят.
+		Глория Стюарт: Ничего, я подожду.
+set GameDialogueManager.i = 0
 do GameDialogueManager.OnAllowMovePlayer()
+=> END
 
 ~ Quest3
 
+if (GameDialogueManager.questNPCState == 0)
+	Глория Стюарт: Приветики! {{UserData.login}}, пожалуйста срочно помоги!
+	Глория Стюарт: Можешь принести пожалуйста ёщё 10 брёвен, 14 яблок и 10 пшеницы?
+	- Да
+		do GameDialogueManager.UpdateStateQuest(1)
+		{{UserData.login}}: Да, конечно.
+		Глория Стюарт: Спасибо.
+	- Нет
+		{{UserData.login}}: Прости, но я занят.
+		Глория Стюарт: Ничего, я подожду.
+elif (GameDialogueManager.questNPCState == 1)
+	Глория Стюарт: Приветик, {{UserData.login}}, рада видеть тебя снова, ты выполнил задание?
+	- Да
+		do GameDialogueManager.CheckItem(2, 10)
+		if (GameDialogueManager.valueForQuest)
+			do GameDialogueManager.CheckItem(1, 14)
+			if (GameDialogueManager.valueForQuest)
+				do GameDialogueManager.CheckItem(0, 10)
+				if (GameDialogueManager.valueForQuest)
+					do GameDialogueManager.ClearItem(2, 10)
+					do GameDialogueManager.ClearItem(1, 14)
+					do GameDialogueManager.ClearItem(0, 10)
+					Глория Стюарт: Спасибо, ты очень меня выручил!
+					{{UserData.login}}: Да не за что.
+					do GameDialogueManager.UpdateStateQuest(2)
+				else
+					Глория Стюарт: Ой, мне кажеться ты ошибся, у тебя этого нет с собой.
+					{{UserData.login}}: Прости.
+			else
+				Глория Стюарт: Ой, мне кажеться ты ошибся, у тебя этого нет с собой.
+				{{UserData.login}}: Прости.
+		else
+			Глория Стюарт: Ой, мне кажеться ты ошибся, у тебя этого нет с собой.
+			{{UserData.login}}: Прости.
+	- Нет
+		{{UserData.login}}: Прости, но я занят.
+		Глория Стюарт: Ничего, я подожду.
+set GameDialogueManager.i = 0
 do GameDialogueManager.OnAllowMovePlayer()
 
 => END

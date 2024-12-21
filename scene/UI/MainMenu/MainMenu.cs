@@ -17,7 +17,7 @@ public partial class MainMenu : Control
             using (var contextSave = new SaveContext())
             {
                 var save = contextSave.Save.FirstOrDefault(u => UserData.Instance.user.id == u.id);
-                if (save.Save == null)
+                if (save.Save == "")
                 {
                     UserData.Instance.haveSave = false;
                 }

@@ -12,7 +12,7 @@ public partial class Effect : CanvasLayer
 	{
 		Instance = this;
 
-		animSpryte = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		animSpryte = GetNode<AnimatedSprite2D>("Control/AnimatedSprite2D");
 		animSpryte.Hide();
 		playerAnim = GetNode<AnimationPlayer>("AnimationPlayer");
 		rect = GetNode<ColorRect>("ColorRect");

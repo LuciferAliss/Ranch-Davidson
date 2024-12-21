@@ -14,10 +14,10 @@ public static class ItemsName
         [4] = "WheatSeeds"
     };
 
-    public static Dictionary<int, string> ItemNames = new Dictionary<int, string>
+    public static Dictionary<int, string> itemNames = new Dictionary<int, string>
     {
         [0] = "Wheat",
-        [1] = "Apple",
+        [1] = "Tomato",
         [2] = "Log"
     };
 }

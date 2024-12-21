@@ -50,15 +50,7 @@ public partial class Player : CharacterBody2D
 	{
 		if (!cooldown)
 		{
-			if (Input.IsActionJustPressed("pause") && !uIManager.inventoryVisible)
-			{
-				uIManager.PauseVisibility();
-			}
-			else if (Input.IsActionJustPressed("inventory") && !uIManager.pauseVisible)
-			{
-				uIManager.InventoryVisibility();
-			}
-			else if (!useAction)
+			if (!useAction)
 			{
 				Move();
 			}
@@ -93,10 +85,19 @@ public partial class Player : CharacterBody2D
 			npc.StartDialogue();
 			direction = new Vector2(0, 0);
 		}
+		else if (Input.IsActionJustPressed("pause") && !uIManager.inventoryVisible && !cooldown)
+		{
+			uIManager.PauseVisibility();
+		}
+		else if (Input.IsActionJustPressed("inventory") && !uIManager.pauseVisible && !cooldown)
+		{
+			uIManager.InventoryVisibility();
+		}
 		else
 		{
 			direction = Input.GetVector("move_left", "move_right", "move_up", "move_down");
 		}
+		
 	}
 
 	public void OpportunityForDialogue(bool Opportunity, BasicNpc npc)

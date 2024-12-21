@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Godot;
 
 public partial class InventoryManager : PanelContainer
@@ -16,8 +17,15 @@ public partial class InventoryManager : PanelContainer
 
     public override void _Ready()
     {
+        Signals.Instance.Connect("SearchItem", new Callable(this, nameof(SearchItem)));
+        Signals.Instance.Connect("ClearItem", new Callable(this, nameof(ClearItem)));
         slots = GetNode<GridContainer>("MarginContainer/GridContainer").GetChildren().Select(x => (Slot)x).ToList();
         UpdateInventory();
+    }
+
+    public override void _ExitTree()
+    {
+        Signals.Instance.SearchItem -= SearchItem;
     }
 
     public override void _Process(double delta)
@@ -28,6 +36,34 @@ public partial class InventoryManager : PanelContainer
         }
     }
 
+    public int SearchItem(int indexItem, int count)
+    {
+        for (int i = 0; i < Math.Min(inventory.slots.Length, slots.Count); i++)
+        {
+            if (inventory.slots[i].item != null)
+            {
+                if (inventory.slots[i].item.name == ItemsName.itemNames[indexItem] && inventory.slots[i].count >= count)
+                {
+                    GameDialogueManager.Instance.valueForQuest = true;
+                    return i;
+                }
+            }
+        }
+        GameDialogueManager.Instance.valueForQuest = false;
+        return -1;
+    }
+
+    private void ClearItem(int indexItem, int count)
+    {
+        int position = SearchItem(indexItem, count);
+        inventory.slots[position].count -= count;
+        if (inventory.slots[position].count == 0)
+        {
+            inventory.slots[position].item = null;
+        }
+        slots[position].UpDate(inventory.slots[position]);
+    }
+
     public void ConnectCollectable(CollectableComponent collectable)
     {
         collectable.TakeItem += TakeItem;
@@ -36,7 +72,7 @@ public partial class InventoryManager : PanelContainer
 
     public void UpdateInventory()
     {
-        for (int i = 0; i <  Math.Min(inventory.slots.Length, slots.Count); i++)
+        for (int i = 0; i < Math.Min(inventory.slots.Length, slots.Count); i++)
         {
             slots[i].UpDate(inventory.slots[i]);
         }

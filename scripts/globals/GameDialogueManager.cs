@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Godot;
 using static NPCData;
 
@@ -15,7 +16,9 @@ public partial class GameDialogueManager : Node
 	public int questNPCState;
 	public int CountQuest = 0;
 	public int i = 0;
+	public bool valueForQuest = false;
 	BasicNpc thisNpc;
+
 
 	public override void _Ready()
 	{
@@ -23,7 +26,12 @@ public partial class GameDialogueManager : Node
 		Signals.Instance.InfNPC += GetInfNPC;
 	}
 
-	public override void _Process(double delta)
+    public override void _ExitTree()
+    {
+        Signals.Instance.InfNPC -= GetInfNPC;
+    }
+
+    public override void _Process(double delta)
 	{
 	}
 
@@ -56,8 +64,19 @@ public partial class GameDialogueManager : Node
 		questNPCState = (int)questNPC[i].stateQuest;
 	}
 
-	public void UpdataStateQuest(int state)
+	public void UpdateStateQuest(int state)
 	{
-		thisNpc.UpdataStateQuest(questNPC[i].nameQuest, state);
+		thisNpc.UpdateStateQuest(questNPC[i].nameQuest, state);
+	}
+
+	public void CheckItem(int index, int count)
+	{
+		Signals.Instance.EmitSignalSearchItem(index, count);
+		GD.Print(valueForQuest);
+	}
+
+	public void ClearItem(int index, int count)
+	{
+		Signals.Instance.EmitSignalClearItem(index, count);
 	}
 }

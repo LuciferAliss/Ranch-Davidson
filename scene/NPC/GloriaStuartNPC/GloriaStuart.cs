@@ -17,7 +17,8 @@ namespace Helpers
             questNPCs = new List<QuestNPC>
             {
                 new QuestNPC("Collect 10 logs", StateQuest.NotTaken),
-                new QuestNPC("Collect 5 logs", StateQuest.NotTaken)
+                new QuestNPC("Collect 20 logs and 30 apples", StateQuest.NotTaken),
+                new QuestNPC("Collect 10 logs, 14 apples and 10 wheat", StateQuest.NotTaken)
             };
         }
 
@@ -28,7 +29,7 @@ namespace Helpers
             acquaintance = true;
         }
 
-        public override void UpdataStateQuest(string name, int state)
+        public override void UpdateStateQuest(string name, int state)
         {
             for (int i = 0; i < questNPCs.Count; i++)
             {
